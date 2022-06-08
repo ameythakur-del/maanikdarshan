@@ -40,7 +40,7 @@ class _MainPageState extends State<MainPage> {
         ),
         child: CurvedNavigationBar(
           index: page,
-          color: const Color.fromRGBO(247, 144, 35, 1),
+          color: const Color(0xFF7F1B0E),
           buttonBackgroundColor: const Color.fromRGBO(101, 35, 8, 1),
           backgroundColor: Colors.transparent,
           height: 60,
@@ -72,7 +72,7 @@ class _MainPageState extends State<MainPage> {
 
             Icon(Icons.account_circle_outlined,
                 size: 30,
-                color: (page == 1)
+                color: (page == 4)
                     ? const Color(0xFFF09B21)
                     : const Color(0xFFFFFFFF)),
           ],
