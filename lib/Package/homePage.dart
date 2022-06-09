@@ -8,12 +8,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-        body: SingleChildScrollView(child:
-            Stack(
-                children: [
-
-        Container(color: const Color(0xFF7F1B0E), height: 40,),
-        Padding(padding: EdgeInsets.only(top: 40), child:
+        appBar: AppBar(title: Image.asset("assets/images/home_heading.png"), backgroundColor: const Color(0xFF7F1B0E),),
+        body:
+        SingleChildScrollView(child:
         Column(
           children: [
             Image.asset('assets/images/swami_background.png'),
@@ -82,14 +79,7 @@ class HomePage extends StatelessWidget {
             )
           ),]
         ),),
-                  Center(child:
-                  Padding(padding: EdgeInsets.all(40), child:
-                  Text("माणिकदर्शन", style: TextStyle(
-                      fontFamily: 'Mukta',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24.0,
-                      color: Colors.white
-                  ),))),])));
+        );
   }
 
   Widget Events(String image, String type, Color color, textSize, BuildContext context) {

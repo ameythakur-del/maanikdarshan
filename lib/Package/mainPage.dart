@@ -4,6 +4,7 @@ import 'package:maanikdarshan/Package/Location/location.dart';
 import 'package:maanikdarshan/Package/Notifications/notifications.dart';
 import 'package:maanikdarshan/Package/Profile/Profile.dart';
 import 'package:maanikdarshan/Package/Share/Share.dart';
+import 'package:maanikdarshan/Package/Widgets/MaanikBottomNav.dart';
 
 import 'homePage.dart';
 
@@ -30,57 +31,71 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       extendBody: true,
       body: screens[page],
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(40.0),
-              bottomRight: Radius.circular(40.0),
-              topLeft: Radius.circular(40.0),
-              bottomLeft: Radius.circular(40.0)),
-        ),
-        child: CurvedNavigationBar(
-          index: page,
-          color: const Color(0xFF7F1B0E),
-          buttonBackgroundColor: const Color.fromRGBO(101, 35, 8, 1),
-          backgroundColor: Colors.transparent,
-          height: 60,
-          items: <Widget>[
-
-              Icon(Icons.notifications,
+      bottomNavigationBar: Padding(padding: EdgeInsets.all(20),child:
+      ClipRRect(
+          borderRadius: const BorderRadius.all(Radius.circular(20)
+          ),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed, // Fixed
+          backgroundColor: const Color(0xFF7F1B0E),
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              label: "Notifications",
+              icon: Icon(Icons.notifications,
                   size: 30,
                   color: (page == 0)
                       ? const Color(0xFFF09B21)
                       : const Color(0xFFFFFFFF)),
+            ),
+            BottomNavigationBarItem(
+              label: "Location",
+              icon:
+              Icon(Icons.my_location,
+                  size: 30,
+                  color: (page == 1)
+                      ? const Color(0xFFF09B21)
+                      : const Color(0xFFFFFFFF)),
+            ),
+            BottomNavigationBarItem(
+              label: "Home",
+              icon: Icon(Icons.home,
+                  size: 30,
+                  color: (page == 2)
+                      ? const Color(0xFFF79023)
+                      : const Color(0xFFFFFFFF)),
+            ),
+            BottomNavigationBarItem(
+              label: "Share",
+              icon: Icon(Icons.share,
+                  size: 30,
+                  color: (page == 3)
+                      ? const Color(0xFFF09B21)
+                      : const Color(0xFFFFFFFF)),
 
+            ),
+            BottomNavigationBarItem(
+              label: "Profile",
+              icon:
+              Icon(Icons.account_circle_outlined,
+                  size: 30,
+                  color: (page == 4)
+                      ? const Color(0xFFF09B21)
+                      : const Color(0xFFFFFFFF)),
 
-            Icon(Icons.my_location,
-                size: 30,
-                color: (page == 1)
-                    ? const Color(0xFFF09B21)
-                    : const Color(0xFFFFFFFF)),
-
-            Icon(Icons.home,
-                size: 30,
-                color: (page == 2)
-                    ? const Color(0xFFF79023)
-                    : const Color(0xFFFFFFFF)),
-            Icon(Icons.share,
-                size: 30,
-                color: (page == 3)
-                    ? const Color(0xFFF09B21)
-                    : const Color(0xFFFFFFFF)),
-
-            Icon(Icons.account_circle_outlined,
-                size: 30,
-                color: (page == 4)
-                    ? const Color(0xFFF09B21)
-                    : const Color(0xFFFFFFFF)),
+            ),
           ],
-          onTap: (value) => setState(() {
-            page = value;
-          }),
+          currentIndex: page,
+          selectedItemColor: Colors.amber[800],
+          onTap: _onItemTapped,
         ),
       ),
-    );
+    ));
+  }
+  void _onItemTapped(int index) {
+    setState(() {
+      page = index;
+    });
   }
 }
