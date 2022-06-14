@@ -21,7 +21,7 @@ class _MainPageState extends State<MainPage> {
   final screens = [
     const Notifications(),
     const Location(),
-    const HomePage(),
+    HomePage(),
     const Share(),
     const Profile()
   ];
