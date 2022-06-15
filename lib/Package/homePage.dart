@@ -13,6 +13,9 @@ class HomePage extends StatelessWidget {
   final List<String> ganNames = ["माणिक्यवाणी", "मनोहरमयूख", "बोधमार्तण्ड", "सिद्धसुधा", "ज्ञानलहरी"];
   final List<String> ganImages = ["assets/images/gan_martands/1.png", "assets/images/gan_martands/2.png", "assets/images/gan_martands/3.png", "assets/images/gan_martands/4.png", "assets/images/gan_martands/5.png",];
 
+  final List<String> mantraNames = ["आह्निकप्रकरणम्", "पूजा प्रकरणम्", "न्यास प्रकरणम्", "अभिषेक प्रकरणम्", "अर्चनाप्रकरणम् (नामावलिः)", "मन्त्रपुष्पाञ्जलिप्रकरणम्", "सामान्यप्रकरणम्", "उपनिषद् प्रकरणम्"];
+  final List<String> mantraImages = ["assets/images/mantra_martands/0.png", "assets/images/mantra_martands/1.png", "assets/images/mantra_martands/2.png", "assets/images/mantra_martands/3.png", "assets/images/mantra_martands/4.png", "assets/images/mantra_martands/5.png", "assets/images/mantra_martands/6.png", "assets/images/mantra_martands/7.png"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +80,7 @@ class HomePage extends StatelessWidget {
                     Events("assets/images/upasana_martand.png", "उपासना मार्तंड", const Color.fromRGBO(240, 155, 33, 0.3), 14.0, granthNames, granthImages, "assets/images/granth_title.png", context),
                     Events("assets/images/gan_martand.png", "गान मार्तंड", const Color.fromRGBO(240, 155, 33, 0.3), 14.0, ganNames, ganImages, "assets/images/gan_title.png", context),
                     Events("assets/images/granth_martand.png", "ग्रंथ मार्तंड", const Color.fromRGBO(240, 155, 33, 0.3), 14.0, granthNames, granthImages, "assets/images/granth_title.png", context),
-                    Events("assets/images/mantra_martand.png", "मंत्र मार्तंड", const Color.fromRGBO(240, 155, 33, 0.3), 14.0, granthNames, granthImages, "assets/images/granth_title.png", context), ]
+                    Events("assets/images/mantra_martand.png", "मंत्र मार्तंड", const Color.fromRGBO(240, 155, 33, 0.3), 14.0, mantraNames, mantraImages, "assets/images/mantra_title.png", context), ]
                 ),
               Row( children: [
                 Events("assets/images/upakram.png", "उपक्रम", const Color.fromRGBO(240, 155, 33, 0.3), 14.0, granthNames, granthImages, "assets/images/granth_title.png", context),

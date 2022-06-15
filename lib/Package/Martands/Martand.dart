@@ -20,7 +20,7 @@ class Martand extends StatelessWidget {
 
         (images.length == 8)?
 
-          Padding(padding: EdgeInsets.only(left: 20, right: 20, bottom: 5), child:
+          Padding(padding: EdgeInsets.only(left: 20, right: 20), child:
           Row( children: [
             Events(images[0], names[0], const Color.fromRGBO(240, 155, 33, 0.3), context),
             Events(images[1], names[1], const Color.fromRGBO(240, 155, 33, 0.3), context),
@@ -65,7 +65,7 @@ Events(String image, String type, Color color, BuildContext context) {
           onTap: () {
             // Navigator.push(context, MaterialPageRoute(builder: (context) => Martand(names: granthNames, images: granthImages, titleBanner: title)));
           },
-          child:
+          child: Container(margin: EdgeInsets.all(5), child:
           Column(
             children: <Widget>[
               ClipRRect(
@@ -89,5 +89,5 @@ Events(String image, String type, Color color, BuildContext context) {
           ),
           ),
         ),
-      );
+      ));
 }
