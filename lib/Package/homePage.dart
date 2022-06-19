@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
               children: [
                 Events(image: "assets/images/manikratna.png", type: "माणिकरत्न", color: Colors.white, textSize: 16.0, context: context),
                 Events(image: "assets/images/donation.png", type: "डोनेशन",  color: Colors.white, textSize: 16.0,  context: context),
-                Events(image: "assets/images/manikratna.png", type: "ई सेवा", color: Colors.white, textSize: 16.0, context: context)
+                Events(image: "assets/images/eseva.png", type: "ई सेवा", color: Colors.white, textSize: 16.0, context: context)
               ],
             ),
 
@@ -51,9 +51,9 @@ class HomePage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Events2("assets/images/shri_sansthan.png", "माणिकरत्न", context),
-                  Events2("assets/images/maniknagar.png", "डोनेशन", context),
-                  Events2("assets/images/guru_parampara.png", "ई सेवा", context)
+                  Events2("assets/images/shri_sansthan.png", "श्री संस्थान", context),
+                  Events2("assets/images/maniknagar.png", "माणिकनगर", context),
+                  Events2("assets/images/guru_parampara.png", "गुरू परंपरा", context)
                 ],
               ),
             ),

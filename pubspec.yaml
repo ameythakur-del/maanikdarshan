@@ -80,6 +80,7 @@ flutter:
      - assets/images/granth_martand.png
      - assets/images/mantra_martand.png
      - assets/images/upakram.png
+     - assets/images/guruParampara_title.png
      - assets/images/dindarshika.png
      - assets/images/e_store.png
      - assets/images/download.png
@@ -99,6 +100,7 @@ flutter:
      - assets/images/gan_martands/3.png
      - assets/images/gan_martands/4.png
      - assets/images/gan_martands/5.png
+     - assets/images/gan_martands/6.png
      - assets/images/mantra_martands/1.png
      - assets/images/mantra_martands/2.png
      - assets/images/mantra_martands/3.png
@@ -118,3 +120,10 @@ flutter:
      - assets/images/upasana_martands/8.png
      - assets/images/upasana_martands/9.png
      - assets/images/upasana_martands/0.png
+     - assets/images/dnyanraj_manikprabhu.png
+     - assets/images/manohar_manikprabhu.png
+     - assets/images/martand_manikprabhu.png
+     - assets/images/sadguru_manikprabhu.png
+     - assets/images/shankar_manikprabhu.png
+     - assets/images/siddhraj_manikprabhu.png
+     - assets/images/mantra_title.png

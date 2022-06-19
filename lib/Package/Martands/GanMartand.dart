@@ -16,12 +16,16 @@ class GanMartand extends StatelessWidget {
       appBar: AppBar(
           centerTitle: true,
           title: Image.asset("assets/images/home_heading.png"), backgroundColor: const Color(0xFF7F1B0E)),
-      body: Column(children: [
+      body:
+      Column(
+        children: [
         Padding(padding: EdgeInsets.all(20),child:
         Image.asset(titleBanner)),
 
         Padding(padding: EdgeInsets.only(left: 20, right: 20), child:
-        Row( children: [
+        Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
           Event(images[0], names[0], const Color.fromRGBO(240, 155, 33, 0.3), context),
           Event(images[1], names[1], const Color.fromRGBO(240, 155, 33, 0.3), context),
           Event(images[2], names[2], const Color.fromRGBO(240, 155, 33, 0.3), context),
@@ -29,6 +33,7 @@ class GanMartand extends StatelessWidget {
         )),
         Padding(padding: EdgeInsets.only(left: 20, right: 20), child:
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Event(images[3], names[3], const Color.fromRGBO(240, 155, 33, 0.3), context),
             Event(images[4], names[4], const Color.fromRGBO(240, 155, 33, 0.3), context),
@@ -41,8 +46,8 @@ class GanMartand extends StatelessWidget {
 }
 
 Event(String image, String type, Color color, BuildContext context) {
-  return Expanded(
-      child: Material(
+  double width = MediaQuery.of(context).size.width;
+  return Material(
         child: InkWell(
           onTap: () {
             // Navigator.push(context, MaterialPageRoute(builder: (context) => Martand(names: granthNames, images: granthImages, titleBanner: title)));
@@ -52,7 +57,7 @@ Event(String image, String type, Color color, BuildContext context) {
             children: <Widget>[
               ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
-                child: Image.asset(image),
+                child: Image.asset(image, width: width/4,),
               ),
               Container(
                   padding: EdgeInsets.only(top: 5),
@@ -71,5 +76,5 @@ Event(String image, String type, Color color, BuildContext context) {
           ),
           ),
         ),
-      ));
+      );
 }

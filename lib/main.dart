@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maanikdarshan/Package/GuruParampara/guruParampara.dart';
 import 'package:maanikdarshan/Package/Martands/GanMartand.dart';
 import 'package:maanikdarshan/Package/Martands/GranthMartand.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         '/गान मार्तंड': (context) => GanMartand(),
         '/मंत्र मार्तंड': (context) => MantraMartand(),
         '/उपासना मार्तंड': (context) => UpasanaMartand(),
+        '/गुरू परंपरा': (context) => guruParampara()
       },
     );
   }
