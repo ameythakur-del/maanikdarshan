@@ -5,6 +5,8 @@ import 'package:maanikdarshan/Package/Martands/GranthMartand.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand.dart';
 import 'package:maanikdarshan/Package/homePage.dart';
 
+import 'Package/Authentication/OTP.dart';
+import 'Package/Authentication/login.dart';
 import 'Package/Martands/MantraMartand.dart';
 import 'Package/mainPage.dart';
 
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const HomePage(),
+        '/': (context) => Login(),
         // '/home': (context) => const HomePage(),
         '/ग्रंथ मार्तंड': (context) => GranthMartand(),
         '/गान मार्तंड': (context) => GanMartand(),

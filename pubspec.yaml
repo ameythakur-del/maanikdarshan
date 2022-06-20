@@ -46,6 +46,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  flutter_otp_text_field: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -64,6 +65,12 @@ flutter:
         - asset: assets/fonts/Mukta-Regular.ttf
         - asset: assets/fonts/Mukta-Bold.ttf
         - asset: assets/fonts/Mukta-ExtraBold.ttf
+
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+        - asset: assets/fonts/Roboto-ThinItalic.ttf
 
   assets:
      - assets/images/leaf_1.png
@@ -127,3 +134,4 @@ flutter:
      - assets/images/shankar_manikprabhu.png
      - assets/images/siddhraj_manikprabhu.png
      - assets/images/mantra_title.png
+     - assets/images/login_logo.png
