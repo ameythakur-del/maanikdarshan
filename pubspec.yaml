@@ -35,6 +35,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   curved_navigation_bar: ^1.0.3
+  firebase_auth: ^3.3.11
+  firebase_core: ^1.13.1
 
 dev_dependencies:
   flutter_test:
@@ -47,7 +49,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
   flutter_otp_text_field: ^1.0.0
-
+  google_fonts: ^3.0.1
+  fluttertoast: ^8.0.9
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -157,3 +160,4 @@ flutter:
      - assets/images/aawas/5.png
      - assets/images/aawas/6.png
      - assets/images/dinCharya.png
+     - assets/images/google_logo.png

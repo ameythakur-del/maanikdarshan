@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "1015809200661",
+    "firebase_url": "https://manikdarshan-f7fb9.firebaseio.com",
+    "project_id": "manikdarshan-f7fb9",
+    "storage_bucket": "manikdarshan-f7fb9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015809200661:android:ce0351aed773545fc9b41c",
+        "android_client_info": {
+          "package_name": "com.example.maanikdarshan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015809200661-kcsmukc1ru9db9h0rp2074d4pdba1v7e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.maanikdarshan",
+            "certificate_hash": "3a9445c7524a8acfb38b0c3a56a8301a6e0a7a98"
+          }
+        },
+        {
+          "client_id": "1015809200661-7nh88rttg451eh5vr4202k5klh64pdi5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX1N8ZrgfTJb4405YpbpORyp2NNTJG1Tg"
+        },
+        {
+          "current_key": "AIzaSyBUUaW0BMjmqZTGg1KRourczeSHaX8IhQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015809200661-4fb5palcpk1uo7gm3crdufhubh8tamhj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015809200661:android:63b9e873d3439277",
+        "android_client_info": {
+          "package_name": "com.manikinfotech.manikdarshan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015809200661-5prorfdg1un4ljj1u3lvsg7id9aqpgvq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.manikinfotech.manikdarshan",
+            "certificate_hash": "9b8dcdfd49e4e4730f23096dcbb9c840ecc053fd"
+          }
+        },
+        {
+          "client_id": "1015809200661-mu0lhg38d05igao5vr86gro26vskgjt2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.manikinfotech.manikdarshan",
+            "certificate_hash": "ac9478a623fc4e4a00392b59ae5191b09a429a09"
+          }
+        },
+        {
+          "client_id": "1015809200661-p5s56kedr0k849c7issvv2hscafk2pg2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.manikinfotech.manikdarshan",
+            "certificate_hash": "12a959e70ceab8fe9fed9f143a8f0b968273c894"
+          }
+        },
+        {
+          "client_id": "1015809200661-7nh88rttg451eh5vr4202k5klh64pdi5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX1N8ZrgfTJb4405YpbpORyp2NNTJG1Tg"
+        },
+        {
+          "current_key": "AIzaSyBUUaW0BMjmqZTGg1KRourczeSHaX8IhQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015809200661-4fb5palcpk1uo7gm3crdufhubh8tamhj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,10 +1,8 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:maanikdarshan/Package/Location/location.dart';
 import 'package:maanikdarshan/Package/Notifications/notifications.dart';
 import 'package:maanikdarshan/Package/Profile/Profile.dart';
 import 'package:maanikdarshan/Package/Share/Share.dart';
-import 'package:maanikdarshan/Package/Widgets/MaanikBottomNav.dart';
 
 import 'homePage.dart';
 
