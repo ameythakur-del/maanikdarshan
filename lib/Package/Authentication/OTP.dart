@@ -8,6 +8,7 @@ import 'package:maanikdarshan/Package/mainPage.dart';
 
 class OTP extends StatefulWidget {
   final String name, phone;
+
   const OTP({Key? key, required this.name, required this.phone})
       : super(key: key);
 
@@ -22,6 +23,8 @@ class _OTPState extends State<OTP> {
     super.initState();
     phoneSignIn(phoneNumber: widget.phone.toString());
   }
+
+  String verificat = '';
 
   Future<void> phoneSignIn({required String phoneNumber}) async {
     Firebase.initializeApp().whenComplete(() async => {
@@ -51,6 +54,7 @@ class _OTPState extends State<OTP> {
                   toastLength: Toast.LENGTH_LONG);
             },
             codeSent: (String verificationI, int? resendToken) async {
+              verificat = verificationI;
               Fluttertoast.showToast(
                   msg: 'Code sent successfully',
                   gravity: ToastGravity.BOTTOM,
@@ -115,7 +119,18 @@ class _OTPState extends State<OTP> {
                 //handle validation or checks here
               },
               //runs when every textfield is filled
-              onSubmit: (String verificationCode) {}, // end onSubmit
+              onSubmit: (String verificationCode) {
+                if (FirebaseAuth.instance.currentUser == null) {
+                  print('sha ' + '1');
+                  PhoneAuthCredential credential = PhoneAuthProvider.credential(
+                      verificationId: verificat, smsCode: verificationCode);
+
+                  signInAndNavigate(credential);
+                }
+                else {
+                  print('sha ' + '2');
+                }
+              }, // end onSubmit
             ),
           ),
           TextButton(
@@ -134,7 +149,9 @@ class _OTPState extends State<OTP> {
             ),
           ),
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+                phoneSignIn(phoneNumber: widget.phone.toString());
+              },
               child: Text(
                 'Resend',
                 style: TextStyle(
@@ -158,6 +175,11 @@ class _OTPState extends State<OTP> {
 
               });
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage()));
-    } catch (error) {}
+    } catch (error) {
+      Fluttertoast.showToast(
+          msg: error.toString(),
+          gravity: ToastGravity.BOTTOM,
+          toastLength: Toast.LENGTH_LONG);
+    }
   }
 }

@@ -21,7 +21,7 @@ class _MainPageState extends State<MainPage> {
     const Location(),
     HomePage(),
     const Share(),
-    const Profile()
+    Profile()
   ];
 
   @override

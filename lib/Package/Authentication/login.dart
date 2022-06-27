@@ -1,8 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:maanikdarshan/Package/Authentication/OTP.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+import '../mainPage.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
@@ -12,7 +16,6 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor:
           const Color(0xFF7F1B0E), //or set color with: Color(0xFF0000FF)
@@ -110,7 +113,35 @@ class Login extends StatelessWidget {
                   Padding(
                       padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
                       child: GestureDetector(
-                          onTap: () {},
+                          onTap: () async {
+                            //var user=FirebaseAuth.instance.currentUser;
+                            FirebaseAuth auth = FirebaseAuth.instance;
+                            User? user;
+
+                            final GoogleSignIn googleSignIn = GoogleSignIn();
+
+                            final GoogleSignInAccount? googleSignInAccount =
+                                await googleSignIn.signIn();
+
+                            if (googleSignInAccount != null) {
+                              final GoogleSignInAuthentication
+                                  googleSignInAuthentication =
+                                  await googleSignInAccount.authentication;
+
+                              final AuthCredential credential =
+                                  GoogleAuthProvider.credential(
+                                accessToken:
+                                    googleSignInAuthentication.accessToken,
+                                idToken: googleSignInAuthentication.idToken,
+                              );
+
+                              final UserCredential userCredential = await auth
+                                  .signInWithCredential(credential)
+                                  .whenComplete(() {
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage()));
+                              });
+                            }
+                          },
                           child: Image.asset(
                             'assets/' 'images/google_logo.png',
                             width: 54,
