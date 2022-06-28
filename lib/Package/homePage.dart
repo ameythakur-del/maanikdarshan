@@ -74,7 +74,7 @@ class HomePage extends StatelessWidget {
                     Events(image: "assets/images/mantra_martand.png", type: "मंत्र मार्तंड",  color: const Color.fromRGBO(240, 155, 33, 0.3), textSize: 14.0, context: context), ]
                 ),
               Row( children: [
-                Events(image: "assets/images/upakram.png", type: "उपक्रम", color: const Color.fromRGBO(240, 155, 33, 0.3), textSize: 14.0, context: context),
+                Events(image: "assets/images/upakram.png", type: "उत्सव", color: const Color.fromRGBO(240, 155, 33, 0.3), textSize: 14.0, context: context),
                 Events(image: "assets/images/dindarshika.png", type: "दिनदर्शिका", color: const Color.fromRGBO(240, 155, 33, 0.3), textSize: 14.0, context: context),
                 Events(image: "assets/images/e_store.png", type: "ई स्टोर", color: const Color.fromRGBO(240, 155, 33, 0.3), textSize: 14.0, context: context),
                 Events(image: "assets/images/download.png", type: "डाऊनलोड", color: const Color.fromRGBO(240, 155, 33, 0.3), textSize: 14.0, context: context),
