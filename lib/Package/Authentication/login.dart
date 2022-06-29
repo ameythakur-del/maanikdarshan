@@ -34,28 +34,6 @@ class Login extends StatelessWidget {
                     width: 173,
                   )),
                   Padding(
-                    padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-                    child: TextFormField(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your name';
-                        }
-                        return null;
-                      },
-                      autofocus: false,
-                      controller: nameController,
-                      decoration: InputDecoration(
-                          hintText: 'Name',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(27.0),
-                            borderSide: BorderSide.none,
-                          ),
-                          filled: true,
-                          hintStyle: TextStyle(color: const Color(0xFF6D6D6D)),
-                          fillColor: const Color(0xFFEFEFEF)),
-                    ),
-                  ),
-                  Padding(
                     padding: EdgeInsets.only(top: 10, left: 20, right: 20),
                     child: TextFormField(
                       keyboardType: TextInputType.number,
