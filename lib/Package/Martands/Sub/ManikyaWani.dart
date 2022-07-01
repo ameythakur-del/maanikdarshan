@@ -44,7 +44,7 @@ class ManikyaWani extends StatelessWidget {
                     return Container();
                   }
                   if (snapshot.hasData) {
-                    return MartandsModel(text: snapshot.data);
+                    return MartandsModel(text: 'text', title: 'title');
                   }
                 }
                 return Center(child:

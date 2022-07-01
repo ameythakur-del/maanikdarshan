@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 
 class MartandsModel extends StatelessWidget {
   final String text;
-  const MartandsModel({Key? key, required this.text}) : super(key: key);
+  final String title;
+  const MartandsModel({Key? key, required this.text, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(children: [
       Center(
         child: Text(
-          'पद',
+          title,
           style: TextStyle(
               fontSize: 24,
               fontFamily: 'Mukta',
