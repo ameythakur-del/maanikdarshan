@@ -21,36 +21,65 @@ class Profile extends StatelessWidget {
           centerTitle: true,
           backgroundColor: const Color(0xFF7F1B0E),
           title: Text(
-            "प्रोफाइल",
+            "माय प्रोफाइल",
             style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.bold),
           ),
         ),
-        body: GestureDetector(
-          onTap: () {
-            signOut();
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => Login()));
-          },
-          child: Container(
-            padding: EdgeInsets.all(15),
-            margin: EdgeInsets.all(20),
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                  color: const Color(0xFFF1F1F1),
-                  borderRadius: BorderRadius.all(Radius.circular(15.0))),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/images/Vector.png',
-                    width: 28,
-                  ),
-                  SizedBox(width: 15,),
-                  Text(
-                    'Logout',
-                    style: TextStyle(fontSize: 24, fontFamily: 'Mukta', color: const Color(0xFF7F1B0E), fontWeight: FontWeight.bold),
-                  )
-                ],
-              )),
-        ));
+        body:  FutureBuilder(
+            future: Future.value(auth.currentUser?.phoneNumber),
+            builder: (context, AsyncSnapshot snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.error != null) {
+                  print("$snapshot.error.toString()");
+                  return Container();
+                }
+                if (snapshot.hasData) {
+                  return Column(children: [
+                    Align(
+                        alignment: Alignment.topLeft,
+                        child: Padding(padding: EdgeInsets.only(left: 20, top: 20), child:
+                    Text('Registered Mobile Number',  style: TextStyle(fontSize: 20, fontFamily: 'Mukta', color: const Color(0xFF7F1B0E), fontWeight: FontWeight.bold),)), ),
+                    Align(
+              alignment: Alignment.topLeft,
+                      child: Padding(padding: EdgeInsets.only(left: 20),
+              child:
+                    Text(snapshot.data, style: TextStyle(fontSize: 21, fontFamily: 'Mukta', color: const Color(0xFFB5B5B5)),)),
+              ),
+                    GestureDetector(
+                      onTap: () {
+                        signOut();
+                        Navigator.pushReplacement(
+                            context, MaterialPageRoute(builder: (context) => Login()));
+                      },
+                      child: Container(
+                          padding: EdgeInsets.all(15),
+                          margin: EdgeInsets.all(20),
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              color: const Color(0xFFF1F1F1),
+                              borderRadius: BorderRadius.all(Radius.circular(15.0))),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/Vector.png',
+                                width: 28,
+                              ),
+                              SizedBox(width: 15,),
+                              Text(
+                                'Logout',
+                                style: TextStyle(fontSize: 24, fontFamily: 'Mukta', color: const Color(0xFF7F1B0E), fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          )),
+                    )],);
+                }
+                }
+              return Center(child:
+                CircularProgressIndicator());
+              }
+
+            ),
+
+        );
   }
 }

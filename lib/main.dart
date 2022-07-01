@@ -4,6 +4,7 @@ import 'package:maanikdarshan/Package/GuruParampara/guruParampara.dart';
 import 'package:maanikdarshan/Package/ManikNagar/maniknagar.dart';
 import 'package:maanikdarshan/Package/Martands/GanMartand.dart';
 import 'package:maanikdarshan/Package/Martands/GranthMartand.dart';
+import 'package:maanikdarshan/Package/Martands/Sub/ManikyaWani.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand.dart';
 import 'package:maanikdarshan/Package/homePage.dart';
 
@@ -54,7 +55,8 @@ class MyApp extends StatelessWidget {
         '/मंत्र मार्तंड': (context) => MantraMartand(),
         '/उपासना मार्तंड': (context) => UpasanaMartand(),
         '/गुरू परंपरा': (context) => guruParampara(),
-        '/माणिकनगर': (context) => maniknagar()
+        '/माणिकनगर': (context) => maniknagar(),
+        '/माणिक्यवाणी': (context) => ManikyaWani()
       },
     );
   }
