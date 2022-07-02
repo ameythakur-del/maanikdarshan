@@ -5,7 +5,11 @@ import 'package:maanikdarshan/Package/GuruParampara/guruParampara.dart';
 import 'package:maanikdarshan/Package/ManikNagar/maniknagar.dart';
 import 'package:maanikdarshan/Package/Martands/GanMartand.dart';
 import 'package:maanikdarshan/Package/Martands/GranthMartand.dart';
+import 'package:maanikdarshan/Package/Martands/Sub/BodhaMartand.dart';
+import 'package:maanikdarshan/Package/Martands/Sub/DnyanLahari.dart';
 import 'package:maanikdarshan/Package/Martands/Sub/ManikyaWani.dart';
+import 'package:maanikdarshan/Package/Martands/Sub/Manoharmayukh.dart';
+import 'package:maanikdarshan/Package/Martands/Sub/SiddhaSudha.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand.dart';
 import 'package:maanikdarshan/Package/homePage.dart';
 
@@ -55,7 +59,11 @@ class MyApp extends StatelessWidget {
         '/उपासना मार्तंड': (context) => UpasanaMartand(),
         '/गुरू परंपरा': (context) => guruParampara(),
         '/माणिकनगर': (context) => maniknagar(),
-        '/माणिक्यवाणी': (context) => ManikyaWani()
+        '/माणिक्यवाणी': (context) => ManikyaWani(),
+        '/ज्ञानलहरी' : (context) => DnyanLahari(),
+        '/मनोहरमयूख' : (context) => Manoharmayukh(),
+        '/बोधमार्तण्ड' :  (context) => BodhaMartand(),
+        '/सिद्धसुधा' :  (context) => SiddhaSudha(),
       },
     );
   }
