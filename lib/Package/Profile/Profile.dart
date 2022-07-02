@@ -4,6 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:maanikdarshan/Package/Authentication/login.dart';
 
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(Profile());
+}
+
 class Profile extends StatelessWidget {
   Profile({Key? key}) : super(key: key);
 

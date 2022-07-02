@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:maanikdarshan/Package/GuruParampara/guruParampara.dart';
 import 'package:maanikdarshan/Package/ManikNagar/maniknagar.dart';
@@ -8,11 +9,9 @@ import 'package:maanikdarshan/Package/Martands/Sub/ManikyaWani.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand.dart';
 import 'package:maanikdarshan/Package/homePage.dart';
 
-import 'Package/Authentication/OTP.dart';
 import 'Package/Authentication/login.dart';
 import 'Package/Martands/MantraMartand.dart';
 import 'Package/mainPage.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 bool isLoggedIn = false;
 Future<void> main() async {

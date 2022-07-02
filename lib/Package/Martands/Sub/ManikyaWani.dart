@@ -1,9 +1,6 @@
-import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:maanikdarshan/Package/Martands/Sub/MartandsModel.dart';
 
 class ManikyaWani extends StatelessWidget {
