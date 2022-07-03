@@ -2,8 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 import 'package:maanikdarshan/Package/Martands/Sub/MartandsModel.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
 class ManikyaWani extends StatelessWidget {
   const ManikyaWani({Key? key}) : super(key: key);
@@ -42,15 +40,13 @@ class ManikyaWani extends StatelessWidget {
                 itemCount: data.length,
                 itemBuilder: (context, index) {
                   return MartandsModel(
-                      title: data[index]["title"],
-                      text: data[index]['text'].replaceAll("\\n", "\n"),
-                      );
+                    title: data[index]["title"],
+                    text: data[index]['text'].replaceAll("\\n", "\n"),
+                  );
                 });
           }
-
           return const Center(child: CircularProgressIndicator());
         },
-      ),
-    );
+      ),);
   }
 }

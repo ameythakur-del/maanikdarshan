@@ -7,7 +7,8 @@ class MartandsModel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    return
+      Column(children: [
       Center(
         child: Text(
           title,
