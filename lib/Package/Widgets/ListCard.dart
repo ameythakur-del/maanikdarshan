@@ -33,7 +33,7 @@ class ListCard extends StatelessWidget {
           children: [
             Image.asset(
               image,
-              width: 23,
+              height: 48,
             ),
             SizedBox(
               width: 10,

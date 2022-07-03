@@ -35,7 +35,7 @@ class SatvaracheBhajan extends StatelessWidget {
             return ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (context, index) {
-                  return ListCard(text: data[index], image: 'assets/images/listIcon.png', parent : 'सातवारांचेभजन');
+                  return ListCard(text: data[index], image: 'assets/images/guruwarche_bhajan.png', parent : 'सातवारांचेभजन');
                 });
           }
           return const Center(child: CircularProgressIndicator());

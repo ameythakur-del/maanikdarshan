@@ -35,7 +35,7 @@ class Arati extends StatelessWidget {
             return ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (context, index) {
-                  return ListCard(text: data[index], image: 'assets/images/listIcon.png', parent : 'आरती');
+                  return ListCard(text: data[index], image: 'assets/images/aarati_ganpatichi.png', parent : 'आरती');
                 });
           }
           return const Center(child: CircularProgressIndicator());
