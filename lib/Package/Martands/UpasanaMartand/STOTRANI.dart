@@ -1,26 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:flutter/material.dart';
-import 'package:maanikdarshan/Package/Martands/Sub/MartandsModel.dart';
+import 'package:maanikdarshan/Package/Widgets/ListCard.dart';
+import 'package:maanikdarshan/components/customAppBar.dart';
+import 'package:maanikdarshan/components/customListTile.dart';
+import 'package:maanikdarshan/components/displayText.dart';
 
-class UpadeshRatnamala extends StatelessWidget {
-  const UpadeshRatnamala({Key? key}) : super(key: key);
+
+class Strotani extends StatelessWidget {
+  const Strotani({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('उपदेशरत्नमाला');
+    CollectionReference collectionReference = FirebaseFirestore.instance.collection('स्तोत्राणि');
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: const Color(0xFF7F1B0E),
-        title: Text(
-          "उपदेश रत्नमाला",
-          style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.bold),
-        ),
-      ),
+      appBar: ManikDarshan(title: "स्तोत्राणि"),
       body: FutureBuilder<DocumentSnapshot>(
-        future: users.doc("data").get(),
+        future: collectionReference.doc("data").get(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
@@ -39,13 +35,9 @@ class UpadeshRatnamala extends StatelessWidget {
             return ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (context, index) {
-                  return MartandsModel(
-                    title: data[index]["title"],
-                    text: data[index]['text'].replaceAll("\\n", "\n"),
-                  );
+                  return ListCard(text: data[index], image: 'assets/images/listIcon.png', parent : 'स्तोत्राणि');
                 });
           }
-
           return const Center(child: CircularProgressIndicator());
         },
       ),

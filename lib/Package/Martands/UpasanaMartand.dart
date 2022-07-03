@@ -58,7 +58,7 @@ Event(String image, String type, Color color, BuildContext context) {
   return Material(
         child: InkWell(
           onTap: () {
-            // Navigator.push(context, MaterialPageRoute(builder: (context) => Martand(names: granthNames, images: granthImages, titleBanner: title)));
+            Navigator.of(context).pushNamed("/" + type);// Navigator.push(context, MaterialPageRoute(builder: (context) => Martand(names: granthNames, images: granthImages, titleBanner: title)));
           },
           child: Container(margin: EdgeInsets.all(5), child:
           Column(

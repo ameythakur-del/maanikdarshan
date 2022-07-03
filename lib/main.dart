@@ -27,6 +27,16 @@ import 'package:maanikdarshan/Package/Martands/Sub/UpanishidPrakaranam.dart';
 import 'package:maanikdarshan/Package/Martands/Sub/pujaPrakaranam.dart';
 import 'package:maanikdarshan/Package/Martands/Sub/samanyaprakaranam.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand.dart';
+import 'package:maanikdarshan/Package/Martands/UpasanaMartand/Arati.dart';
+import 'package:maanikdarshan/Package/Martands/UpasanaMartand/KSHETRAMAHATMYA.dart';
+import 'package:maanikdarshan/Package/Martands/UpasanaMartand/MADHUMATISHYAMALA.dart';
+import 'package:maanikdarshan/Package/Martands/UpasanaMartand/SADHANAPRADEEP.dart';
+import 'package:maanikdarshan/Package/Martands/UpasanaMartand/SATVARACHEBHAJAN.dart';
+import 'package:maanikdarshan/Package/Martands/UpasanaMartand/SHRIGURUSAMPRADAYA.dart';
+import 'package:maanikdarshan/Package/Martands/UpasanaMartand/SHRIPRABHUCHARITRA.dart';
+import 'package:maanikdarshan/Package/Martands/UpasanaMartand/STOTRANI.dart';
+import 'package:maanikdarshan/Package/Martands/UpasanaMartand/UpadeshRatnamala.dart';
+import 'package:maanikdarshan/Package/Martands/UpasanaMartand/VedantSHATPADI.dart';
 import 'package:maanikdarshan/Package/homePage.dart';
 
 import 'Package/Authentication/login.dart';
@@ -96,6 +106,16 @@ class MyApp extends StatelessWidget {
         '/मन्त्रपुष्पाञ्जलिप्रकरणम्' : (context) => Mantrapushpanjali(),
         '/सामान्यप्रकरणम्' : (context) => samanyaprakaranam(),
         '/उपनिषद् प्रकरणम्' : (context) => UpanishidPrakaranam(),
+        '/उपदेश रत्नमाला' : (context) => UpadeshRatnamala(),
+        '/श्रीगुरु संप्रदाय' : (context) => ShriGuruSampradaya(),
+        '/आरती' : (context) => Arati(),
+        '/सातवारांचे भजन' : (context) => SatvaracheBhajan(),
+        '/स्तोत्राणि' : (context) => Strotani(),
+        '/वेदांत षट्पदी' : (context) => VedantShatpadi(),
+        '/मधुमती श्यामला सप्तपदी' : (context) => Madhumatishyanyamala(),
+        '/श्रीप्रभुचरित्र' : (context) => SHRIPRABHUCHARITRA(),
+        '/साधना प्रदीप' : (context) => SADHANAPRADEEP(),
+        '/श्रीमाणिकनगरक्षेत्र माहात्म्य' : (context) => KSHETRAMAHATMYA(),
       },
     );
   }

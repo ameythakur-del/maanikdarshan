@@ -3,19 +3,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:maanikdarshan/Package/Martands/Sub/MartandsModel.dart';
 
-class UpadeshRatnamala extends StatelessWidget {
-  const UpadeshRatnamala({Key? key}) : super(key: key);
+class Madhumatishyanyamala extends StatelessWidget {
+  const Madhumatishyanyamala({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('उपदेशरत्नमाला');
+    CollectionReference users = FirebaseFirestore.instance.collection('मधुमतीश्यामला');
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: const Color(0xFF7F1B0E),
         title: Text(
-          "उपदेश रत्नमाला",
+          "मधुमती श्यामला सप्तपदी",
           style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.bold),
         ),
       ),
