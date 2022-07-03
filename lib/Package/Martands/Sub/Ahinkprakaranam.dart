@@ -11,7 +11,7 @@ class Ahinkprakaranam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference collectionReference = FirebaseFirestore.instance.collection('Ahinkprakaranam');
+    CollectionReference collectionReference = FirebaseFirestore.instance.collection('आह्निकप्रकरणम्');
 
     return Scaffold(
       appBar: ManikDarshan(title: "आह्निकप्रकरणम्"),

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:maanikdarshan/Package/Widgets/ListCard.dart';
 import 'package:maanikdarshan/components/customAppBar.dart';
 import 'package:maanikdarshan/components/customListTile.dart';
 import 'package:maanikdarshan/components/displayText.dart';
@@ -10,7 +11,7 @@ class ArchanaPrakaranam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference collectionReference = FirebaseFirestore.instance.collection('ArchanaPrakaranam');
+    CollectionReference collectionReference = FirebaseFirestore.instance.collection('अर्चनाप्रकरणम्');
 
     return Scaffold(
       appBar: ManikDarshan(title: "अर्चनाप्रकरणम् (नामावलिः)"),
@@ -34,21 +35,11 @@ class ArchanaPrakaranam extends StatelessWidget {
             return ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (context, index) {
-                  return ListItem(
-                    title: data[index]["title"],
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DisplayText(
-                                  name: data[index]['title'], text: data[index]['text'].replaceAll("\\n", "\n"))));
-                    },
-                  );
+                  return ListCard(text: data[index], image: 'assets/images/listIcon.png', parent : 'अर्चनाप्रकरणम्');
                 });
           }
-
           return const Center(child: CircularProgressIndicator());
-        },
+            },
       ),
     );
   }
