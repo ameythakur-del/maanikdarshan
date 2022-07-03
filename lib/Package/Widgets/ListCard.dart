@@ -11,23 +11,23 @@ class ListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-        child: Expanded(
-            child: Container(
+    return  GestureDetector(
+      onTap: () async {
+        CollectionReference collectionReference = FirebaseFirestore.instance.collection(parent);
+        await collectionReference.doc(text).get().then((value) =>
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MantraDocuments(title: value.get('title'), text: value.get('text'))))
+        );
+
+      },
+      child:
+      Container(
       margin: EdgeInsets.all(20),
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(11.0),
           color: const Color(0xFFF09B21)),
-      child: GestureDetector(
-        onTap: () async {
-          CollectionReference collectionReference = FirebaseFirestore.instance.collection(parent);
-          await collectionReference.doc(text).get().then((value) =>
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MantraDocuments(title: value.get('title'), text: value.get('text'))))
-          );
-
-        },
-        child: Row(
+      child:
+     Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -48,6 +48,6 @@ class ListCard extends StatelessWidget {
           ],
         ),
       ),
-    )));
+    );
   }
 }
