@@ -18,7 +18,7 @@ class Sample extends StatelessWidget {
                   fontSize: 24,
                   fontFamily: 'Mukta',
                   color: const Color(0xFFA30808),
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.w800),
               textAlign: TextAlign.center,
             )),
         Padding(
@@ -26,7 +26,7 @@ class Sample extends StatelessWidget {
             child: Center(
               child: Text(
                 text,
-                style: TextStyle(color: const Color(0xFF393939), fontSize: size),
+                style: TextStyle(color: const Color(0xFF393939), fontSize: size, fontWeight: FontWeight.w600, fontFamily: 'Mukta'),
                 textAlign: TextAlign.center,
               ),
             ))

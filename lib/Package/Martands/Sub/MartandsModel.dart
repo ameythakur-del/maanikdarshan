@@ -16,7 +16,7 @@ class MartandsModel extends StatelessWidget {
               fontSize: 24,
               fontFamily: 'Mukta',
               color: const Color(0xFFA30808),
-              fontWeight: FontWeight.bold),
+              fontWeight: FontWeight.w800),
           textAlign: TextAlign.center,
         )),
     Padding(
@@ -25,7 +25,7 @@ class MartandsModel extends StatelessWidget {
     child: Text(
     text,
     style:
-    TextStyle(color: const Color(0xFF393939), fontSize: 18),
+    TextStyle(color: const Color(0xFF393939), fontSize: 18, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
     textAlign: TextAlign.center,
     ),
     ))],);

@@ -22,7 +22,7 @@ class _MantraDocumentsState extends State<MantraDocuments> {
       backgroundColor: const Color(0xFF7F1B0E),
       title: Text(
         widget.title,
-        style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.bold),
+        style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w800),
       ),
     ),
     body: Column(children: [

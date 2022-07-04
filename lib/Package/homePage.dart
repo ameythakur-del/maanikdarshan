@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:maanikdarshan/Package/Martands/GranthMartand.dart';
 
 import 'Widgets/Events.dart';
@@ -9,6 +10,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor:
+      const Color(0xFF7F1B0E), //or set color with: Color(0xFF0000FF)
+    ));
     return Scaffold(
       backgroundColor: Colors.white,
         appBar: AppBar(title: Image.asset("assets/images/home_heading.png"), backgroundColor: const Color(0xFF7F1B0E),),
