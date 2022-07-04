@@ -37,7 +37,9 @@ import 'package:maanikdarshan/Package/Martands/UpasanaMartand/SHRIPRABHUCHARITRA
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand/STOTRANI.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand/UpadeshRatnamala.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand/VedantSHATPADI.dart';
+import 'package:maanikdarshan/Package/ShriSansthan.dart';
 import 'package:maanikdarshan/Package/SplashScreen.dart';
+import 'package:maanikdarshan/Package/Utsav/Utsav.dart';
 import 'package:maanikdarshan/Package/homePage.dart';
 
 import 'Package/Authentication/login.dart';
@@ -79,7 +81,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => SplashScreen(),
-        '/main': (context) => isLoggedIn ? MainPage(): Login(),
+        '/main': (context) => (isLoggedIn) ? MainPage() : Login(),
         '/home': (context) => const HomePage(),
         '/ग्रंथ मार्तंड': (context) => GranthMartand(),
         '/गान मार्तंड': (context) => GanMartand(),
@@ -118,6 +120,8 @@ class MyApp extends StatelessWidget {
         '/श्रीप्रभुचरित्र' : (context) => SHRIPRABHUCHARITRA(),
         '/साधना प्रदीप' : (context) => SADHANAPRADEEP(),
         '/श्रीमाणिकनगरक्षेत्र माहात्म्य' : (context) => KSHETRAMAHATMYA(),
+        '/उत्सव' : (context) => utsav(),
+        '/श्री संस्थान' : (context) => ShriSanthan(),
       },
     );
   }
