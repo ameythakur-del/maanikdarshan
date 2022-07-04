@@ -37,6 +37,7 @@ import 'package:maanikdarshan/Package/Martands/UpasanaMartand/SHRIPRABHUCHARITRA
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand/STOTRANI.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand/UpadeshRatnamala.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand/VedantSHATPADI.dart';
+import 'package:maanikdarshan/Package/SplashScreen.dart';
 import 'package:maanikdarshan/Package/homePage.dart';
 
 import 'Package/Authentication/login.dart';
@@ -77,7 +78,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => isLoggedIn ? MainPage(): Login(),
+        '/': (context) => SplashScreen(),
+        '/main': (context) => isLoggedIn ? MainPage(): Login(),
         '/home': (context) => const HomePage(),
         '/ग्रंथ मार्तंड': (context) => GranthMartand(),
         '/गान मार्तंड': (context) => GanMartand(),

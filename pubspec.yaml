@@ -80,6 +80,7 @@ flutter:
         - asset: assets/fonts/Roboto-ThinItalic.ttf
 
   assets:
+     - assets/images/
      - assets/images/leaf_1.png
      - assets/images/swami_background.png
      - assets/images/yatra_banner.png

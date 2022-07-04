@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:maanikdarshan/Package/Location/location.dart';
 import 'package:maanikdarshan/Package/Notifications/notifications.dart';
 import 'package:maanikdarshan/Package/Profile/Profile.dart';
-import 'package:maanikdarshan/Package/Share/Share.dart';
+import 'package:flutter_share/flutter_share.dart';
 
 import 'homePage.dart';
 
@@ -20,12 +20,20 @@ class _MainPageState extends State<MainPage> {
     const Notifications(),
     const Location(),
     HomePage(),
-    const Share(),
+    HomePage(),
     Profile()
   ];
 
   @override
   Widget build(BuildContext context) {
+    if(page == 3){
+      FlutterShare.share(
+          title: 'Share the app using',
+          text: 'Download this app',
+          linkUrl: 'https://flutter.dev/',
+          chooserTitle: 'Share the app'
+      );
+    }
     return Scaffold(
       extendBody: true,
       body: screens[page],

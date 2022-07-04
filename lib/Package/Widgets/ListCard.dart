@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:maanikdarshan/Package/Martands/MantraDocuments.dart';
-import 'package:maanikdarshan/Package/Martands/Sub/MartandsModel.dart';
 
 class ListCard extends StatelessWidget {
   final String text, image, parent;
@@ -33,15 +31,18 @@ class ListCard extends StatelessWidget {
           children: [
             Image.asset(
               image,
-              height: 48,
+              height: 29,
             ),
             SizedBox(
               width: 10,
             ),
+
             Text(
               text,
+              textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w700,
                   fontFamily: 'assets/images/Mukta',
                   color: Colors.white),
             )
