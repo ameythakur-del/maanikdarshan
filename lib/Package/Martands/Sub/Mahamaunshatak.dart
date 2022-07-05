@@ -40,7 +40,7 @@ class Mahamaunshatak extends StatelessWidget {
                 itemCount: data.length,
                 itemBuilder: (context, index) {
                   return MartandsModel(
-                    title: data[index]["title"],
+                    title: data[index]["title"].replaceAll("\\n", "\n"),
                     text: data[index]['text'].replaceAll("\\n", "\n"),
                   );
                 });
