@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:maanikdarshan/Package/GuruParampara/guruParampara.dart';
+import 'package:maanikdarshan/Package/ManikDarshan/manikratna.dart';
 import 'package:maanikdarshan/Package/ManikNagar/maniknagar.dart';
 import 'package:maanikdarshan/Package/Martands/GanMartand.dart';
 import 'package:maanikdarshan/Package/Martands/GranthMartand.dart';
@@ -37,7 +38,11 @@ import 'package:maanikdarshan/Package/Martands/UpasanaMartand/SHRIPRABHUCHARITRA
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand/STOTRANI.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand/UpadeshRatnamala.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand/VedantSHATPADI.dart';
+<<<<<<< Updated upstream
 import 'package:maanikdarshan/Package/ShriSansthan.dart';
+=======
+import 'package:maanikdarshan/Package/Martands/audio.dart';
+>>>>>>> Stashed changes
 import 'package:maanikdarshan/Package/SplashScreen.dart';
 import 'package:maanikdarshan/Package/Utsav/Utsav.dart';
 import 'package:maanikdarshan/Package/homePage.dart';
@@ -51,7 +56,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  if(FirebaseAuth.instance.currentUser != null){
+  if (FirebaseAuth.instance.currentUser != null) {
     isLoggedIn = true;
   }
 
@@ -80,8 +85,13 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
+<<<<<<< Updated upstream
         '/': (context) => SplashScreen(),
         '/main': (context) => (isLoggedIn) ? MainPage() : Login(),
+=======
+        '/': (context) => manikratna(),
+        '/main': (context) => isLoggedIn ? MainPage() : Login(),
+>>>>>>> Stashed changes
         '/home': (context) => const HomePage(),
         '/ग्रंथ मार्तंड': (context) => GranthMartand(),
         '/गान मार्तंड': (context) => GanMartand(),
@@ -90,21 +100,22 @@ class MyApp extends StatelessWidget {
         '/गुरू परंपरा': (context) => guruParampara(),
         '/माणिकनगर': (context) => maniknagar(),
         '/माणिक्यवाणी': (context) => ManikyaWani(),
-        '/ज्ञानलहरी' : (context) => DnyanLahari(),
-        '/मनोहरमयूख' : (context) => Manoharmayukh(),
-        '/बोधमार्तण्ड' :  (context) => BodhaMartand(),
-        '/सिद्धसुधा' :  (context) => SiddhaSudha(),
-        '/आत्मरूपप्रतीति' :  (context) => AtmRupPratiti(),
-        '/मल्हारी माहात्म्य' :  (context) => MalhariMahatmya(),
-        '/संगमेश माहात्म्य' :  (context) => SangmeshMahatmya(),
-        '/हनुमंत जन्म' :  (context) => HanumantJanm(),
-        '/अनिर्वाच्य' : (context) => Anivarchya(),
-        '/ज्ञानशिखा' : (context) => Dnyanshikha(),
-        '/माणिक निर्विकल्पबोध' : (context) => ManikNirvi(),
-        '/महामौनशतक' : (context) => Mahamaunshatak(),
-        '/आह्निकप्रकरणम्' : (context) => Ahinkprakaranam(),
-        '/पूजा प्रकरणम्' : (context) => pujaPrakaranam(),
+        '/ज्ञानलहरी': (context) => DnyanLahari(),
+        '/मनोहरमयूख': (context) => Manoharmayukh(),
+        '/बोधमार्तण्ड': (context) => BodhaMartand(),
+        '/सिद्धसुधा': (context) => SiddhaSudha(),
+        '/आत्मरूपप्रतीति': (context) => AtmRupPratiti(),
+        '/मल्हारी माहात्म्य': (context) => MalhariMahatmya(),
+        '/संगमेश माहात्म्य': (context) => SangmeshMahatmya(),
+        '/हनुमंत जन्म': (context) => HanumantJanm(),
+        '/अनिर्वाच्य': (context) => Anivarchya(),
+        '/ज्ञानशिखा': (context) => Dnyanshikha(),
+        '/माणिक निर्विकल्पबोध': (context) => ManikNirvi(),
+        '/महामौनशतक': (context) => Mahamaunshatak(),
+        '/आह्निकप्रकरणम्': (context) => Ahinkprakaranam(),
+        '/पूजा प्रकरणम्': (context) => pujaPrakaranam(),
         '/न्यास प्रकरणम्': (context) => NyasPrakaranam(),
+<<<<<<< Updated upstream
         '/अभिषेक प्रकरणम्' : (context) => AbhishekPrakaranam(),
         '/अर्चनाप्रकरणम् (नामावलिः)' : (context) => ArchanaPrakaranam(),
         '/मन्त्रपुष्पाञ्जलिप्रकरणम्' : (context) => Mantrapushpanjali(),
@@ -122,6 +133,23 @@ class MyApp extends StatelessWidget {
         '/श्रीमाणिकनगरक्षेत्र माहात्म्य' : (context) => KSHETRAMAHATMYA(),
         '/उत्सव' : (context) => utsav(),
         '/श्री संस्थान' : (context) => ShriSanthan(),
+=======
+        '/अभिषेक प्रकरणम्': (context) => AbhishekPrakaranam(),
+        '/अर्चनाप्रकरणम् (नामावलिः)': (context) => ArchanaPrakaranam(),
+        '/मन्त्रपुष्पाञ्जलिप्रकरणम्': (context) => Mantrapushpanjali(),
+        '/सामान्यप्रकरणम्': (context) => samanyaprakaranam(),
+        '/उपनिषद् प्रकरणम्': (context) => UpanishidPrakaranam(),
+        '/उपदेश रत्नमाला': (context) => UpadeshRatnamala(),
+        '/श्रीगुरु संप्रदाय': (context) => ShriGuruSampradaya(),
+        '/आरती': (context) => Arati(),
+        '/सातवारांचे भजन': (context) => SatvaracheBhajan(),
+        '/स्तोत्राणि': (context) => Strotani(),
+        '/वेदांत षट्पदी': (context) => VedantShatpadi(),
+        '/मधुमती श्यामला सप्तपदी': (context) => Madhumatishyanyamala(),
+        '/श्रीप्रभुचरित्र': (context) => SHRIPRABHUCHARITRA(),
+        '/साधना प्रदीप': (context) => SADHANAPRADEEP(),
+        '/श्रीमाणिकनगरक्षेत्र माहात्म्य': (context) => KSHETRAMAHATMYA(),
+>>>>>>> Stashed changes
       },
     );
   }

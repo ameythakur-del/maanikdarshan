@@ -39,6 +39,11 @@ dependencies:
   firebase_core: ^1.19.1
   cloud_firestore: 3.1.14
   google_sign_in: ^5.3.3
+  http: ^0.13.4
+  webview_flutter: ^3.0.4
+  audioplayers: ^1.0.1
+  assets_audio_player: ^3.0.4+4
+  
 
 dev_dependencies:
   flutter_test:
@@ -54,7 +59,6 @@ dev_dependencies:
   google_fonts: ^3.0.1
   fluttertoast: ^8.0.9
   flutter_share: ^2.0.0
-  audioplayers: ^1.0.1
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -80,11 +84,13 @@ flutter:
         - asset: assets/fonts/Roboto-ThinItalic.ttf
 
   assets:
+     - assets/audio/
      - assets/images/
      - assets/images/leaf_1.png
      - assets/images/swami_background.png
      - assets/images/yatra_banner.png
      - assets/images/manikratna.png
+     - assets/images/manikratna_title.png
      - assets/images/donation.png
      - assets/images/eseva.png
      - assets/images/shri_sansthan.png

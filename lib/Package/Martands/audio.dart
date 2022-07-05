@@ -1,17 +1,15 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class MartandsModel extends StatefulWidget {
-  final String text;
-  final String title;
-  const MartandsModel({Key? key, required this.text, required this.title})
-      : super(key: key);
+class Audio extends StatefulWidget {
+  const Audio({Key? key}) : super(key: key);
 
   @override
-  State<MartandsModel> createState() => _MartandsModelState();
+  State<Audio> createState() => _AudioState();
 }
 
-class _MartandsModelState extends State<MartandsModel> {
+class _AudioState extends State<Audio> {
   final audioplayer = AudioPlayer();
   bool isPlyaing = false;
   Duration duration = Duration.zero;
@@ -51,7 +49,7 @@ class _MartandsModelState extends State<MartandsModel> {
     // audioplayer.setSourceUrl(url);
 
     //Load from asset
-    final player = AudioCache(prefix: 'asset/audio');
+    final player = AudioCache(prefix: 'assets/audio/');
     final url = await player.load('sample.mp3');
     audioplayer.setSourceUrl(url.path);
   }
@@ -77,57 +75,20 @@ class _MartandsModelState extends State<MartandsModel> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Center(
-            child: Text(
-          widget.title,
-          style: TextStyle(
-              fontSize: 24,
-              fontFamily: 'Mukta',
-              color: const Color(0xFFA30808),
-              fontWeight: FontWeight.w800),
-          textAlign: TextAlign.center,
-        )),
-<<<<<<< Updated upstream
-    Padding(
-    padding: EdgeInsets.only(top: 10),
-    child: Center(
-    child: Text(
-    text,
-    style:
-    TextStyle(color: const Color(0xFF393939), fontSize: 18, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
-    textAlign: TextAlign.center,
-    ),
-    ))],);
-=======
-        Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: Center(
-              child: Text(
-                widget.text,
-                style: TextStyle(color: const Color(0xFF393939), fontSize: 18),
-                textAlign: TextAlign.center,
-              ),
-            )),
-        Container(
-          height: 25,
-          color: Color(0xFFF09B21),
-          child: Row(children: <Widget>[
-            IconButton(
-              onPressed: () async {
-                if (isPlyaing) {
-                  await audioplayer.pause();
-                } else {
-                  String url = "";
-                  // await audioplayer.play();
-                }
-              },
-              icon: Icon(isPlyaing ? Icons.pause : Icons.play_arrow),
-              iconSize: 50,
+    return Container(
+      padding: EdgeInsets.all(5),
+      color: Color(0xFFF09B21),
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              formatTime(position),
+              style: TextStyle(fontSize: 10),
             ),
-            Text(formatTime(position)),
-            Text(formatTime(duration - position)),
+            Text(formatTime(duration - position),
+                style: TextStyle(fontSize: 10)),
             Slider(
                 min: 0,
                 max: duration.inSeconds.toDouble(),
@@ -139,9 +100,6 @@ class _MartandsModelState extends State<MartandsModel> {
                   await audioplayer.release();
                 })
           ]),
-        )
-      ],
     );
->>>>>>> Stashed changes
   }
 }
