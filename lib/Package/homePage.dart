@@ -1,13 +1,42 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:maanikdarshan/Package/Martands/GranthMartand.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'Widgets/Events.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+
+class _HomePageState extends State<HomePage> {
+
+  late final List<Widget> container;
+  int activeIndex = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    setState(() {
+      container = [
+        Image.asset(
+          "assets/images/home_heading_1.png",
+          width: double.infinity,
+        ),
+        Image.asset(
+          "assets/images/home_heading_1.png",
+          width: double.infinity,
+        ),
+      ];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,22 +54,41 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Image.asset('assets/images/swami_background.png'),
-            Padding(
-                padding: EdgeInsets.fromLTRB(20, 40, 20, 0),
-                child: Text(
-                  'श्री भक्तकार्यकल्पद्रुम गुरुसार्वभौम श्रीमद्राजाधिराज योगिमहाराज त्रिभुवनानन्द अद्वैत अभेद निरञ्जन निर्गुण निरालम्ब परिपूर्ण सदोदित सकलमतस्थापित श्री सद्गुरु माणिकप्रभु महाराज की जय',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: const Color(0xFF7F1B0E),
-                      fontSize: 19,
-                      fontFamily: 'Mukta',
-                      fontWeight: FontWeight.bold),
-                )),
-            Image.asset('assets/images/leaf_1.png', width: 75, height: 75),
-            Padding(
-                padding: EdgeInsets.only(left: 20, right: 20),
-                child: Image.asset('assets/images/yatra_banner.png')),
+        Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 15,
+            ),
+            SizedBox(
+              height: 120,
+              width: double.infinity,
+              child: CarouselSlider.builder(
+                itemCount: container.length,
+                options: CarouselOptions(
+                  autoPlay: true,
+                  onPageChanged: (index, reason) =>
+                      setState(() => activeIndex = index),
+                  viewportFraction: 0.97,
+                  initialPage: 0,
+                  enlargeCenterPage: true,
+                ),
+                itemBuilder: (BuildContext context, int Index, int page) {
+                  return container[Index];
+                },
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            BuildIndicator(),
+            const SizedBox(
+              height: 15,
+            ),
+          ],
+        ),
+      ),
             Padding(
               padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: Row(
@@ -86,7 +134,7 @@ class HomePage extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: const Color.fromRGBO(240, 155, 33, 0.3),
                     borderRadius: BorderRadius.circular(18)),
-                margin: EdgeInsets.only(bottom: 80, left: 20, right: 20),
+                margin: EdgeInsets.only(bottom: 20, left: 20, right: 20),
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                 child: Column(
                   children: [
@@ -146,29 +194,19 @@ class HomePage extends StatelessWidget {
                     )
                   ],
                 )),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Text(
-                "सोशल मीडिया",
-                style: TextStyle(
-                    fontWeight: FontWeight.w800,
-                    color: Color(0xFF69160B),
-                    fontFamily: 'Mukta',
-                    fontSize: 20.8),
-                textAlign: TextAlign.left,
-              ),
-            ),
-            SingleChildScrollView(
-              child: Container(
-                padding: EdgeInsets.all(20),
-                height: 500,
-                child: WebView(
-                  initialUrl:
-                      'https://www.facebook.com/shrimanikprabhu.samsthan',
-                  javascriptMode: JavascriptMode.unrestricted,
-                ),
-              ),
-            )
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 20.0),
+            //   child: Text(
+            //     "सोशल मीडिया",
+            //     style: TextStyle(
+            //         fontWeight: FontWeight.w800,
+            //         color: Color(0xFF69160B),
+            //         fontFamily: 'Mukta',
+            //         fontSize: 20.8),
+            //     textAlign: TextAlign.left,
+            //   ),
+            // ),
+
           ],
         ),
       ),
@@ -191,6 +229,22 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget BuildIndicator() {
+    return AnimatedSmoothIndicator(
+      activeIndex: activeIndex,
+      count: container.length,
+      effect: const SlideEffect(
+          spacing: 8.0,
+          radius: 8.0,
+          dotWidth: 12.0,
+          dotHeight: 12.0,
+          paintStyle: PaintingStyle.stroke,
+          strokeWidth: 1.5,
+          dotColor: Colors.grey,
+          activeDotColor: Color.fromRGBO(142, 49, 12, 1)),
     );
   }
 }

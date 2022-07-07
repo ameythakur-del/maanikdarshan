@@ -12,14 +12,18 @@ class ListCard extends StatelessWidget {
     return  GestureDetector(
       onTap: () async {
         CollectionReference collectionReference = FirebaseFirestore.instance.collection(parent);
-        await collectionReference.doc(text).get().then((value) =>
-            Navigator.push(context, MaterialPageRoute(builder: (context) => MantraDocuments(title: value.get('title'), text: value.get('text'))))
-        );
+        await collectionReference.doc(text).get().then((value) {
+          Map<String, dynamic> dataObj =
+          value.data() as Map<String, dynamic>;
+          var data = dataObj["data"];
+          Navigator.push(context, MaterialPageRoute(
+              builder: (context) => MantraDocuments(val: data, title: text,)));
+        });
 
       },
       child:
       Container(
-      margin: EdgeInsets.all(20),
+      margin: EdgeInsets.all(7.5),
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(11.0),

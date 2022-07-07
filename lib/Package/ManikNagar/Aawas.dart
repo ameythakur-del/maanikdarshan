@@ -18,6 +18,7 @@ class Aawas extends StatelessWidget {
             fontSize: 24,
             color: const Color(0xFF630F05)),
       )),
+      SizedBox(height: 10,),
       Padding(
           padding: EdgeInsets.only(top: 10),
           child: Text(
@@ -39,6 +40,7 @@ class Aawas extends StatelessWidget {
             fontSize: 24,
             color: const Color(0xFF630F05)),
       )),
+
       Padding(padding: EdgeInsets.only(bottom: 10), child:
       Image.asset('assets/images/aawas/1.png')),
 
@@ -53,6 +55,7 @@ class Aawas extends StatelessWidget {
         ),
         textAlign: TextAlign.center,
       ),
+          SizedBox(height: 10,),
           Center(
               child: Text(
                 'मार्तंड विलास',
@@ -75,7 +78,7 @@ class Aawas extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-
+          SizedBox(height: 10,),
           Center(
               child: Text(
                 'माणिक विहार',
@@ -98,6 +101,7 @@ class Aawas extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
+          SizedBox(height: 10,),
           Text(
             'आरक्षणासाठी संपर्क - श्री प्रकाश कुलकर्णी +919902453075\n श्री ईश्वर कुलकर्णी +919731089499',
             style: TextStyle(

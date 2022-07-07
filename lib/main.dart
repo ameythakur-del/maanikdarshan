@@ -38,11 +38,7 @@ import 'package:maanikdarshan/Package/Martands/UpasanaMartand/SHRIPRABHUCHARITRA
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand/STOTRANI.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand/UpadeshRatnamala.dart';
 import 'package:maanikdarshan/Package/Martands/UpasanaMartand/VedantSHATPADI.dart';
-<<<<<<< Updated upstream
 import 'package:maanikdarshan/Package/ShriSansthan.dart';
-=======
-import 'package:maanikdarshan/Package/Martands/audio.dart';
->>>>>>> Stashed changes
 import 'package:maanikdarshan/Package/SplashScreen.dart';
 import 'package:maanikdarshan/Package/Utsav/Utsav.dart';
 import 'package:maanikdarshan/Package/homePage.dart';
@@ -85,13 +81,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-<<<<<<< Updated upstream
         '/': (context) => SplashScreen(),
         '/main': (context) => (isLoggedIn) ? MainPage() : Login(),
-=======
-        '/': (context) => manikratna(),
-        '/main': (context) => isLoggedIn ? MainPage() : Login(),
->>>>>>> Stashed changes
         '/home': (context) => const HomePage(),
         '/ग्रंथ मार्तंड': (context) => GranthMartand(),
         '/गान मार्तंड': (context) => GanMartand(),
@@ -115,7 +106,6 @@ class MyApp extends StatelessWidget {
         '/आह्निकप्रकरणम्': (context) => Ahinkprakaranam(),
         '/पूजा प्रकरणम्': (context) => pujaPrakaranam(),
         '/न्यास प्रकरणम्': (context) => NyasPrakaranam(),
-<<<<<<< Updated upstream
         '/अभिषेक प्रकरणम्' : (context) => AbhishekPrakaranam(),
         '/अर्चनाप्रकरणम् (नामावलिः)' : (context) => ArchanaPrakaranam(),
         '/मन्त्रपुष्पाञ्जलिप्रकरणम्' : (context) => Mantrapushpanjali(),
@@ -133,7 +123,6 @@ class MyApp extends StatelessWidget {
         '/श्रीमाणिकनगरक्षेत्र माहात्म्य' : (context) => KSHETRAMAHATMYA(),
         '/उत्सव' : (context) => utsav(),
         '/श्री संस्थान' : (context) => ShriSanthan(),
-=======
         '/अभिषेक प्रकरणम्': (context) => AbhishekPrakaranam(),
         '/अर्चनाप्रकरणम् (नामावलिः)': (context) => ArchanaPrakaranam(),
         '/मन्त्रपुष्पाञ्जलिप्रकरणम्': (context) => Mantrapushpanjali(),
@@ -149,7 +138,7 @@ class MyApp extends StatelessWidget {
         '/श्रीप्रभुचरित्र': (context) => SHRIPRABHUCHARITRA(),
         '/साधना प्रदीप': (context) => SADHANAPRADEEP(),
         '/श्रीमाणिकनगरक्षेत्र माहात्म्य': (context) => KSHETRAMAHATMYA(),
->>>>>>> Stashed changes
+        '/माणिकरत्न': (context) => manikratna()
       },
     );
   }

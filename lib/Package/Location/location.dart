@@ -8,11 +8,13 @@ class Location extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ManikDarshan(title: "संपर्क"),
-      body: Padding(
-          padding: EdgeInsets.all(20),
-          child: Column(
+      body: Padding(padding: EdgeInsets.only(left: 20, top: 20),child:
+      Column(
             children: [
-              Image.asset('assets/images/contact_rectangle.png'),
+      Padding(
+      padding: EdgeInsets.only(right: 20),
+      child:
+      Image.asset('assets/images/contact_rectangle.png')),
               Padding(padding: EdgeInsets.only(top: 10), child:
               Text(
                 'श्री माणिकप्रभू संस्थान,',
@@ -24,7 +26,6 @@ class Location extends StatelessWidget {
               )
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ImageIcon(
                     AssetImage("assets/images/Contact/Vector.png"),
@@ -37,12 +38,11 @@ class Location extends StatelessWidget {
                         fontFamily: 'Mukta',
                         fontSize: 16,
                         color: const Color(0xFF630F05),
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.w700),
                   )
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ImageIcon(
                     AssetImage("assets/images/Contact/Vector-2.png"),
@@ -55,12 +55,11 @@ class Location extends StatelessWidget {
                         fontFamily: 'Mukta',
                         fontSize: 16,
                         color: const Color(0xFF630F05),
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.w700),
                   )
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ImageIcon(
                     AssetImage("assets/images/Contact/Vector-1.png"),
@@ -73,13 +72,12 @@ class Location extends StatelessWidget {
                         fontFamily: 'Mukta',
                         fontSize: 16,
                         color: const Color(0xFF630F05),
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.w700),
                   )
                 ],
               ),
               SizedBox(height: 10,),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ImageIcon(
                     AssetImage("assets/images/Contact/Vector-3.png"),
@@ -87,18 +85,18 @@ class Location extends StatelessWidget {
                   ),
                   SizedBox(width: 5,),
                   ImageIcon(
-                    AssetImage("assets/images/Contact/Vector.png"),
+                    AssetImage("assets/images/facebook.png"),
                     color: const Color(0xFF630F05),
                   ),
                   SizedBox(width: 5,),
                   ImageIcon(
-                    AssetImage("assets/images/Contact/Vector-1.png"),
+                    AssetImage("assets/images/YouTube.png"),
                     color: const Color(0xFF630F05),
                   ),
                 ],
               ),
             ],
-          )),
-    );
+          ),
+    ));
   }
 }

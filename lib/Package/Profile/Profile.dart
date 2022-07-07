@@ -28,7 +28,7 @@ class Profile extends StatelessWidget {
           centerTitle: true,
           backgroundColor: const Color(0xFF7F1B0E),
           title: Text(
-            "माय प्रोफाइल",
+            "प्रोफाइल",
             style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.bold),
           ),
         ),

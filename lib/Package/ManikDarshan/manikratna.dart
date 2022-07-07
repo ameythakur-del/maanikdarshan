@@ -44,19 +44,16 @@ class _manikratnaState extends State<manikratna> {
         centerTitle: true,
         backgroundColor: const Color(0xFF7F1B0E),
         title: Text(
-          "माणिकरत्न",
-          style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.bold),
+          "माणिकदर्शन",
+          style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w800, fontSize: 24),
         ),
       ),
       body: SingleChildScrollView(
         physics: ScrollPhysics(),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          // Column
           children: <Widget>[
-            SizedBox(height: 10),
-            Image.asset('assets/images/manikratna_title.png'),
-            SizedBox(height: 10),
+            Padding(padding: EdgeInsets.all(20), child:
+            Image.asset('assets/images/manikratna_title.png')),
             FutureBuilder<List<Data>>(
                 future: futureData,
                 builder: (context, snapshot) {
@@ -67,13 +64,9 @@ class _manikratnaState extends State<manikratna> {
                       shrinkWrap: true,
                       itemCount: data?.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          padding: EdgeInsets.all(3),
-                          height: 110,
-                          color: Colors.white,
-                          child: Card(
+                        return Card(
                             margin:
-                                EdgeInsets.only(left: 10, right: 10, top: 10),
+                                EdgeInsets.only(left: 20, right: 20, top: 10),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15.0),
                             ),
@@ -97,7 +90,8 @@ class _manikratnaState extends State<manikratna> {
                                   ),
                                 ),
                                 Expanded(
-                                    child: Column(
+                                    child: Padding(padding: EdgeInsets.only(top: 20, bottom: 20), child:
+                                    Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   mainAxisSize: MainAxisSize.min,
@@ -123,7 +117,7 @@ class _manikratnaState extends State<manikratna> {
                                             fontWeight: FontWeight.w600,
                                             color: Color(0xFF757575)))
                                   ],
-                                )),
+                                ))),
                                 Container(
                                     padding: EdgeInsets.all(10),
                                     child: IconButton(
@@ -145,16 +139,18 @@ class _manikratnaState extends State<manikratna> {
                                           color: Color(0xFF7F1B0E),
                                         )))
                               ],
-                            ),
-                          ),
-                        );
+
+                        ));
                       },
                     );
                   } else if (snapshot.hasError) {
                     return Text("${snapshot.error}");
                   }
-                  return CircularProgressIndicator();
-                })
+                  return Column(mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                    CircularProgressIndicator()]);
+                }),
+            SizedBox(height: 20,)
           ],
         ),
       ),

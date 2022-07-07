@@ -78,70 +78,60 @@ class _MartandsModelState extends State<MartandsModel> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        Center(
-            child: Text(
-          widget.title,
-          style: TextStyle(
-              fontSize: 24,
-              fontFamily: 'Mukta',
-              color: const Color(0xFFA30808),
-              fontWeight: FontWeight.w800),
-          textAlign: TextAlign.center,
-        )),
-<<<<<<< Updated upstream
-    Padding(
-    padding: EdgeInsets.only(top: 10),
-    child: Center(
-    child: Text(
-    text,
-    style:
-    TextStyle(color: const Color(0xFF393939), fontSize: 18, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
-    textAlign: TextAlign.center,
-    ),
-    ))],);
-=======
-        Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: Center(
+        children: [
+          Center(
               child: Text(
-                widget.text,
-                style: TextStyle(color: const Color(0xFF393939), fontSize: 18),
+                widget.title,
+                style: TextStyle(
+                    fontSize: 24,
+                    fontFamily: 'Mukta',
+                    color: const Color(0xFFA30808),
+                    fontWeight: FontWeight.w800),
                 textAlign: TextAlign.center,
-              ),
-            )),
-        Container(
-          height: 25,
-          color: Color(0xFFF09B21),
-          child: Row(children: <Widget>[
-            IconButton(
-              onPressed: () async {
-                if (isPlyaing) {
-                  await audioplayer.pause();
-                } else {
-                  String url = "";
-                  // await audioplayer.play();
-                }
-              },
-              icon: Icon(isPlyaing ? Icons.pause : Icons.play_arrow),
-              iconSize: 50,
-            ),
-            Text(formatTime(position)),
-            Text(formatTime(duration - position)),
-            Slider(
-                min: 0,
-                max: duration.inSeconds.toDouble(),
-                value: position.inSeconds.toDouble(),
-                onChanged: (value) async {
-                  final Position = Duration(seconds: value.toInt());
-                  await audioplayer.seek(position);
-                  //play audio if was stopped
-                  await audioplayer.release();
-                })
-          ]),
-        )
-      ],
-    );
->>>>>>> Stashed changes
+              )),
+          Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Center(
+                child: Text(
+                  widget.text,
+                  style: TextStyle(
+                      color: const Color(0xFF393939), fontSize: 18),
+                  textAlign: TextAlign.center,
+                ),
+              )),
+          // Container(
+          //   height: 25,
+          //   color: Color(0xFFF09B21),
+          //   child: Row(children: <Widget>[
+          //     IconButton(
+          //       onPressed: () async {
+          //         if (isPlyaing) {
+          //           await audioplayer.pause();
+          //         } else {
+          //           String url = "";
+          //           // await audioplayer.play();
+          //         }
+          //       },
+          //       icon: Icon(isPlyaing ? Icons.pause : Icons.play_arrow),
+          //       iconSize: 50,
+          //     ),
+          //     Text(formatTime(position)),
+          //     Text(formatTime(duration - position)),
+          //     Slider(
+          //         min: 0,
+          //         max: duration.inSeconds.toDouble(),
+          //         value: position.inSeconds.toDouble(),
+          //         onChanged: (value) async {
+          //           final Position = Duration(seconds: value.toInt());
+          //           await audioplayer.seek(position);
+          //           //play audio if was stopped
+          //           await audioplayer.release();
+          //         })
+          //   ]),
+          // )
+        ]);
   }
+// =======
+
+
 }

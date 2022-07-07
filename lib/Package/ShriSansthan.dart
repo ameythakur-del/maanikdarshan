@@ -8,7 +8,10 @@ class ShriSanthan extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             centerTitle: true,
-            title: Image.asset("assets/images/home_heading.png"),
+            title:  Text(
+              "श्री माणिकप्रभु संस्थान",
+              style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.bold),
+            ),
             backgroundColor: const Color(0xFF7F1B0E)),
         body: SingleChildScrollView(child:
         Column(
