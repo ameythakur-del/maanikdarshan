@@ -95,7 +95,7 @@ class _MartandsModelState extends State<MartandsModel> {
                 child: Text(
                   widget.text,
                   style: TextStyle(
-                      color: const Color(0xFF393939), fontSize: 18),
+                      color: const Color(0xFF393939), fontSize: 18, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
                   textAlign: TextAlign.center,
                 ),
               )),

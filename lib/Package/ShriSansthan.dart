@@ -10,7 +10,7 @@ class ShriSanthan extends StatelessWidget {
             centerTitle: true,
             title:  Text(
               "श्री माणिकप्रभु संस्थान",
-              style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.bold),
+              style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w800),
             ),
             backgroundColor: const Color(0xFF7F1B0E)),
         body: SingleChildScrollView(child:
@@ -26,7 +26,7 @@ class ShriSanthan extends StatelessWidget {
                       'श्री माणिकप्रभु संस्थान',
                       style: TextStyle(
                           fontFamily: 'Mukta',
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w800,
                           fontSize: 20,
                           color: const Color(0xFF630F05)),
                     ))),
@@ -37,7 +37,7 @@ class ShriSanthan extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
                   textAlign: TextAlign.center,
@@ -56,7 +56,7 @@ class ShriSanthan extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
                   textAlign: TextAlign.center,
@@ -76,7 +76,7 @@ class ShriSanthan extends StatelessWidget {
                       'अन्नदान',
                       style: TextStyle(
                           fontFamily: 'Mukta',
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w800,
                           fontSize: 20,
                           color: const Color(0xFF630F05)),
                     ))),
@@ -87,7 +87,7 @@ class ShriSanthan extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
                   textAlign: TextAlign.center,
@@ -103,7 +103,7 @@ class ShriSanthan extends StatelessWidget {
                       'श्री माणिकप्रभु वेद व संस्कृत पाठशाळा',
                       style: TextStyle(
                           fontFamily: 'Mukta',
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w800,
                           fontSize: 20,
                           color: const Color(0xFF630F05)),
                     ))),
@@ -114,7 +114,7 @@ class ShriSanthan extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
                   textAlign: TextAlign.center,
@@ -133,7 +133,7 @@ class ShriSanthan extends StatelessWidget {
                       'श्री माणिकप्रभु दिव्यांग पाठशाळा',
                       style: TextStyle(
                           fontFamily: 'Mukta',
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w800,
                           fontSize: 20,
                           color: const Color(0xFF630F05)),
                     ))),
@@ -144,7 +144,7 @@ class ShriSanthan extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
                   textAlign: TextAlign.center,
@@ -163,7 +163,7 @@ class ShriSanthan extends StatelessWidget {
                       'माणिक पब्लिक स्कूल',
                       style: TextStyle(
                           fontFamily: 'Mukta',
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w800,
                           fontSize: 20,
                           color: const Color(0xFF630F05)),
                     ))),
@@ -174,7 +174,7 @@ class ShriSanthan extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
                   textAlign: TextAlign.center,
@@ -194,7 +194,7 @@ class ShriSanthan extends StatelessWidget {
                       'माणिकप्रभु क्रीडा संकुल',
                       style: TextStyle(
                           fontFamily: 'Mukta',
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w800,
                           fontSize: 20,
                           color: const Color(0xFF630F05)),
                     ))),
@@ -205,7 +205,7 @@ class ShriSanthan extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
                   textAlign: TextAlign.center,
@@ -221,7 +221,7 @@ class ShriSanthan extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
                   textAlign: TextAlign.center,
@@ -236,7 +236,7 @@ class ShriSanthan extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
                   textAlign: TextAlign.center,
@@ -251,7 +251,7 @@ class ShriSanthan extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
                   textAlign: TextAlign.center,
@@ -271,7 +271,7 @@ class ShriSanthan extends StatelessWidget {
                       'श्री माणिकप्रभु अनाथालय',
                       style: TextStyle(
                           fontFamily: 'Mukta',
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w800,
                           fontSize: 20,
                           color: const Color(0xFF630F05)),
                     ))),
@@ -282,7 +282,7 @@ class ShriSanthan extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
                   textAlign: TextAlign.center,
@@ -301,7 +301,7 @@ class ShriSanthan extends StatelessWidget {
                       'माणिक विद्यालय',
                       style: TextStyle(
                           fontFamily: 'Mukta',
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w800,
                           fontSize: 20,
                           color: const Color(0xFF630F05)),
                     ))),
@@ -312,7 +312,7 @@ class ShriSanthan extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
                   textAlign: TextAlign.center,

@@ -24,7 +24,7 @@ class ListCard extends StatelessWidget {
       child:
       Container(
       margin: EdgeInsets.all(7.5),
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(11.0),
           color: const Color(0xFFF09B21)),
@@ -45,9 +45,9 @@ class ListCard extends StatelessWidget {
               text,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 24,
                   fontWeight: FontWeight.w700,
-                  fontFamily: 'assets/images/Mukta',
+                  fontFamily: 'Mukta',
                   color: Colors.white),
             )
           ],

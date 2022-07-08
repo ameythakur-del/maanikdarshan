@@ -14,7 +14,7 @@ class Aawas extends StatelessWidget {
         'आवास व्यवस्था',
         style: TextStyle(
             fontFamily: 'Mukta',
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w800,
             fontSize: 24,
             color: const Color(0xFF630F05)),
       )),
@@ -26,7 +26,7 @@ class Aawas extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               fontFamily: 'Mukta',
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w400,
               color: const Color(0xFF630F05),
             ),
             textAlign: TextAlign.center,
@@ -36,7 +36,7 @@ class Aawas extends StatelessWidget {
         'मनोहर विलास',
         style: TextStyle(
             fontFamily: 'Mukta',
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w800,
             fontSize: 24,
             color: const Color(0xFF630F05)),
       )),
@@ -51,6 +51,7 @@ class Aawas extends StatelessWidget {
         style: TextStyle(
           fontSize: 14,
           fontFamily: 'Mukta',
+          fontWeight: FontWeight.w400,
           color: const Color(0xFF630F05),
         ),
         textAlign: TextAlign.center,
@@ -61,7 +62,7 @@ class Aawas extends StatelessWidget {
                 'मार्तंड विलास',
                 style: TextStyle(
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w800,
                     fontSize: 24,
                     color: const Color(0xFF630F05)),
               )),
@@ -74,6 +75,7 @@ class Aawas extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               fontFamily: 'Mukta',
+              fontWeight: FontWeight.w400,
               color: const Color(0xFF630F05),
             ),
             textAlign: TextAlign.center,
@@ -84,7 +86,7 @@ class Aawas extends StatelessWidget {
                 'माणिक विहार',
                 style: TextStyle(
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w800,
                     fontSize: 24,
                     color: const Color(0xFF630F05)),
               )),
@@ -97,6 +99,7 @@ class Aawas extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               fontFamily: 'Mukta',
+              fontWeight: FontWeight.w400,
               color: const Color(0xFF630F05),
             ),
             textAlign: TextAlign.center,
@@ -107,7 +110,7 @@ class Aawas extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               fontFamily: 'Mukta',
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w400,
               color: const Color(0xFF630F05),
             ),
             textAlign: TextAlign.center,

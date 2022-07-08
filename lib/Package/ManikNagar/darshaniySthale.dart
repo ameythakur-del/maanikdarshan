@@ -65,7 +65,7 @@ class darshaniySthale extends StatelessWidget {
             'दर्शनीय स्थळें',
             style: TextStyle(
                 fontFamily: 'Mukta',
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w800,
                 fontSize: 24,
                 color: const Color(0xFF630F05)),
           )),
@@ -86,7 +86,7 @@ class darshaniySthale extends StatelessWidget {
               titles[index],
               style: TextStyle(
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                   fontSize: 20,
                   color: const Color(0xFF630F05)),
             ))),
@@ -97,7 +97,7 @@ class darshaniySthale extends StatelessWidget {
           style: TextStyle(
             fontSize: 14,
               fontFamily: 'Mukta',
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w400,
               color: const Color(0xFF630F05),
           ),
           textAlign: TextAlign.center,

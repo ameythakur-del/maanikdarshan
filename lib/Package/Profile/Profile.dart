@@ -29,7 +29,7 @@ class Profile extends StatelessWidget {
           backgroundColor: const Color(0xFF7F1B0E),
           title: Text(
             "प्रोफाइल",
-            style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.bold),
+            style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w800),
           ),
         ),
         body:  FutureBuilder(
@@ -45,12 +45,12 @@ class Profile extends StatelessWidget {
                     Align(
                         alignment: Alignment.topLeft,
                         child: Padding(padding: EdgeInsets.only(left: 20, top: 20), child:
-                    Text('Registered Mobile Number',  style: TextStyle(fontSize: 20, fontFamily: 'Mukta', color: const Color(0xFF7F1B0E), fontWeight: FontWeight.bold),)), ),
+                    Text('Registered Mobile Number',  style: TextStyle(fontSize: 20, fontFamily: 'Mukta', color: const Color(0xFF7F1B0E), fontWeight: FontWeight.w600),)), ),
                     Align(
               alignment: Alignment.topLeft,
                       child: Padding(padding: EdgeInsets.only(left: 20),
               child:
-                    Text(snapshot.data, style: TextStyle(fontSize: 21, fontFamily: 'Mukta', color: const Color(0xFFB5B5B5)),)),
+                    Text(snapshot.data, style: TextStyle(fontSize: 21, fontFamily: 'Mukta', fontWeight: FontWeight.w500, color: const Color(0xFFB5B5B5)),)),
               ),
                     GestureDetector(
                       onTap: () {
@@ -68,13 +68,13 @@ class Profile extends StatelessWidget {
                           child: Row(
                             children: [
                               Image.asset(
-                                'assets/images/Vector.png',
+                                'assets/images/logout.png',
                                 width: 28,
                               ),
                               SizedBox(width: 15,),
                               Text(
                                 'Logout',
-                                style: TextStyle(fontSize: 24, fontFamily: 'Mukta', color: const Color(0xFF7F1B0E), fontWeight: FontWeight.bold),
+                                style: TextStyle(fontSize: 24, fontFamily: 'Mukta', color: const Color(0xFF7F1B0E), fontWeight: FontWeight.w600),
                               )
                             ],
                           )),

@@ -14,8 +14,13 @@ class UpasanaMartand extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          centerTitle: true,
-          title: Image.asset("assets/images/home_heading.png"), backgroundColor: const Color(0xFF7F1B0E)),
+        centerTitle: true,
+        backgroundColor: const Color(0xFF7F1B0E),
+        title: Text(
+          "माणिकदर्शन",
+          style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w800),
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -79,7 +84,7 @@ Event(String image, String type, Color color, BuildContext context) {
                     color: Color(0xFF69160B),
                     fontSize: 13.0,
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.w900),
+                    fontWeight: FontWeight.w800),
               ))
             ],
           ),

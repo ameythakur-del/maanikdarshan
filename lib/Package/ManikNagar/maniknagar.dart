@@ -29,7 +29,7 @@ class _maniknagarState extends State<maniknagar> with SingleTickerProviderStateM
         backgroundColor: const Color(0xFF7F1B0E),
         title: Text(
           "माणिकनगर",
-          style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.bold),
+          style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w800),
         ),
       ),
       body: Column(
@@ -110,6 +110,7 @@ class _maniknagarState extends State<maniknagar> with SingleTickerProviderStateM
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
+                fontFamily: 'Mukta',
                 fontSize: 15,
                 color: isSelected
                     ? const Color(0xFFFFFFFF)

@@ -16,7 +16,7 @@ class dinCharya extends StatelessWidget {
                     'दिनचर्या',
                     style: TextStyle(
                         fontFamily: 'Mukta',
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w800,
                         fontSize: 24,
                         color: const Color(0xFF630F05)),
                   )),
@@ -26,7 +26,7 @@ class dinCharya extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,

@@ -15,8 +15,13 @@ class GranthMartand extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          centerTitle: true,
-          title: Image.asset("assets/images/home_heading.png"), backgroundColor: const Color(0xFF7F1B0E)),
+        centerTitle: true,
+        backgroundColor: const Color(0xFF7F1B0E),
+        title: Text(
+          "माणिकदर्शन",
+          style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w800),
+        ),
+      ),
       body: Column(children: [
         Padding(padding: EdgeInsets.all(20),child:
         Image.asset(titleBanner)),

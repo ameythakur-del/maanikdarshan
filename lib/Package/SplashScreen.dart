@@ -21,12 +21,22 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor:
-      const Color(0xFFFFFFFF), //or set color with: Color(0xFF0000FF)
-    ));
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
-        body: Center(child: Image.asset('assets/images/splash_logo.png')));
+        body: Column(mainAxisSize: MainAxisSize.max,
+          children: [
+          Image.asset('assets/images/swami_background.png'),
+          SizedBox(height: 20,),
+          Text('।।  जय गुरू माणिक ।।', style: TextStyle(fontSize: 30, fontFamily: 'Mukta', fontWeight: FontWeight.w800, color: const Color(0xFF630F05)),),
+          Expanded(child:
+            Align(alignment: Alignment.bottomCenter,
+            child: Container(
+              color: const Color(0xFF7F1B0E),
+              height: 20,
+              width: MediaQuery.of(context).size.width,
+            ),
+          ))
+        ],)
+    );
   }
 }

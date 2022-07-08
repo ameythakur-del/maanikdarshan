@@ -47,10 +47,14 @@ class utsav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          centerTitle: true,
-          title: Image.asset("assets/images/home_heading.png"),
-          backgroundColor: const Color(0xFF7F1B0E)),
+      appBar:  AppBar(
+        centerTitle: true,
+        backgroundColor: const Color(0xFF7F1B0E),
+        title: Text(
+          "माणिकदर्शन",
+          style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w800),
+        ),
+      ),
       body: SingleChildScrollView(child:
       Column(
         children: [
@@ -62,7 +66,7 @@ class utsav extends StatelessWidget {
                 'श्रीदत्तजयंती महोत्सव',
                 style: TextStyle(
                     fontFamily: 'Mukta',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w700,
                     fontSize: 20,
                     color: const Color(0xFF630F05)),
               ))),
@@ -73,7 +77,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -88,7 +92,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -103,7 +107,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -118,7 +122,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -133,7 +137,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -148,7 +152,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -163,7 +167,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -178,7 +182,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -193,7 +197,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -208,7 +212,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -223,7 +227,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -238,7 +242,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -253,7 +257,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -269,7 +273,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -283,7 +287,7 @@ class utsav extends StatelessWidget {
                     'वेदांत सप्ताह महोत्सव',
                     style: TextStyle(
                         fontFamily: 'Mukta',
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w800,
                         fontSize: 20,
                         color: const Color(0xFF630F05)),
                   ))),
@@ -294,7 +298,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -309,7 +313,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -325,7 +329,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -341,7 +345,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -356,7 +360,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -369,7 +373,7 @@ class utsav extends StatelessWidget {
                     'इतर उत्सव',
                     style: TextStyle(
                         fontFamily: 'Mukta',
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w800,
                         fontSize: 20,
                         color: const Color(0xFF630F05)),
                   ))),
@@ -380,7 +384,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,
@@ -397,7 +401,7 @@ class utsav extends StatelessWidget {
                     'माणिक पौर्णिमा पर्व',
                     style: TextStyle(
                         fontFamily: 'Mukta',
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w800,
                         fontSize: 20,
                         color: const Color(0xFF630F05)),
                   ))),
@@ -408,7 +412,7 @@ class utsav extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Mukta',
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: const Color(0xFF630F05),
                 ),
                 textAlign: TextAlign.center,

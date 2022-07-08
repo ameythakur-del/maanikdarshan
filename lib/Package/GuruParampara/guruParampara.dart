@@ -23,7 +23,7 @@ class guruParampara extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(title: Text('गुरुपरंपरा', style: TextStyle(fontFamily: 'Mukta-Bold', fontWeight: FontWeight.bold),), backgroundColor: const Color(0xFF7F1B0E), centerTitle: true,),
+      appBar: AppBar(title: Text('गुरुपरंपरा', style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w800),), backgroundColor: const Color(0xFF7F1B0E), centerTitle: true,),
       body:  Padding(padding: EdgeInsets.all(20), child: ListView.builder(
         itemCount: images.length,
         itemBuilder: (BuildContext context, int index){
@@ -42,8 +42,8 @@ class guruParampara extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                Text(titles[index], style: TextStyle(fontFamily: 'Mukta', fontSize: 18, fontWeight: FontWeight.bold, color: const Color(0xFF7F1B0E),),),
-                Text(descriptions[index], style: TextStyle(fontFamily: 'Mukta', fontSize: 15, fontWeight: FontWeight.bold, color: const Color(0xFF7F1B0E),))
+                Text(titles[index], style: TextStyle(fontFamily: 'Mukta', fontSize: 18, fontWeight: FontWeight.w700, color: const Color(0xFF7F1B0E),),),
+                Text(descriptions[index], style: TextStyle(fontFamily: 'Mukta', fontSize: 15, fontWeight: FontWeight.w600, color: const Color(0xFF7F1B0E),))
               ],))
             ],
           ),

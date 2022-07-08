@@ -58,7 +58,7 @@ class _MainPageState extends State<MainPage> {
             BottomNavigationBarItem(
               label: "Location",
               icon:
-              Icon(Icons.my_location,
+              Icon(Icons.location_pin,
                   size: 30,
                   color: (page == 1)
                       ? const Color(0xFFF09B21)

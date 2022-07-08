@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
           width: double.infinity,
         ),
         Image.asset(
-          "assets/images/home_heading_1.png",
+          "assets/images/home_heading_2.png",
           width: double.infinity,
         ),
       ];
@@ -46,9 +46,13 @@ class _HomePageState extends State<HomePage> {
     ));
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Image.asset("assets/images/home_heading.png"),
+      appBar:  AppBar(
+        centerTitle: true,
         backgroundColor: const Color(0xFF7F1B0E),
+        title: Text(
+          "माणिकदर्शन",
+          style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w800),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -62,7 +66,7 @@ class _HomePageState extends State<HomePage> {
               height: 15,
             ),
             SizedBox(
-              height: 120,
+              height: 170,
               width: double.infinity,
               child: CarouselSlider.builder(
                 itemCount: container.length,
@@ -206,6 +210,8 @@ class _HomePageState extends State<HomePage> {
             //     textAlign: TextAlign.left,
             //   ),
             // ),
+
+            SizedBox(height: 100,)
 
           ],
         ),
