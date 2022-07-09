@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage> {
   int page = 2;
   final screens = [
     const Notifications(),
-    const Location(),
+    Location(),
     HomePage(),
     HomePage(),
     Profile()

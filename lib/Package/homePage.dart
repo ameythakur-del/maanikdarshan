@@ -93,50 +93,9 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Events(
-                      image: "assets/images/manikratna.png",
-                      type: "माणिकरत्न",
-                      color: Colors.white,
-                      textSize: 16.0,
-                      context: context),
-                  Events(
-                      image: "assets/images/donation.png",
-                      type: "डोनेशन",
-                      color: Colors.white,
-                      textSize: 16.0,
-                      context: context),
-                  Events(
-                      image: "assets/images/eseva.png",
-                      type: "ई सेवा",
-                      color: Colors.white,
-                      textSize: 16.0,
-                      context: context)
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Events2("assets/images/shri_sansthan.png", "श्री संस्थान",
-                      context),
-                  Events2("assets/images/maniknagar.png", "माणिकनगर", context),
-                  Events2("assets/images/guru_parampara.png", "गुरू परंपरा",
-                      context)
-                ],
-              ),
-            ),
             Container(
                 decoration: BoxDecoration(
-                    color: const Color.fromRGBO(240, 155, 33, 0.3),
+                    color: const Color(0xFFD7D7D7),
                     borderRadius: BorderRadius.circular(18)),
                 margin: EdgeInsets.only(bottom: 20, left: 20, right: 20),
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
@@ -144,56 +103,98 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Row(children: [
                       Events(
+                          image: "assets/images/manikratna.png",
+                          type: "माणिकरत्न",
+                          color: const Color(0xFFD7D7D7),
+                          textSize: 14.0,
+                          context: context),
+                      Events(
+                          image: "assets/images/dindarshika.png",
+                          type: "दिनदर्शिका",
+                          color: const Color(0xFFD7D7D7),
+                          textSize: 14.0,
+                          context: context),
+                      Events(
+                          image: "assets/images/eseva.png",
+                          type: "ई सेवा",
+                          color: const Color(0xFFD7D7D7),
+                          textSize: 14.0,
+                          context: context),
+                      Events(
+                          image: "assets/images/donation.png",
+                          type: "डोनेशन",
+                          color: const Color(0xFFD7D7D7),
+                          textSize: 14.0,
+                          context: context),
+
+                    ]),
+                    Row(children: [
+                      Events(
                           image: "assets/images/upasana_martand.png",
                           type: "उपासना मार्तंड",
-                          color: const Color.fromRGBO(240, 155, 33, 0.3),
+                          color: const Color(0xFFD7D7D7),
                           textSize: 14.0,
                           context: context),
                       Events(
                           image: "assets/images/gan_martand.png",
                           type: "गान मार्तंड",
-                          color: const Color.fromRGBO(240, 155, 33, 0.3),
+                          color: const Color(0xFFD7D7D7),
                           textSize: 14.0,
                           context: context),
                       Events(
                           image: "assets/images/granth_martand.png",
                           type: "ग्रंथ मार्तंड",
-                          color: const Color.fromRGBO(240, 155, 33, 0.3),
+                          color: const Color(0xFFD7D7D7),
                           textSize: 14.0,
                           context: context),
                       Events(
                           image: "assets/images/mantra_martand.png",
                           type: "मंत्र मार्तंड",
-                          color: const Color.fromRGBO(240, 155, 33, 0.3),
+                          color: const Color(0xFFD7D7D7),
                           textSize: 14.0,
                           context: context),
-                    ]),
+                    ],),
                     Row(
                       children: [
                         Events(
+                            image: "assets/images/guru_parampara.png",
+                            type:  "गुरू परंपरा",
+                            color: const Color(0xFFD7D7D7),
+                            textSize: 14.0,
+                            context: context),
+                        Events(
+                            image: "assets/images/shri_sansthan.png",
+                            type: "श्री संस्थान",
+                            color: const Color(0xFFD7D7D7),
+                            textSize: 14.0,
+                            context: context),
+                        Events(
+                            image: "assets/images/maniknagar.png",
+                            type: "माणिकनगर",
+                            color: const Color(0xFFD7D7D7),
+                            textSize: 14.0,
+                            context: context),
+
+                        Events(
                             image: "assets/images/upakram.png",
                             type: "उत्सव",
-                            color: const Color.fromRGBO(240, 155, 33, 0.3),
+                            color: const Color(0xFFD7D7D7),
                             textSize: 14.0,
                             context: context),
-                        Events(
-                            image: "assets/images/dindarshika.png",
-                            type: "दिनदर्शिका",
-                            color: const Color.fromRGBO(240, 155, 33, 0.3),
-                            textSize: 14.0,
-                            context: context),
-                        Events(
-                            image: "assets/images/e_store.png",
-                            type: "ई स्टोर",
-                            color: const Color.fromRGBO(240, 155, 33, 0.3),
-                            textSize: 14.0,
-                            context: context),
-                        Events(
-                            image: "assets/images/download.png",
-                            type: "डाऊनलोड",
-                            color: const Color.fromRGBO(240, 155, 33, 0.3),
-                            textSize: 14.0,
-                            context: context),
+
+
+                        // Events(
+                        //     image: "assets/images/e_store.png",
+                        //     type: "ई स्टोर",
+                        //     color: const Color.fromRGBO(240, 155, 33, 0.3),
+                        //     textSize: 14.0,
+                        //     context: context),
+                        // Events(
+                        //     image: "assets/images/download.png",
+                        //     type: "डाऊनलोड",
+                        //     color: const Color.fromRGBO(240, 155, 33, 0.3),
+                        //     textSize: 14.0,
+                        //     context: context),
                       ],
                     )
                   ],

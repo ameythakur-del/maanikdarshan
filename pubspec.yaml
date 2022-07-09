@@ -44,7 +44,8 @@ dependencies:
   audioplayers: ^1.0.1
   assets_audio_player: ^3.0.4+4
   smooth_page_indicator: ^1.0.0+2
-  
+  google_maps_flutter: ^2.1.8
+  url_launcher: ^6.1.4
 
 dev_dependencies:
   flutter_test:
@@ -61,6 +62,7 @@ dev_dependencies:
   fluttertoast: ^8.0.9
   flutter_share: ^2.0.0
   carousel_slider: ^4.1.1
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

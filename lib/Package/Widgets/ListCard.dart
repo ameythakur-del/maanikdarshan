@@ -27,7 +27,7 @@ class ListCard extends StatelessWidget {
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(11.0),
-          color: const Color(0xFFF09B21)),
+          color: const Color(0xFF9D2A1B)),
       child:
      Row(
           mainAxisSize: MainAxisSize.max,
