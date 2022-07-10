@@ -5,8 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:maanikdarshan/Package/Authentication/OTP.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
-import '../mainPage.dart';
+import 'package:maanikdarshan/Package/homePage.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
@@ -116,7 +115,7 @@ class Login extends StatelessWidget {
                               final UserCredential userCredential = await auth
                                   .signInWithCredential(credential)
                                   .whenComplete(() {
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage()));
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
                               });
                             }
                           },

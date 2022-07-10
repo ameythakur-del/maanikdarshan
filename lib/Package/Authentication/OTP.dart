@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:maanikdarshan/Package/mainPage.dart';
+
+import '../homePage.dart';
 
 class OTP extends StatefulWidget {
   final String name, phone;
@@ -174,7 +175,7 @@ class _OTPState extends State<OTP> {
                     toastLength: Toast.LENGTH_LONG),
 
               });
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
     } catch (error) {
       Fluttertoast.showToast(
           msg: error.toString(),

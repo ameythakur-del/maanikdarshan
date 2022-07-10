@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:maanikdarshan/Package/ManikDarshan/Detail.dart';
 import 'package:maanikdarshan/Package/ManikDarshan/data_manikratna.dart';
+import 'package:flutter_share/flutter_share.dart';
 
 class manikratna extends StatefulWidget {
   const manikratna({Key? key}) : super(key: key);
@@ -71,7 +73,12 @@ class _manikratnaState extends State<manikratna> {
                               borderRadius: BorderRadius.circular(15.0),
                             ),
                             color: Color(0xFFE9E9E9),
-                            child: Row(
+                            child: GestureDetector(
+                        onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Detail(url: data![index].link.toString())));
+                        },
+                        child:
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -123,16 +130,10 @@ class _manikratnaState extends State<manikratna> {
                                     child: IconButton(
                                         alignment: Alignment.centerRight,
                                         onPressed: () {
-                                          Clipboard.setData(ClipboardData(
-                                                  text: data[index].link))
-                                              .then((value) => ScaffoldMessenger
-                                                      .of(context)
-                                                  .showSnackBar(SnackBar(
-                                                      content: Text(
-                                                          "Link Copied to Clipboard" +
-                                                              data[index]
-                                                                  .link
-                                                                  .toString()))));
+                                         FlutterShare.share(
+                                              title: 'Visit this link',
+                                              linkUrl: data[index].link,
+                                          );
                                         },
                                         icon: Icon(
                                           Icons.share,
@@ -140,7 +141,7 @@ class _manikratnaState extends State<manikratna> {
                                         )))
                               ],
 
-                        ));
+                        )));
                       },
                     );
                   } else if (snapshot.hasError) {

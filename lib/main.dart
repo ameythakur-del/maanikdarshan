@@ -45,7 +45,6 @@ import 'package:maanikdarshan/Package/homePage.dart';
 
 import 'Package/Authentication/login.dart';
 import 'Package/Martands/MantraMartand.dart';
-import 'Package/mainPage.dart';
 
 bool isLoggedIn = false;
 Future<void> main() async {
@@ -82,7 +81,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => SplashScreen(),
-        '/main': (context) => (isLoggedIn) ? MainPage() : Login(),
+        '/main': (context) => (isLoggedIn) ? HomePage() : Login(),
         '/home': (context) => const HomePage(),
         '/ग्रंथ मार्तंड': (context) => GranthMartand(),
         '/गान मार्तंड': (context) => GanMartand(),

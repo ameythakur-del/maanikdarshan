@@ -31,8 +31,8 @@ class ListCard extends StatelessWidget {
       child:
      Row(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(width: 50,),
             Image.asset(
               image,
               height: 29,
@@ -45,7 +45,7 @@ class ListCard extends StatelessWidget {
               text,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: FontWeight.w700,
                   fontFamily: 'Mukta',
                   color: Colors.white),
