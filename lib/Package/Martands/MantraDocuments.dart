@@ -72,7 +72,7 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                           child: Text(
                             widget.val[index]['text'].replaceAll('\\n', '\n'),
                             style: TextStyle(
-                                color: const Color(0xFF393939), fontSize: 18, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
+                                color: const Color(0xFF393939), fontSize: value, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
                             textAlign: TextAlign.center,
                           ),
                         ));

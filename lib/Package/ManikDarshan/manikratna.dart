@@ -26,7 +26,7 @@ class _manikratnaState extends State<manikratna> {
 
   Future<List<Data>> getData() async {
     var request = http.Request(
-        'GET', Uri.parse('https://manikprabhu.co/wp-json/wp/v2/posts'));
+        'GET', Uri.parse('https://manikprabhu.co/wp-json/wp/v2/posts?per_page=100'));
     http.StreamedResponse response = await request.send();
 
     var data_response = await http.Response.fromStream(response);

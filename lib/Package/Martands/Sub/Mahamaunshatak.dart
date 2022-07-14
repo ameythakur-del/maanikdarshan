@@ -3,52 +3,81 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:maanikdarshan/Package/Martands/Sub/MartandsModel.dart';
 
-class Mahamaunshatak extends StatelessWidget {
+class Mahamaunshatak extends StatefulWidget {
   const Mahamaunshatak({Key? key}) : super(key: key);
 
   @override
+  State<Mahamaunshatak> createState() => _MahamaunshatakState();
+}
+
+class _MahamaunshatakState extends State<Mahamaunshatak> {
+
+
+  double value = 18;
+  var data;
+  bool isLoading = true;
+
+
+  @override
+  void initState() {
+    getData();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('Mahamaunshatak');
-
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: const Color(0xFF7F1B0E),
-        title: Text(
-          "महामौनशतक",
-          style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.bold),
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: const Color(0xFF7F1B0E),
+          title: Text(
+            "महामौनशतक",
+            style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.bold),
+          ),
         ),
-      ),
-      body: FutureBuilder<DocumentSnapshot>(
-        future: users.doc("data").get(),
-        builder:
-            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          if (snapshot.hasError) {
-            return const Center(child: Text("Something went wrong"));
-          }
+        body: isLoading? Center(child:
+        CircularProgressIndicator(),):
+        SingleChildScrollView(
+            child: Column(children: [
+              Slider(
+                value: value,
+                activeColor: const Color(0xFF772200),
+                inactiveColor: const Color(0xFFF79023),
+                onChanged: (double s) {
+                  setState(() {
+                    value = s;
+                  });
+                },
+                divisions: 10,
+                min: 15.0,
+                max: 30.0,
+              ),
+              ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: data.length,
+                  itemBuilder: (context, index) {
+                    return MartandsModel(
+                      title: data[index]["title"],
+                      text: data[index]['text'].replaceAll("\\n", "\n"),
+                      size: value,
+                    );
+                  })])));
+  }
+  Future<void> getData() async {
+    CollectionReference users =
+    FirebaseFirestore.instance.collection('Mahamaunshatak');
 
-          if (snapshot.hasData && !snapshot.data!.exists) {
-            return const Center(child: Text("Data does not exist"));
-          }
+    DocumentSnapshot snapshot = await users.doc("data").get();
 
-          if (snapshot.connectionState == ConnectionState.done) {
-            Map<String, dynamic> dataObj =
-            snapshot.data!.data() as Map<String, dynamic>;
+    Map<String, dynamic> dataObj =
+    snapshot.data() as Map<String, dynamic>;
 
-            var data = dataObj["data"];
-            return ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (context, index) {
-                  return MartandsModel(
-                    title: data[index]["title"].replaceAll("\\n", "\n"),
-                    text: data[index]['text'].replaceAll("\\n", "\n"),
-                  );
-                });
-          }
+    data = dataObj["data"];
 
-          return const Center(child: CircularProgressIndicator());
-        },
-      ),
-    );
+    if(isLoading == true) {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 }

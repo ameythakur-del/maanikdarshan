@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 class MartandsModel extends StatefulWidget {
   final String text;
   final String title;
-  const MartandsModel({Key? key, required this.text, required this.title})
+  final double size;
+  const MartandsModel({Key? key, required this.text, required this.title, required this.size})
       : super(key: key);
 
   @override
@@ -44,22 +45,13 @@ class _MartandsModelState extends State<MartandsModel> {
 
   Future setAudio() async {
     //Repeat song when completed
-    audioplayer.setReleaseMode(ReleaseMode.loop);
-
-    //Load audio form url
-    // String url = '';
-    // audioplayer.setSourceUrl(url);
-
-    //Load from asset
-    final player = AudioCache(prefix: 'asset/audio');
-    final url = await player.load('sample.mp3');
-    audioplayer.setSourceUrl(url.path);
+    String url = "http://sahitya.manikprabhu.org/gaanmartand/audio_prabhu/prabhu%20vin%20kon.mp3";
+    audioplayer.setSourceUrl(url);
   }
 
   @override
   void dispose() {
     audioplayer.dispose();
-
     super.dispose();
   }
 
@@ -95,40 +87,47 @@ class _MartandsModelState extends State<MartandsModel> {
                 child: Text(
                   widget.text,
                   style: TextStyle(
-                      color: const Color(0xFF393939), fontSize: 18, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
+                      color: const Color(0xFF393939), fontSize: widget.size, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
                   textAlign: TextAlign.center,
                 ),
               )),
-          // Container(
-          //   height: 25,
-          //   color: Color(0xFFF09B21),
-          //   child: Row(children: <Widget>[
-          //     IconButton(
-          //       onPressed: () async {
-          //         if (isPlyaing) {
-          //           await audioplayer.pause();
-          //         } else {
-          //           String url = "";
-          //           // await audioplayer.play();
-          //         }
-          //       },
-          //       icon: Icon(isPlyaing ? Icons.pause : Icons.play_arrow),
-          //       iconSize: 50,
-          //     ),
-          //     Text(formatTime(position)),
-          //     Text(formatTime(duration - position)),
-          //     Slider(
-          //         min: 0,
-          //         max: duration.inSeconds.toDouble(),
-          //         value: position.inSeconds.toDouble(),
-          //         onChanged: (value) async {
-          //           final Position = Duration(seconds: value.toInt());
-          //           await audioplayer.seek(position);
-          //           //play audio if was stopped
-          //           await audioplayer.release();
-          //         })
-          //   ]),
-          // )
+          Container(
+            padding: EdgeInsets.all(10),
+            margin: EdgeInsets.only(left: 20, right: 20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(51),
+              color: Color(0xFF7F1B0E),
+            ),
+            child: Row(children: <Widget>[
+              IconButton(
+                onPressed: () async {
+                  if (isPlyaing) {
+                    await audioplayer.pause();
+                  } else {
+                    await audioplayer.resume();
+                  }
+                },
+                icon: Icon(isPlyaing ? Icons.pause : Icons.play_arrow),
+                color: Colors.white,
+              ),
+              Text(formatTime(position), style: TextStyle(color: Colors.white, fontFamily: 'Mukta', fontWeight: FontWeight.w600, fontSize: 18),),
+              Text('/', style: TextStyle(color: Colors.white, fontFamily: 'Mukta', fontWeight: FontWeight.w600, fontSize: 18)),
+              Text(formatTime(duration), style: TextStyle(color: Colors.white, fontFamily: 'Mukta', fontWeight: FontWeight.w600, fontSize: 18)),
+              Slider(
+                  min: 0,
+                  activeColor: Colors.white,
+                  inactiveColor: Colors.white,
+                  thumbColor: Colors.white,
+                  max: duration.inSeconds.toDouble(),
+                  value: position.inSeconds.toDouble(),
+                  onChanged: (value) async {
+                    position = Duration(seconds: value.toInt());
+                    await audioplayer.seek(position);
+                    //play audio if was stopped
+                    await audioplayer.resume();
+                  })
+            ]),
+          )
         ]);
   }
 // =======

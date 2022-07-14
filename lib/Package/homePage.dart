@@ -93,6 +93,7 @@ class _HomePageState extends State<HomePage> {
             },
             child: Icon(Icons.notifications)),
         actions: <Widget>[
+          ImageIcon(AssetImage('assets/images/search.png'), color: Colors.white,),
           PopupMenuButton(
               onSelected: onSelect,
               itemBuilder: (BuildContext context) => [

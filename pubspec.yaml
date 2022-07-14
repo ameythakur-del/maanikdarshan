@@ -42,7 +42,6 @@ dependencies:
   http: ^0.13.4
   webview_flutter: ^3.0.4
   audioplayers: ^1.0.1
-  assets_audio_player: ^3.0.4+4
   smooth_page_indicator: ^1.0.0+2
   google_maps_flutter: ^2.1.8
   url_launcher: ^6.1.4
