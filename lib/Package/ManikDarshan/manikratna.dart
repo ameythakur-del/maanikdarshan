@@ -16,13 +16,7 @@ class manikratna extends StatefulWidget {
 }
 
 class _manikratnaState extends State<manikratna> {
-  late Future<List<Data>> futureData;
 
-  @override
-  void initState() {
-    futureData = getData();
-    super.initState();
-  }
 
   Future<List<Data>> getData() async {
     var request = http.Request(
@@ -57,7 +51,7 @@ class _manikratnaState extends State<manikratna> {
             Padding(padding: EdgeInsets.all(20), child:
             Image.asset('assets/images/manikratna_title.png')),
             FutureBuilder<List<Data>>(
-                future: futureData,
+                future: getData(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<Data>? data = snapshot.data;

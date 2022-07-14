@@ -2,8 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:maanikdarshan/Package/Widgets/ListCard.dart';
 import 'package:maanikdarshan/components/customAppBar.dart';
-import 'package:maanikdarshan/components/customListTile.dart';
-import 'package:maanikdarshan/components/displayText.dart';
 
 
 class SatvaracheBhajan extends StatelessWidget {
@@ -12,6 +10,7 @@ class SatvaracheBhajan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CollectionReference collectionReference = FirebaseFirestore.instance.collection('सातवारांचेभजन');
+    List<String> images = ["assets/images/bhajan/1.png", "assets/images/bhajan/2.png", "assets/images/bhajan/3.png", "assets/images/bhajan/4.png", "assets/images/bhajan/5.png", "assets/images/bhajan/6.png", "assets/images/bhajan/7.png"];
 
     return Scaffold(
       appBar: ManikDarshan(title: "सातवारांचे भजन"),
@@ -35,7 +34,7 @@ class SatvaracheBhajan extends StatelessWidget {
             return ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (context, index) {
-                  return ListCard(text: data[index], image: 'assets/images/guruwarche_bhajan.png', parent : 'सातवारांचेभजन');
+                  return ListCard(text: data[index], image: images[index], parent : 'सातवारांचेभजन');
                 });
           }
           return const Center(child: CircularProgressIndicator());
