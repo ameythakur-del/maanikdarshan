@@ -202,7 +202,7 @@ class _HomePageState extends State<HomePage> {
                     height: 15,
                   ),
                   SizedBox(
-                    height: 170,
+                    height: 193,
                     width: double.infinity,
                     child: CarouselSlider.builder(
                       itemCount: container.length,
@@ -231,9 +231,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
                 decoration: BoxDecoration(
-                    color: const Color(0xFFD7D7D7),
                     borderRadius: BorderRadius.circular(18)),
-                margin: EdgeInsets.only(bottom: 20, left: 20, right: 20),
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                 child: Column(
                   children: [
@@ -241,25 +239,25 @@ class _HomePageState extends State<HomePage> {
                       Events(
                           image: "assets/images/manikratna.png",
                           type: "माणिकरत्न",
-                          color: const Color(0xFFD7D7D7),
+                          color: const Color(0xFFFFFFFF),
                           textSize: 14.0,
                           context: context),
                       Events(
                           image: "assets/images/dindarshika.png",
-                          type: "दिनदर्शिका",
-                          color: const Color(0xFFD7D7D7),
+                          type: "ई-स्टोर",
+                          color: const Color(0xFFFFFFFF),
                           textSize: 14.0,
                           context: context),
                       Events(
                           image: "assets/images/eseva.png",
                           type: "ई सेवा",
-                          color: const Color(0xFFD7D7D7),
+                          color: const Color(0xFFFFFFFF),
                           textSize: 14.0,
                           context: context),
                       Events(
                           image: "assets/images/donation.png",
                           type: "डोनेशन",
-                          color: const Color(0xFFD7D7D7),
+                          color: const Color(0xFFFFFFFF),
                           textSize: 14.0,
                           context: context),
                     ]),
@@ -268,25 +266,25 @@ class _HomePageState extends State<HomePage> {
                         Events(
                             image: "assets/images/upasana_martand.png",
                             type: "उपासना मार्तंड",
-                            color: const Color(0xFFD7D7D7),
+                            color: const Color(0xFFFFFFFF),
                             textSize: 14.0,
                             context: context),
                         Events(
                             image: "assets/images/gan_martand.png",
                             type: "गान मार्तंड",
-                            color: const Color(0xFFD7D7D7),
+                            color: const Color(0xFFFFFFFF),
                             textSize: 14.0,
                             context: context),
                         Events(
                             image: "assets/images/granth_martand.png",
                             type: "ग्रंथ मार्तंड",
-                            color: const Color(0xFFD7D7D7),
+                            color: const Color(0xFFFFFFFF),
                             textSize: 14.0,
                             context: context),
                         Events(
                             image: "assets/images/mantra_martand.png",
                             type: "मंत्र मार्तंड",
-                            color: const Color(0xFFD7D7D7),
+                            color: const Color(0xFFFFFFFF),
                             textSize: 14.0,
                             context: context),
                       ],
@@ -296,26 +294,26 @@ class _HomePageState extends State<HomePage> {
                         Events(
                             image: "assets/images/guru_parampara.png",
                             type: "गुरू परंपरा",
-                            color: const Color(0xFFD7D7D7),
+                            color: const Color(0xFFFFFFFF),
                             textSize: 14.0,
                             context: context),
                         Events(
                             image: "assets/images/shri_sansthan.png",
                             type: "श्री संस्थान",
-                            color: const Color(0xFFD7D7D7),
+                            color: const Color(0xFFFFFFFF),
                             textSize: 14.0,
                             context: context),
                         Events(
                             image: "assets/images/maniknagar.png",
                             type: "माणिकनगर",
-                            color: const Color(0xFFD7D7D7),
+                            color: const Color(0xFFFFFFFF),
                             textSize: 14.0,
                             context: context),
 
                         Events(
                             image: "assets/images/upakram.png",
                             type: "उत्सव",
-                            color: const Color(0xFFD7D7D7),
+                            color: const Color(0xFFFFFFFF),
                             textSize: 14.0,
                             context: context),
 

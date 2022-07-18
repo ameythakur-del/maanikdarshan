@@ -42,7 +42,7 @@ class _SiddhaSudhaState extends State<SiddhaSudha> {
               Slider(
                 value: value,
                 activeColor: const Color(0xFF772200),
-                inactiveColor: const Color(0xFFF79023),
+                inactiveColor: const Color(0xFF808080),
                 onChanged: (double s) {
                   setState(() {
                     value = s;

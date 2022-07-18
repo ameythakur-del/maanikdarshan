@@ -48,8 +48,8 @@ class _manikratnaState extends State<manikratna> {
         physics: ScrollPhysics(),
         child: Column(
           children: <Widget>[
-            Padding(padding: EdgeInsets.all(20), child:
-            Image.asset('assets/images/manikratna_title.png')),
+            // Padding(padding: EdgeInsets.all(20), child:
+            // Image.asset('assets/images/manikratna_title.png')),
             FutureBuilder<List<Data>>(
                 future: getData(),
                 builder: (context, snapshot) {
@@ -78,7 +78,8 @@ class _manikratnaState extends State<manikratna> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
                                 Container(
-                                  padding: EdgeInsets.all(15),
+                                  padding: (index != 0)?
+                                  EdgeInsets.all(15): EdgeInsets.fromLTRB(15, 35, 12, 35),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: new Image.network(
@@ -142,8 +143,8 @@ class _manikratnaState extends State<manikratna> {
                     return Text("${snapshot.error}");
                   }
                   return Column(mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                    CircularProgressIndicator()]);
+                      children: [ Center(child:
+                    CircularProgressIndicator())]);
                 }),
             SizedBox(height: 20,)
           ],

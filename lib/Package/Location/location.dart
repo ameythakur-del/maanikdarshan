@@ -24,7 +24,7 @@ class Location extends StatelessWidget {
       Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(right: 20),
                 child: SizedBox(
                     height: 300,
                     child: GoogleMap(
@@ -50,13 +50,15 @@ class Location extends StatelessWidget {
                     fontWeight: FontWeight.w800),
               )
               ),
+              SizedBox(height: 10,),
+
               Row(
                 children: [
                   ImageIcon(
                     AssetImage("assets/images/Contact/Vector.png"),
                     color: const Color(0xFF630F05),
                   ),
-                  SizedBox(width: 5,),
+                  SizedBox(width: 10,),
                   Text(
                     'माणिकनगर, जिल्हा बिदर (कर्नाटक), पिन कोड - ५८५३५३',
                     style: TextStyle(
@@ -67,13 +69,15 @@ class Location extends StatelessWidget {
                   )
                 ],
               ),
+              SizedBox(height: 10,),
+
               Row(
                 children: [
                   ImageIcon(
                     AssetImage("assets/images/Contact/Vector-2.png"),
                     color: const Color(0xFF630F05),
                   ),
-                  SizedBox(width: 5,),
+                  SizedBox(width: 10,),
                   Text(
                     'maniknagar@gmail.com',
                     style: TextStyle(
@@ -84,13 +88,14 @@ class Location extends StatelessWidget {
                   )
                 ],
               ),
+              SizedBox(height: 10,),
               Row(
                 children: [
                   ImageIcon(
                     AssetImage("assets/images/Contact/Vector-1.png"),
                     color: const Color(0xFF630F05),
                   ),
-                  SizedBox(width: 5,),
+                  SizedBox(width: 10,),
                   Text(
                     '+91-9448469913',
                     style: TextStyle(
@@ -111,7 +116,7 @@ class Location extends StatelessWidget {
                     AssetImage("assets/images/Contact/Vector-3.png"),
                     color: const Color(0xFF630F05),
                   )),
-                  SizedBox(width: 5,),
+                  SizedBox(width: 10,),
                   GestureDetector(onTap: () async {
                     launch('https://www.facebook.com/manikprabhumaharaj');
                   }, child:
@@ -119,7 +124,7 @@ class Location extends StatelessWidget {
                     AssetImage("assets/images/facebook.png"),
                     color: const Color(0xFF630F05),
                   )),
-                  SizedBox(width: 5,),
+                  SizedBox(width: 10,),
                   GestureDetector(onTap: (){
                     launch('https://www.youtube.com/user/manikprabhusamsthan');
                   },child:
