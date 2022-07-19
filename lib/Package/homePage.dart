@@ -198,11 +198,8 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 15,
-                  ),
                   SizedBox(
-                    height: 193,
+                    height: 200,
                     width: double.infinity,
                     child: CarouselSlider.builder(
                       itemCount: container.length,
@@ -218,9 +215,6 @@ class _HomePageState extends State<HomePage> {
                         return container[Index];
                       },
                     ),
-                  ),
-                  const SizedBox(
-                    height: 15,
                   ),
                   BuildIndicator(),
                   const SizedBox(

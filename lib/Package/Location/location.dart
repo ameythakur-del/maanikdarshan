@@ -51,7 +51,6 @@ class Location extends StatelessWidget {
               )
               ),
               SizedBox(height: 10,),
-
               Row(
                 children: [
                   ImageIcon(
@@ -69,7 +68,7 @@ class Location extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 15,),
 
               Row(
                 children: [
@@ -88,7 +87,7 @@ class Location extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 15,),
               Row(
                 children: [
                   ImageIcon(
@@ -106,7 +105,7 @@ class Location extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 15,),
               Row(
                 children: [
                   GestureDetector(onTap: (){

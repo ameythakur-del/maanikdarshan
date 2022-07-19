@@ -16,11 +16,9 @@ class manikratna extends StatefulWidget {
 }
 
 class _manikratnaState extends State<manikratna> {
-
-
   Future<List<Data>> getData() async {
-    var request = http.Request(
-        'GET', Uri.parse('https://manikprabhu.co/wp-json/wp/v2/posts?per_page=100'));
+    var request = http.Request('GET',
+        Uri.parse('https://manikprabhu.co/wp-json/wp/v2/posts?per_page=100'));
     http.StreamedResponse response = await request.send();
 
     var data_response = await http.Response.fromStream(response);
@@ -41,7 +39,8 @@ class _manikratnaState extends State<manikratna> {
         backgroundColor: const Color(0xFF7F1B0E),
         title: Text(
           "माणिकदर्शन",
-          style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w800, fontSize: 24),
+          style: TextStyle(
+              fontFamily: 'Mukta', fontWeight: FontWeight.w800, fontSize: 24),
         ),
       ),
       body: SingleChildScrollView(
@@ -68,85 +67,197 @@ class _manikratnaState extends State<manikratna> {
                             ),
                             color: Color(0xFFE9E9E9),
                             child: GestureDetector(
-                        onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Detail(url: data![index].link.toString())));
-                        },
-                        child:
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  padding: (index != 0)?
-                                  EdgeInsets.all(15): EdgeInsets.fromLTRB(15, 35, 12, 35),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: new Image.network(
-                                      data![index].apiFeatureImage.toString(),
-                                      height: 60,
-                                      width: 80,
-                                      fit: BoxFit.fill,
-                                      alignment: Alignment.centerLeft,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                    child: Padding(padding: EdgeInsets.only(top: 20, bottom: 20), child:
-                                    Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    Text(
-                                      data[index].title!.rendered.toString(),
-                                      overflow: TextOverflow.visible,
-                                      textDirection: TextDirection.ltr,
-                                      strutStyle:
-                                          StrutStyle(fontSize: 20, height: 0.5),
-                                      style: TextStyle(
-                                          fontFamily: 'Mukta',
-                                          fontSize: 24,
-                                          height: 1,
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xFF7F1B0E)),
-                                    ),
-                                    Text(data[index].api_author_name.toString(),
-                                        style: TextStyle(
-                                            fontFamily: 'Mukta',
-                                            height: 1,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600,
-                                            color: Color(0xFF757575)))
-                                  ],
-                                ))),
-                                Container(
-                                    padding: EdgeInsets.all(10),
-                                    child: IconButton(
-                                        alignment: Alignment.centerRight,
-                                        onPressed: () {
-                                         FlutterShare.share(
-                                              title: 'Visit this link',
-                                              linkUrl: data[index].link,
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.share,
-                                          color: Color(0xFF7F1B0E),
-                                        )))
-                              ],
-
-                        )));
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Detail(
+                                              url: data![index]
+                                                  .link
+                                                  .toString())));
+                                },
+                                child: (index == 0)
+                                    ? Stack(
+                                        children: [
+                                          Image.network(data![index]
+                                              .apiFeatureImage
+                                              .toString()),
+                          Positioned.fill(
+                            child: Align(
+                              alignment: Alignment.bottomCenter,
+                                                child: Opacity(
+                                                  opacity: 0.5,
+                                                  child: Container(
+                                                    height: 50,
+                                                    width: MediaQuery.of(context).size.width,
+                                                    color: const Color(0xFF000000))))),
+                          Positioned.fill(
+                            child: Align(
+                              alignment: Alignment.bottomCenter,
+                                                    child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment.end,
+                                                        children: <Widget>[
+                                                          Expanded(
+                                                              child:
+                                                          Padding(
+                                                            padding: EdgeInsets.all(5),
+                                                            child: Text(
+                                                              data[index]
+                                                                  .title!
+                                                                  .rendered
+                                                                  .toString(),
+                                                              overflow:
+                                                                  TextOverflow.visible,
+                                                              textDirection:
+                                                                  TextDirection.ltr,
+                                                              strutStyle: StrutStyle(
+                                                                  fontSize: 20,
+                                                                  height: 0.5),
+                                                              style: TextStyle(
+                                                                  fontFamily: 'Mukta',
+                                                                  fontSize: 24,
+                                                                  height: 1,
+                                                                  fontWeight:
+                                                                      FontWeight.w600,
+                                                                  color: Color(
+                                                                      0xFFFFFFFF)),
+                                                            ),
+                                                          )),
+                                                          Container(
+                                                              alignment: Alignment
+                                                                  .bottomRight,
+                                                              padding:
+                                                                  EdgeInsets.all(5),
+                                                              child: IconButton(
+                                                                  alignment: Alignment
+                                                                      .centerRight,
+                                                                  onPressed: () {
+                                                                    FlutterShare
+                                                                        .share(
+                                                                      title:
+                                                                          'Visit this link',
+                                                                      linkUrl:
+                                                                          data[index]
+                                                                              .link,
+                                                                    );
+                                                                  },
+                                                                  icon: Icon(
+                                                                    Icons.share,
+                                                                    color: Color(
+                                                                        0xFFFFFFFF),
+                                                                  )))
+                                                        ]),
+                                                  ),
+                                                ),
+                                        ],
+                                      )
+                                    : Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          Container(
+                                            padding: EdgeInsets.all(15),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              child: new Image.network(
+                                                data![index]
+                                                    .apiFeatureImage
+                                                    .toString(),
+                                                height: 60,
+                                                width: 80,
+                                                fit: BoxFit.fill,
+                                                alignment: Alignment.centerLeft,
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                              child: Padding(
+                                                  padding: EdgeInsets.only(
+                                                      top: 20, bottom: 20),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: <Widget>[
+                                                      Text(
+                                                        data[index]
+                                                            .title!
+                                                            .rendered
+                                                            .toString(),
+                                                        overflow: TextOverflow
+                                                            .visible,
+                                                        textDirection:
+                                                            TextDirection.ltr,
+                                                        strutStyle: StrutStyle(
+                                                            fontSize: 20,
+                                                            height: 0.5),
+                                                        style: TextStyle(
+                                                            fontFamily: 'Mukta',
+                                                            fontSize: 24,
+                                                            height: 1,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            color: Color(
+                                                                0xFF7F1B0E)),
+                                                      ),
+                                                      Text(
+                                                          data[index]
+                                                              .api_author_name
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  'Mukta',
+                                                              height: 1,
+                                                              fontSize: 14,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color: Color(
+                                                                  0xFF757575)))
+                                                    ],
+                                                  ))),
+                                          Container(
+                                              padding: EdgeInsets.all(10),
+                                              child: IconButton(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  onPressed: () {
+                                                    FlutterShare.share(
+                                                      title: 'Visit this link',
+                                                      linkUrl: data[index].link,
+                                                    );
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.share,
+                                                    color: Color(0xFF7F1B0E),
+                                                  )))
+                                        ],
+                                      )));
                       },
                     );
                   } else if (snapshot.hasError) {
                     return Text("${snapshot.error}");
                   }
-                  return Column(mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.center,
-                      children: [ Center(child:
-                    CircularProgressIndicator())]);
+                  return Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [Center(child: CircularProgressIndicator())]);
                 }),
-            SizedBox(height: 20,)
+            SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),
