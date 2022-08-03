@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:maanikdarshan/Package/Location/location.dart';
 import 'package:maanikdarshan/Package/Notifications/notifications.dart';
 import 'package:maanikdarshan/Package/Profile/Profile.dart';
@@ -12,6 +14,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'Authentication/login.dart';
 import 'Widgets/Events.dart';
+import 'Widgets/ListCard.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,13 +27,23 @@ class _HomePageState extends State<HomePage> {
   late final List<Widget> container;
   int activeIndex = 0;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  CollectionReference collectionReference =
+      FirebaseFirestore.instance.collection('Social Media');
+  late QuerySnapshot result;
+  late List<dynamic?> data;
+  bool doc = false;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-
+    collectionReference.get().then((snapshot) {
+      data = snapshot.docs;
+      setState(() {
+        doc = true;
+      });
+    });
 
     setState(() {
       firebaseAuth = FirebaseAuth.instance;
@@ -93,7 +106,6 @@ class _HomePageState extends State<HomePage> {
             },
             child: Icon(Icons.notifications)),
         actions: <Widget>[
-          ImageIcon(AssetImage('assets/images/search.png'), color: Colors.white,),
           PopupMenuButton(
               onSelected: onSelect,
               itemBuilder: (BuildContext context) => [
@@ -149,29 +161,30 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     PopupMenuItem(
-                      value: 'Logout',
-                      child: ListTile(
-                        leading: ImageIcon(
-                          AssetImage("assets/images/logout.png"),
-                          color: const Color(0xFF7F1B0E),
-                        ),
-                        title: (firebaseAuth != null)?
-                        Text(
-                          'Logout',
-                          style: TextStyle(
-                              color: const Color(0xFF7F1B0E),
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Mukta'),
-                        ): Text(
-                            'Login',
-                            style: TextStyle(
-                                color: const Color(0xFF7F1B0E),
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mukta'),
-                      ),
-                    )),
+                        value: 'Logout',
+                        child: ListTile(
+                          leading: ImageIcon(
+                            AssetImage("assets/images/logout.png"),
+                            color: const Color(0xFF7F1B0E),
+                          ),
+                          title: (firebaseAuth != null)
+                              ? Text(
+                                  'Logout',
+                                  style: TextStyle(
+                                      color: const Color(0xFF7F1B0E),
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Mukta'),
+                                )
+                              : Text(
+                                  'Login',
+                                  style: TextStyle(
+                                      color: const Color(0xFF7F1B0E),
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Mukta'),
+                                ),
+                        )),
                   ]
               // {
               //   return myMenuItems.map((String choice) {
@@ -195,8 +208,8 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
+              padding: const EdgeInsets.all(10.0),
+              child: Stack(
                 children: [
                   SizedBox(
                     height: 200,
@@ -216,17 +229,21 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                   ),
-                  BuildIndicator(),
-                  const SizedBox(
-                    height: 15,
+                  Positioned.fill(
+                    child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(padding: EdgeInsets.all(20),
+                        child:BuildIndicator()),
+                    ),
                   ),
+
                 ],
               ),
             ),
             Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18)),
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(18)),
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
                 child: Column(
                   children: [
                     Row(children: [
@@ -340,6 +357,77 @@ class _HomePageState extends State<HomePage> {
             //   ),
             // ),
 
+            Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Text('Latest Updates',
+                    style: TextStyle(
+                        fontFamily: 'Mukta',
+                        fontWeight: FontWeight.w800,
+                        fontSize: 20,
+                        color: const Color(0xFF69160B)))),
+            (doc == true)?
+           ListView.builder(
+               physics: ScrollPhysics(),
+                      itemCount: data?.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
+                          child: Column(
+                            children: [
+                              Text(
+                                data![index]['Description'],
+                                style: GoogleFonts.inter(textStyle:
+                                TextStyle(
+                                    color: const Color(0xFF5E5E5E),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400)),
+                              ),
+                              SizedBox(height: 5,),
+                              Image.network(data![index]['Image']),
+                              SizedBox(height: 10,),
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                    padding: EdgeInsets.only(
+                                        left: 50,
+                                        right: 50,
+                                        top: 10,
+                                        bottom: 10),
+                                    primary: Colors.white,
+                                    backgroundColor:
+                                        const Color(0xFF7F1B0E), // foreground
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(75.0),
+                                        side: BorderSide.none)),
+                                onPressed: () async {
+                                  try {
+                                    bool launched = await launch(
+                                        data![index]['URL'],
+                                        forceSafariVC: false);
+
+                                    if (!launched) {
+                                      await launch(data![index]['URL'],
+                                          forceSafariVC: false);
+                                    }
+                                  } catch (e) {
+                                    await launch(data![index]['URL'],
+                                        forceSafariVC: false);
+                                  }
+                                },
+                                child: Text(
+                                  'View',
+                                  style: TextStyle(
+                                      fontSize: 19,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }):Container(),
+
+
             SizedBox(
               height: 100,
             )
@@ -375,12 +463,12 @@ class _HomePageState extends State<HomePage> {
       effect: const SlideEffect(
           spacing: 8.0,
           radius: 8.0,
-          dotWidth: 12.0,
-          dotHeight: 12.0,
+          dotWidth: 10.0,
+          dotHeight: 10.0,
           paintStyle: PaintingStyle.stroke,
           strokeWidth: 1.5,
-          dotColor: Colors.grey,
-          activeDotColor: Color.fromRGBO(142, 49, 12, 1)),
-    );
+          dotColor: Colors.white,
+          activeDotColor: Colors.white,
+    ));
   }
 }

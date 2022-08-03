@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class MartandsModel extends StatefulWidget {
   final String text;
-  final String title;
+  final String title, audio;
   final double size;
-  const MartandsModel({Key? key, required this.text, required this.title, required this.size})
+  const MartandsModel({Key? key, required this.text, required this.title, required this.size, required this.audio})
       : super(key: key);
 
   @override
@@ -45,8 +45,10 @@ class _MartandsModelState extends State<MartandsModel> {
 
   Future setAudio() async {
     //Repeat song when completed
-    String url = "http://sahitya.manikprabhu.org/gaanmartand/audio_prabhu/prabhu%20vin%20kon.mp3";
-    audioplayer.setSourceUrl(url);
+    if(widget.audio != "") {
+      String url = widget.audio;
+      audioplayer.setSourceUrl(url);
+    }
   }
 
   @override
@@ -91,6 +93,7 @@ class _MartandsModelState extends State<MartandsModel> {
                   textAlign: TextAlign.center,
                 ),
               )),
+          (widget.audio != "")?
           Container(
             padding: EdgeInsets.all(10),
             margin: EdgeInsets.only(left: 20, right: 20),
@@ -127,7 +130,7 @@ class _MartandsModelState extends State<MartandsModel> {
                     await audioplayer.resume();
                   })
             ]),
-          )
+          ):Container()
         ]);
   }
 // =======

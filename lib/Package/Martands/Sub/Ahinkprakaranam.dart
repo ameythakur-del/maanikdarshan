@@ -2,8 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:maanikdarshan/Package/Widgets/ListCard.dart';
 import 'package:maanikdarshan/components/customAppBar.dart';
-import 'package:maanikdarshan/components/customListTile.dart';
-import 'package:maanikdarshan/components/displayText.dart';
 
 
 class Ahinkprakaranam extends StatelessWidget {

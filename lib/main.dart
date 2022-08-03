@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:maanikdarshan/Package/GuruParampara/guruParampara.dart';
 import 'package:maanikdarshan/Package/ManikDarshan/manikratna.dart';
@@ -58,8 +59,53 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
+
+Future _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print("Handling a background message: ${message.messageId}");
+}
+
 class MyApp extends StatelessWidget {
+  late final FirebaseMessaging _messaging;
   MyApp({Key? key}) : super(key: key);
+
+  void registerNotification() async {
+    // 1. Initialize the Firebase app
+    await Firebase.initializeApp();
+
+    // 2. Instantiate Firebase Messaging
+    _messaging = FirebaseMessaging.instance;
+
+    // 3. On iOS, this helps to take the user permissions
+    NotificationSettings settings = await _messaging.requestPermission(
+      alert: true,
+      badge: true,
+      provisional: false,
+      sound: true,
+    );
+
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      print('User granted permission');
+      // TODO: handle the received notifications
+    } else {
+      print('User declined or has not accepted permission');
+    }
+
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+    final fcmToken = await FirebaseMessaging.instance.getToken(vapidKey: "AAAA7ILyUhU:APA91bFTCrm5Ie3EQTeS7Z6-e1pAzE0LekXDCUw6V9rPqAspgSuihzVbwIUUMLQzet-1fIZUwSNj1YRry7dQiZP5RDaICwQ_rOQkB-w6DUZJce-QNQQXZS5KIAJ2XHLfuCEom9WkxvcnURxgITx0L63GSPyjDgvAKQ");
+    FirebaseMessaging.instance.onTokenRefresh
+        .listen((fcmToken) {
+
+          print("aali amey");
+
+    })
+        .onError((err) {
+      print("aali error");
+    });
+
+    await FirebaseMessaging.instance.subscribeToTopic("test");
+  }
+
 
   // This widget is the root of your application.
   @override

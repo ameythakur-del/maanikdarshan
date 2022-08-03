@@ -55,10 +55,15 @@ class _BodhaMartandState extends State<BodhaMartand> {
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: data.length,
                   itemBuilder: (context, index) {
+                    String audio = "";
+                    if(data[index]['audio'] != null){
+                      audio = data[index]['audio'];
+                    }
                     return MartandsModel(
                       title: data[index]["title"],
                       text: data[index]['text'].replaceAll("\\n", "\n"),
                       size: value,
+                      audio: audio,
                     );
                   })])));
   }
