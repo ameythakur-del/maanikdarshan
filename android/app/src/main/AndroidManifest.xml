@@ -38,7 +38,7 @@
            android:value="AIzaSyAqc54KgqG7D0P5_9XKLGwBCGAY7PglJkQ"/>
 
        <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id"
-           android:value="app_channel"/>
+       android:value="app_channel"/>
 
        <meta-data
            android:name="firebase_messaging_auto_init_enabled"

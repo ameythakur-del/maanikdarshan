@@ -96,14 +96,12 @@ class MyApp extends StatelessWidget {
     FirebaseMessaging.instance.onTokenRefresh
         .listen((fcmToken) {
 
-          print("aali amey");
-
     })
         .onError((err) {
-      print("aali error");
     });
 
-    await FirebaseMessaging.instance.subscribeToTopic("test");
+    _messaging.subscribeToTopic("test");
+
   }
 
 

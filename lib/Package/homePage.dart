@@ -389,10 +389,10 @@ class _HomePageState extends State<HomePage> {
                               TextButton(
                                 style: TextButton.styleFrom(
                                     padding: EdgeInsets.only(
-                                        left: 50,
-                                        right: 50,
-                                        top: 10,
-                                        bottom: 10),
+                                        left: 40,
+                                        right: 40,
+                                        top: 5,
+                                        bottom: 5),
                                     primary: Colors.white,
                                     backgroundColor:
                                         const Color(0xFF7F1B0E), // foreground
@@ -427,10 +427,6 @@ class _HomePageState extends State<HomePage> {
                         );
                       }):Container(),
 
-
-            SizedBox(
-              height: 100,
-            )
           ],
         ),
       ),
