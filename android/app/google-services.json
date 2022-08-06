@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1015809200661-eli7p0c0l7do0i99idhdf4ou0dk27st1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.maanikdarshan",
+            "certificate_hash": "2fc9a68df10589a6a3c81f6332e8673a5c1a5358"
+          }
+        },
+        {
           "client_id": "1015809200661-kcsmukc1ru9db9h0rp2074d4pdba1v7e.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -60,6 +68,14 @@
           "android_info": {
             "package_name": "com.manikinfotech.manikdarshan",
             "certificate_hash": "9b8dcdfd49e4e4730f23096dcbb9c840ecc053fd"
+          }
+        },
+        {
+          "client_id": "1015809200661-fg87bls0vku8arubt05a9crimoooddau.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.manikinfotech.manikdarshan",
+            "certificate_hash": "2fc9a68df10589a6a3c81f6332e8673a5c1a5358"
           }
         },
         {
