@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:maanikdarshan/Package/GuruParampara/guruParampara.dart';
 import 'package:maanikdarshan/Package/ManikDarshan/manikratna.dart';
 import 'package:maanikdarshan/Package/ManikNagar/maniknagar.dart';
@@ -48,9 +49,105 @@ import 'Package/Authentication/login.dart';
 import 'Package/Martands/MantraMartand.dart';
 
 bool isLoggedIn = false;
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
+
+  // ====== FCM ========
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    "MANIK_APP_ID",
+    "MANIK_APP_NOTIF_NAME",
+    importance: Importance.high,
+    playSound: true,
+    enableLights: true,
+  );
+
+  Future onClickNotification(String? payload) async {
+    if (payload != null)
+    {
+      // Do something
+    }
+  }
+
+  var androidSettings = const AndroidInitializationSettings('ic_launcher');
+  var iOSSettings = const IOSInitializationSettings(
+    requestSoundPermission: false,
+    requestBadgePermission: false,
+    requestAlertPermission: false,
+  );
+
+  var initSettings = InitializationSettings(android: androidSettings, iOS: iOSSettings);
+
+  await _flutterLocalNotificationsPlugin.initialize(initSettings,
+      onSelectNotification: onClickNotification);
+
+  FirebaseMessaging.onBackgroundMessage((message) => _firebaseMessagingBackgroundHandler(message, _flutterLocalNotificationsPlugin));
+
+  await _flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+
+  await messaging
+      .setForegroundNotificationPresentationOptions(
+      alert: true, badge: true, sound: true);
+
+
+  NotificationSettings settings = await messaging.requestPermission(
+    alert: true,
+    announcement: false,
+    badge: true,
+    carPlay: false,
+    criticalAlert: false,
+    provisional: false,
+    sound: true,
+  );
+
+  print('User granted permission: ${settings.authorizationStatus}');
+
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    print('Got a message whilst in the foreground!');
+    // print('Message data: ${message.data}');
+    //
+    // if (message.notification != null) {
+    //   print('Message also contained a notification: ${message.notification}');
+    // }
+
+    RemoteNotification? notification = message.notification;
+    AndroidNotification? androidNotification = message.notification!.android;
+    print(message.data);
+    if (notification != null && androidNotification != null) {
+      _flutterLocalNotificationsPlugin.show(
+        notification.hashCode,
+        notification.title,
+        notification.body,
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+            channel.id,
+            channel.name,
+            channelDescription: channel.description,
+            playSound: true,
+            icon: "@mipmap/ic_launcher",
+            largeIcon: const DrawableResourceAndroidBitmap("ic_launcher"),
+          ),
+        ),
+      );
+    }
+
+  });
+
+  //FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  // subscribe to topic on each app start-up
+  await messaging.subscribeToTopic('MANIK_APP');
+
+  // ======= FCM ========
+
 
   if (FirebaseAuth.instance.currentUser != null) {
     isLoggedIn = true;
@@ -60,49 +157,42 @@ Future<void> main() async {
 }
 
 
-Future _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message, FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin) async {
+  await Firebase.initializeApp();
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    "MANIK_APP_ID",
+    "MANIK_APP_NOTIF_NAME",
+    importance: Importance.high,
+    playSound: true,
+    enableLights: true,
+  );
+  RemoteNotification? notification = message.notification;
+  AndroidNotification? androidNotification = message.notification!.android;
+  print(message.data);
+  if (notification != null && androidNotification != null) {
+    _flutterLocalNotificationsPlugin.show(
+      notification.hashCode,
+      notification.title,
+      notification.body,
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          channel.id,
+          channel.name,
+          channelDescription: channel.description,
+          playSound: true,
+          icon: "@mipmap/ic_launcher",
+          largeIcon: const DrawableResourceAndroidBitmap("ic_launcher"),
+        ),
+      ),
+    );
+  }
   print("Handling a background message: ${message.messageId}");
+
 }
 
 class MyApp extends StatelessWidget {
-  late final FirebaseMessaging _messaging;
+  //late final FirebaseMessaging _messaging;
   MyApp({Key? key}) : super(key: key);
-
-  void registerNotification() async {
-    // 1. Initialize the Firebase app
-    await Firebase.initializeApp();
-
-    // 2. Instantiate Firebase Messaging
-    _messaging = FirebaseMessaging.instance;
-
-    // 3. On iOS, this helps to take the user permissions
-    NotificationSettings settings = await _messaging.requestPermission(
-      alert: true,
-      badge: true,
-      provisional: false,
-      sound: true,
-    );
-
-    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      print('User granted permission');
-      // TODO: handle the received notifications
-    } else {
-      print('User declined or has not accepted permission');
-    }
-
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-    final fcmToken = await FirebaseMessaging.instance.getToken(vapidKey: "AAAA7ILyUhU:APA91bFTCrm5Ie3EQTeS7Z6-e1pAzE0LekXDCUw6V9rPqAspgSuihzVbwIUUMLQzet-1fIZUwSNj1YRry7dQiZP5RDaICwQ_rOQkB-w6DUZJce-QNQQXZS5KIAJ2XHLfuCEom9WkxvcnURxgITx0L63GSPyjDgvAKQ");
-    FirebaseMessaging.instance.onTokenRefresh
-        .listen((fcmToken) {
-
-    })
-        .onError((err) {
-    });
-
-    _messaging.subscribeToTopic("test");
-
-  }
 
 
   // This widget is the root of your application.
