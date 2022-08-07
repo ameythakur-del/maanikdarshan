@@ -44,6 +44,7 @@ import 'package:maanikdarshan/Package/ShriSansthan.dart';
 import 'package:maanikdarshan/Package/SplashScreen.dart';
 import 'package:maanikdarshan/Package/Utsav/Utsav.dart';
 import 'package:maanikdarshan/Package/homePage.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'Package/Authentication/login.dart';
 import 'Package/Martands/MantraMartand.dart';
@@ -68,9 +69,10 @@ Future<void> main() async {
   );
 
   Future onClickNotification(String? payload) async {
+    print("Amey" + payload!);
     if (payload != null)
     {
-      // Do something
+
     }
   }
 
@@ -271,7 +273,7 @@ class MyApp extends StatelessWidget {
         '/श्रीप्रभुचरित्र': (context) => SHRIPRABHUCHARITRA(),
         '/साधना प्रदीप': (context) => SADHANAPRADEEP(),
         '/श्रीमाणिकनगरक्षेत्र माहात्म्य': (context) => KSHETRAMAHATMYA(),
-        '/माणिकरत्न': (context) => manikratna()
+        '/माणिकरत्न': (context) => manikratna(),
       },
     );
   }

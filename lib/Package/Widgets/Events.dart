@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Events extends StatelessWidget {
 
@@ -17,7 +18,18 @@ class Events extends StatelessWidget {
         child: Material(
           child: InkWell(
             onTap: () {
-              Navigator.of(context).pushNamed("/" + type);
+              if(type == "डोनेशन"){
+                launch('https://manikprabhu.org/donation');
+              }
+              else if(type == 'ई सेवा'){
+                launch('https://manikprabhu.org/product-category/eseva/');
+              }
+              else if(type == 'ई-स्टोर'){
+                launch('https://manikprabhu.org/product-category/estore/');
+              }
+              else {
+                Navigator.of(context).pushNamed("/" + type);
+              }
             },
             child: Container(color: color, child:
             Column(
