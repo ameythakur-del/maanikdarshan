@@ -5,7 +5,7 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../homePage.dart';
+import '../../main.dart';
 
 class OTP extends StatefulWidget {
   final String name, phone;

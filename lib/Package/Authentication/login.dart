@@ -5,7 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:maanikdarshan/Package/Authentication/OTP.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:maanikdarshan/Package/homePage.dart';
+
+import '../../main.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
