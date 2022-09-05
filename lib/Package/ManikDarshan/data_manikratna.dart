@@ -18,8 +18,8 @@ class Data {
     id = json['id'];
     link = json['link'];
     title = json['title'] != null ? new Guid.fromJson(json['title']) : null;
-    apiFeatureImage = json['api_feature_image'];
-    api_author_name = json['api_author_name'];
+    apiFeatureImage = json['jetpack_featured_media_url'];
+    api_author_name = json['date'];
   }
 
   Map<String, dynamic> toJson() {
@@ -29,8 +29,8 @@ class Data {
     if (this.title != null) {
       data1['title'] = this.title!.toJson();
     }
-    data1['api_feature_image'] = this.apiFeatureImage;
-    data1['api_author_name'] = this.api_author_name;
+    data1['jetpack_featured_media_url'] = this.apiFeatureImage;
+    data1['date'] = this.api_author_name;
     return data1;
   }
 }

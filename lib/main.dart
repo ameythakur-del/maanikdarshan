@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:maanikdarshan/Package/GuruParampara/guruParampara.dart';
+import 'package:maanikdarshan/Package/ManikDarshan/Detail.dart';
 import 'package:maanikdarshan/Package/ManikDarshan/manikratna.dart';
 import 'package:maanikdarshan/Package/ManikNagar/maniknagar.dart';
 import 'package:maanikdarshan/Package/Martands/GanMartand.dart';
@@ -169,7 +170,7 @@ Future<void> main() async {
   //FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   // subscribe to topic on each app start-up
-  await messaging.subscribeToTopic('MANIK_APP');
+  await messaging.subscribeToTopic('MANIK_APP_2');
 
   // ======= FCM ========
 
@@ -330,7 +331,7 @@ class _HomePageState extends State<HomePage> {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
       if (notification != null && android != null) {
-        print("body2 " + notification.body.toString());
+        print("body2 " + message.data['url'].toString());
         _flutterLocalNotificationsPlugin.show(
             notification.hashCode,
             notification.title,
@@ -344,6 +345,19 @@ class _HomePageState extends State<HomePage> {
                 icon: '@mipmap/ic_launcher',
               ),
             ));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Detail(
+                    url: message.data['url'].toString()
+                )));
+      }
+      else{
+        print("body " + message.data['url'].toString());
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => manikratna()));
       }
     });
 
@@ -352,7 +366,20 @@ class _HomePageState extends State<HomePage> {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
       if (notification != null && android != null) {
-        print("body " + notification.body.toString());
+        print("body " + message.data['url'].toString());
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Detail(
+                    url: message.data['url'].toString()
+        )));
+      }
+      else{
+        print("body " + message.data['url'].toString());
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => manikratna()));
       }
     });
 
@@ -417,12 +444,6 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        leading: GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Notifications()));
-            },
-            child: Icon(Icons.notifications)),
         actions: <Widget>[
           PopupMenuButton(
               onSelected: onSelect,
@@ -543,7 +564,15 @@ class _HomePageState extends State<HomePage> {
                         enlargeCenterPage: true,
                       ),
                       itemBuilder: (BuildContext context, int Index, int page) {
-                        return container[Index];
+                        return GestureDetector(onTap: (){
+                          if(Index == 0){
+                            Navigator.of(context).pushNamed("/माणिकनगर");
+                          }
+                          else{
+                            launch("https://manikprabhu.org/product-category/eseva/");
+                          }
+                        },child:
+                          container[Index]);
                       },
                     ),
                   ),

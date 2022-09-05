@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:maanikdarshan/Package/ManikDarshan/Detail.dart';
 import 'package:maanikdarshan/Package/ManikDarshan/data_manikratna.dart';
 import 'package:flutter_share/flutter_share.dart';
+import 'package:intl/intl.dart';
 
 class manikratna extends StatefulWidget {
   const manikratna({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class _manikratnaState extends State<manikratna> {
         centerTitle: true,
         backgroundColor: const Color(0xFF7F1B0E),
         title: Text(
-          "माणिकदर्शन",
+          "माणिकरत्न",
           style: TextStyle(
               fontFamily: 'Mukta', fontWeight: FontWeight.w800, fontSize: 24),
         ),
@@ -111,8 +112,6 @@ class _manikratnaState extends State<manikratna> {
                                                                   .toString(),
                                                               overflow:
                                                                   TextOverflow.visible,
-                                                              textDirection:
-                                                                  TextDirection.ltr,
                                                               strutStyle: StrutStyle(
                                                                   fontSize: 20,
                                                                   height: 0.5),
@@ -171,8 +170,8 @@ class _manikratnaState extends State<manikratna> {
                                                     .apiFeatureImage
                                                     .toString(),
                                                 height: 60,
-                                                width: 80,
-                                                fit: BoxFit.fill,
+                                                width: 60,
+                                                fit: BoxFit.fitHeight,
                                                 alignment: Alignment.centerLeft,
                                               ),
                                             ),
@@ -198,24 +197,23 @@ class _manikratnaState extends State<manikratna> {
                                                             .toString(),
                                                         overflow: TextOverflow
                                                             .visible,
-                                                        textDirection:
-                                                            TextDirection.ltr,
                                                         strutStyle: StrutStyle(
                                                             fontSize: 20,
                                                             height: 0.5),
                                                         style: TextStyle(
                                                             fontFamily: 'Mukta',
-                                                            fontSize: 24,
+                                                            fontSize: 18,
                                                             height: 1,
                                                             fontWeight:
                                                                 FontWeight.w600,
                                                             color: Color(
                                                                 0xFF7F1B0E)),
                                                       ),
+                                                      SizedBox(height: 10,),
                                                       Text(
-                                                          data[index]
+                                                          (data[index]
                                                               .api_author_name
-                                                              .toString(),
+                                                              .toString().split('T'))[0],
                                                           style: TextStyle(
                                                               fontFamily:
                                                                   'Mukta',

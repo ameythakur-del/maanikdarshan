@@ -57,7 +57,7 @@ class kasePochave extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: const Color(0xFF630F05),
             ),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.justify,
           ))
         ])));
   }

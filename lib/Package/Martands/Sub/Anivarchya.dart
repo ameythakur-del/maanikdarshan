@@ -35,21 +35,22 @@ class _AnivarchyaState extends State<Anivarchya> {
         ),
         body: isLoading? Center(child:
         CircularProgressIndicator(),):
+            Column(children: [Slider(
+              value: value,
+              activeColor: const Color(0xFF772200),
+              inactiveColor: const Color(0xFF808080),
+              onChanged: (double s) {
+                setState(() {
+                  value = s;
+                });
+              },
+              divisions: 10,
+              min: 15.0,
+              max: 30.0,
+            ),
+        Expanded(child:
         SingleChildScrollView(
             child: Column(children: [
-              Slider(
-                value: value,
-                activeColor: const Color(0xFF772200),
-                inactiveColor: const Color(0xFF808080),
-                onChanged: (double s) {
-                  setState(() {
-                    value = s;
-                  });
-                },
-                divisions: 10,
-                min: 15.0,
-                max: 30.0,
-              ),
               ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
@@ -65,7 +66,7 @@ class _AnivarchyaState extends State<Anivarchya> {
                       size: value,
                       audio: audio,
                     );
-                  })])));
+                  })])))],));
   }
   Future<void> getData() async {
     CollectionReference users =

@@ -29,7 +29,7 @@ class dinCharya extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                   color: const Color(0xFF630F05),
                 ),
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.justify,
               ))
             ])));
   }

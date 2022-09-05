@@ -40,7 +40,7 @@ class ShriSanthan extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 )),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 150, right: 150),
@@ -59,7 +59,7 @@ class ShriSanthan extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 )),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 150, right: 150),
@@ -90,7 +90,7 @@ class ShriSanthan extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 )),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
@@ -117,7 +117,7 @@ class ShriSanthan extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 )),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 150, right: 150),
@@ -147,7 +147,7 @@ class ShriSanthan extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 )),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 150, right: 150),
@@ -177,7 +177,7 @@ class ShriSanthan extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 )),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 150, right: 150),
@@ -208,7 +208,7 @@ class ShriSanthan extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 )),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
@@ -224,7 +224,7 @@ class ShriSanthan extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 )),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
@@ -239,7 +239,7 @@ class ShriSanthan extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 )),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
@@ -254,7 +254,7 @@ class ShriSanthan extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 )),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 150, right: 150),
@@ -285,7 +285,7 @@ class ShriSanthan extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 )),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 150, right: 150),
@@ -315,7 +315,7 @@ class ShriSanthan extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF630F05),
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 )),
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10, left: 150, right: 150),

@@ -29,38 +29,37 @@ class _MantraDocumentsState extends State<MantraDocuments> {
   @override
   void initState() {
     super.initState();
-
-    setAudio();
-
-    audioplayer.onPlayerStateChanged.listen((state) {
-      setState(() {
-        isPlyaing = state == PlayerState.playing;
-      });
-    });
-
-    audioplayer.onDurationChanged.listen((newDuration) {
-      setState(() {
-        duration = newDuration as Duration;
-      });
-    });
-
-    audioplayer.onPositionChanged.listen((newPosition) {
-      setState(() {
-        position = newPosition;
-      });
-    });
-  }
-
-  Future setAudio() async {
-    //Repeat song when completed
-    String url = widget.val;
-    audioplayer.setSourceUrl(url);
   }
 
   @override
   void dispose() {
     audioplayer.dispose();
     super.dispose();
+  }
+
+  Future setAudio(String u) async {
+    //Repeat song when completed
+    audioplayer.setSourceUrl(u);
+
+    audioplayer.onDurationChanged.listen((newDuration) {
+      print("new duration " + newDuration.toString());
+      setState(() {
+        duration = newDuration as Duration;
+      });
+    });
+    audioplayer.onPlayerStateChanged.listen((state) {
+      print("new state " + state.toString());
+      setState(() {
+        isPlyaing = state == PlayerState.playing;
+      });
+    });
+
+    audioplayer.onPositionChanged.listen((newPosition) {
+      print("new position " + newPosition.toString());
+      setState(() {
+        position = newPosition;
+      });
+    });
   }
 
   String formatTime(Duration duration) {
@@ -90,22 +89,22 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                 color: Colors.white),
           ),
         ),
-        body: SingleChildScrollView(
-            child: Column(
-          children: [
-            Slider(
-              value: value,
-              activeColor: const Color(0xFF772200),
-              inactiveColor: const Color(0xFF808080),
-              onChanged: (double s) {
-                setState(() {
-                  value = s;
-                });
-              },
-              divisions: 10,
-              min: 15.0,
-              max: 30.0,
-            ),
+        body: Column(children: [  Slider(
+          value: value,
+          activeColor: const Color(0xFF772200),
+          inactiveColor: const Color(0xFF808080),
+          onChanged: (double s) {
+            setState(() {
+              value = s;
+            });
+          },
+          divisions: 10,
+          min: 15.0,
+          max: 30.0,
+        ),
+          Expanded(
+            child:   SingleChildScrollView(
+          child:
             ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
@@ -117,29 +116,42 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                       widget.val[index]['text'],
                       style: TextStyle(
                           fontSize: 24,
-                          fontFamily: 'Mukta',
+                          fontFamily: 'Manik',
                           color: const Color(0xFFA30808),
                           fontWeight: FontWeight.w800),
                       textAlign: TextAlign.center,
                     ));
                   } else if (widget.val[index]['type'] == 'description') {
-                    return Padding(
-                        padding: EdgeInsets.only(top: 10),
+                    return (widget.title.contains("आरती") || widget.title.contains("भजन"))?Padding(
+                        padding: EdgeInsets.only(top: 10, left:30, right: 30),
                         child: Center(
                           child: Text(
                             widget.val[index]['text'].replaceAll('\\n', '\n'),
                             style: TextStyle(
                                 color: const Color(0xFF393939), fontSize: value, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
-                            textAlign: TextAlign.center,
+                            textAlign: TextAlign.justify,
+                          ),
+                        )):
+                      Padding(
+                        padding: EdgeInsets.only(top: 10, left:30, right: 30),
+                        child: Center(
+                          child: Text(
+                            widget.val[index]['text'].replaceAll('\\n', '\n'),
+                            style: TextStyle(
+                                color: const Color(0xFF393939), fontSize: value, fontFamily: 'Manik', fontWeight: FontWeight.w600),
+                            textAlign: TextAlign.justify,
                           ),
                         ));
                   }
+                  else{
+                    setAudio(widget.val[index]['text']);
+
                   return   Container(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                     margin: EdgeInsets.only(left: 20, right: 20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(51),
-                      color: Color(0xFF7F1B0E),
+                      color: Color(0xFF808080),
                     ),
                     child: Row(children: <Widget>[
                       IconButton(
@@ -171,8 +183,7 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                           })
                     ]),
                   );
-                })
-          ],
-        )));
+                }})
+        ))],));
   }
 }

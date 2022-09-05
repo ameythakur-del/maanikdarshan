@@ -29,7 +29,7 @@ class Aawas extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: const Color(0xFF630F05),
             ),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.justify,
           )),
       Center(
           child: Text(
@@ -54,7 +54,7 @@ class Aawas extends StatelessWidget {
           fontWeight: FontWeight.w400,
           color: const Color(0xFF630F05),
         ),
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.justify,
       ),
           SizedBox(height: 10,),
           Center(
@@ -78,7 +78,7 @@ class Aawas extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: const Color(0xFF630F05),
             ),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.justify,
           ),
           SizedBox(height: 10,),
           Center(
@@ -102,7 +102,7 @@ class Aawas extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: const Color(0xFF630F05),
             ),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.justify,
           ),
           SizedBox(height: 10,),
           Text(
@@ -113,7 +113,7 @@ class Aawas extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: const Color(0xFF630F05),
             ),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.justify,
           ),
     ]))));
   }
