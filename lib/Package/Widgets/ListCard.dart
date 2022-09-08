@@ -26,20 +26,25 @@ class ListCard extends StatelessWidget {
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(11.0),
-          color: const Color(0xFF9D2A1B)),
+          color: const Color(0xFFE9E9E9)),
       child:
      Row(
           mainAxisSize: MainAxisSize.max,
           children: [
             SizedBox(width: 50,),
+            (image == 'assets/images/listIcon.png')?
             Image.asset(
               image,
+              width: 15,
+              height: 15,
+            ):Image.asset(
+              image,
+              width: 29,
               height: 29,
             ),
             SizedBox(
               width: 10,
             ),
-
             Text(
               text,
               textAlign: TextAlign.center,
@@ -47,7 +52,7 @@ class ListCard extends StatelessWidget {
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
                   fontFamily: 'Mukta',
-                  color: Colors.white),
+                  color: const Color(0xFF9D2A1B)),
             )
           ],
         ),

@@ -13,7 +13,8 @@ class MartandsModel extends StatefulWidget {
 }
 
 class _MartandsModelState extends State<MartandsModel> {
-  final audioplayer = AudioPlayer();
+  AudioPlayer audioplayer = AudioPlayer();
+  AudioCache audioCache = AudioCache();
   bool isPlyaing = false;
   Duration duration = Duration.zero;
   Duration position = Duration.zero;
@@ -21,8 +22,6 @@ class _MartandsModelState extends State<MartandsModel> {
   @override
   void initState() {
     super.initState();
-
-    setAudio();
 
     audioplayer.onPlayerStateChanged.listen((state) {
       setState(() {
@@ -32,22 +31,26 @@ class _MartandsModelState extends State<MartandsModel> {
 
     audioplayer.onDurationChanged.listen((newDuration) {
       setState(() {
-        duration = newDuration as Duration;
-      });
+      duration = newDuration;
+    });
     });
 
     audioplayer.onPositionChanged.listen((newPosition) {
-      setState(() {
-        position = newPosition;
-      });
+    setState(() {
+    position = newPosition;
     });
+    });
+
+    setAudio();
+
   }
 
   Future setAudio() async {
     //Repeat song when completed
-    if(widget.audio != "") {
-      String url = widget.audio;
-      audioplayer.setSourceUrl(url);
+    if (widget.audio != "") {
+      audioplayer.setSource(UrlSource(widget.audio)).then((value) {
+        audioplayer.getDuration().then((value) => print("amey " + value!.inSeconds.toString()));
+      });
     }
   }
 
@@ -84,23 +87,24 @@ class _MartandsModelState extends State<MartandsModel> {
                 textAlign: TextAlign.center,
               )),
           Padding(
-              padding: EdgeInsets.only(top: 10),
+              padding: EdgeInsets.only(top: 10, left:30, right: 30),
               child: Center(
                 child: Text(
                   widget.text,
                   style: TextStyle(
                       color: const Color(0xFF393939), fontSize: widget.size, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 ),
               )),
           (widget.audio != "")?
           Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.only(left: 10, top: 10, bottom: 10),
             margin: EdgeInsets.only(left: 20, right: 20),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(51),
-              color: Color(0xFF7F1B0E),
+              color: Color(0xFF808080),
             ),
+
             child: Row(children: <Widget>[
               IconButton(
                 onPressed: () async {
@@ -121,7 +125,7 @@ class _MartandsModelState extends State<MartandsModel> {
                   activeColor: Colors.white,
                   inactiveColor: Colors.white,
                   thumbColor: Colors.white,
-                  max: duration.inSeconds.toDouble(),
+                  max: duration.inSeconds.toDouble()+1.0,
                   value: position.inSeconds.toDouble(),
                   onChanged: (value) async {
                     position = Duration(seconds: value.toInt());

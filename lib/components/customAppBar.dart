@@ -7,7 +7,7 @@ AppBar ManikDarshan({required String title}) {
   backgroundColor: const Color(0xFF7F1B0E),
   title: Text(
   title,
-  style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w800),
+  style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w700),
   ),
   );
 }

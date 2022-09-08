@@ -35,37 +35,38 @@ class _ShriGuruSampradayaState extends State<ShriGuruSampradaya> {
         ),
         body: isLoading? Center(child:
         CircularProgressIndicator(),):
-        SingleChildScrollView(
-            child: Column(children: [
-              Slider(
-                value: value,
-                activeColor: const Color(0xFF772200),
-                inactiveColor: const Color(0xFF808080),
-                onChanged: (double s) {
-                  setState(() {
-                    value = s;
-                  });
-                },
-                divisions: 10,
-                min: 15.0,
-                max: 30.0,
-              ),
-              ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: data.length,
-                  itemBuilder: (context, index) {
-                    String audio = "";
-                    if(data[index]['audio'] != null){
-                      audio = data[index]['audio'];
-                    }
-                    return MartandsModel(
-                      title: data[index]["title"],
-                      text: data[index]['text'].replaceAll("\\n", "\n"),
-                      size: value,
-                      audio: audio,
-                    );
-                  })])));
+        Column(children: [Slider(
+          value: value,
+          activeColor: const Color(0xFF772200),
+          inactiveColor: const Color(0xFF808080),
+          onChanged: (double s) {
+            setState(() {
+              value = s;
+            });
+          },
+          divisions: 10,
+          min: 15.0,
+          max: 30.0,
+        ),
+          Expanded(child:
+          SingleChildScrollView(
+              child: Column(children: [
+                ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: data.length,
+                    itemBuilder: (context, index) {
+                      String audio = "";
+                      if(data[index]['audio'] != null){
+                        audio = data[index]['audio'];
+                      }
+                      return MartandsModel(
+                        title: data[index]["title"].replaceAll("\\n", "\n"),
+                        text: data[index]['text'].replaceAll("\\n", "\n"),
+                        size: value,
+                        audio: audio,
+                      );
+                    })])))],));
   }
   Future<void> getData() async {
     CollectionReference users =

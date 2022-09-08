@@ -18,15 +18,12 @@ class GranthMartand extends StatelessWidget {
         centerTitle: true,
         backgroundColor: const Color(0xFF7F1B0E),
         title: Text(
-          "माणिकदर्शन",
+          "ग्रंथ मार्तंड",
           style: TextStyle(fontFamily: 'Mukta', fontWeight: FontWeight.w800),
         ),
       ),
       body: Column(children: [
-        Padding(padding: EdgeInsets.all(20),child:
-        Image.asset(titleBanner)),
-
-          Padding(padding: EdgeInsets.only(left: 20, right: 20), child:
+          Padding(padding: EdgeInsets.only(top: 20, left: 20, right: 20), child:
           Row( children: [
             Event(images[0], names[0], const Color.fromRGBO(240, 155, 33, 0.3), context),
             Event(images[1], names[1], const Color.fromRGBO(240, 155, 33, 0.3), context),

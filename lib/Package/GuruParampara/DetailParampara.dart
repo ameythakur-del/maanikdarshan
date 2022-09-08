@@ -26,7 +26,7 @@ class DetailParampara extends StatelessWidget {
         Padding(padding: EdgeInsets.all(10), child:
         Image.asset(image, width: 175)),
         Padding(padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10), child:
-        Text(text, style: TextStyle(color: const Color(0xFF630F05), fontSize: 14, fontWeight: FontWeight.w400), textAlign: TextAlign.center,)),
+        Text(text, style: TextStyle(color: const Color(0xFF630F05), fontSize: 14, fontWeight: FontWeight.w400), textAlign: TextAlign.justify,)),
         Image.asset('assets/images/leaf_1.png', width: 72,)
       ],),)
     );
