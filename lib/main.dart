@@ -5,6 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_share/flutter_share.dart';
@@ -54,6 +55,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'Package/Authentication/login.dart';
 import 'Package/Location/location.dart';
+import 'Package/ManikDarshan/Detail.dart';
 import 'Package/Martands/MantraMartand.dart';
 import 'Package/Notifications/notifications.dart';
 import 'Package/Profile/Profile.dart';
@@ -61,8 +63,16 @@ import 'Package/Widgets/Events.dart';
 
 bool isLoggedIn = false;
 
+Future onClickNotification(String? payload) async {
+  if (payload != null) {
+    print("Payload ============== $payload");
+    Get.to(() => Detail(url: payload));
+  }
+}
+
 final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
-FlutterLocalNotificationsPlugin();
+    FlutterLocalNotificationsPlugin();
+
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title
@@ -82,10 +92,9 @@ Future<void> main() async {
   // ====== FCM ========
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
   await _flutterLocalNotificationsPlugin
-      .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
 
   await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
@@ -94,13 +103,6 @@ Future<void> main() async {
     sound: true,
   );
 
-  Future onClickNotification(String? payload) async {
-    if (payload != null)
-    {
-      print("payload achieved");
-    }
-  }
-
   var androidSettings = const AndroidInitializationSettings('ic_launcher');
   var iOSSettings = const IOSInitializationSettings(
     requestSoundPermission: false,
@@ -108,7 +110,8 @@ Future<void> main() async {
     requestAlertPermission: false,
   );
 
-  var initSettings = InitializationSettings(android: androidSettings, iOS: iOSSettings);
+  var initSettings =
+      InitializationSettings(android: androidSettings, iOS: iOSSettings);
 
   await _flutterLocalNotificationsPlugin.initialize(initSettings,
       onSelectNotification: onClickNotification);
@@ -117,13 +120,11 @@ Future<void> main() async {
 
   await _flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
-      AndroidFlutterLocalNotificationsPlugin>()
+          AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
 
-  await messaging
-      .setForegroundNotificationPresentationOptions(
+  await messaging.setForegroundNotificationPresentationOptions(
       alert: true, badge: true, sound: true);
-
 
   NotificationSettings settings = await messaging.requestPermission(
     alert: true,
@@ -163,17 +164,29 @@ Future<void> main() async {
             largeIcon: const DrawableResourceAndroidBitmap("ic_launcher"),
           ),
         ),
+        payload: message.data["url"],
       );
     }
   });
 
-  //FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
+    print('A new onMessageOpenedApp event was published!');
+    RemoteNotification? notification = message.notification;
+    AndroidNotification? android = message.notification?.android;
+    if (notification != null && android != null) {
+      print("body " + notification.body.toString());
+      await onClickNotification(message.data["url"]);
+    }
+  });
+
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   // subscribe to topic on each app start-up
   await messaging.subscribeToTopic('MANIK_APP_2');
 
   // ======= FCM ========
-
 
   if (FirebaseAuth.instance.currentUser != null) {
     isLoggedIn = true;
@@ -181,7 +194,6 @@ Future<void> main() async {
 
   runApp(MyApp());
 }
-
 
 // Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message, FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin) async {
 //   await Firebase.initializeApp();
@@ -224,7 +236,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -265,23 +277,23 @@ class MyApp extends StatelessWidget {
         '/आह्निकप्रकरणम्': (context) => Ahinkprakaranam(),
         '/पूजा प्रकरणम्': (context) => pujaPrakaranam(),
         '/न्यास प्रकरणम्': (context) => NyasPrakaranam(),
-        '/अभिषेक प्रकरणम्' : (context) => AbhishekPrakaranam(),
-        '/अर्चनाप्रकरणम् (नामावलिः)' : (context) => ArchanaPrakaranam(),
-        '/मन्त्रपुष्पाञ्जलिप्रकरणम्' : (context) => Mantrapushpanjali(),
-        '/सामान्यप्रकरणम्' : (context) => samanyaprakaranam(),
-        '/उपनिषद् प्रकरणम्' : (context) => UpanishidPrakaranam(),
-        '/उपदेश रत्नमाला' : (context) => UpadeshRatnamala(),
-        '/श्रीगुरु संप्रदाय' : (context) => ShriGuruSampradaya(),
-        '/आरती' : (context) => Arati(),
-        '/सातवारांचे भजन' : (context) => SatvaracheBhajan(),
-        '/स्तोत्राणि' : (context) => Strotani(),
-        '/वेदांत षट्पदी' : (context) => VedantShatpadi(),
-        '/मधुमती श्यामला सप्तपदी' : (context) => Madhumatishyanyamala(),
-        '/श्रीप्रभुचरित्र' : (context) => SHRIPRABHUCHARITRA(),
-        '/साधना प्रदीप' : (context) => SADHANAPRADEEP(),
-        '/श्रीमाणिकनगरक्षेत्र माहात्म्य' : (context) => KSHETRAMAHATMYA(),
-        '/उत्सव' : (context) => utsav(),
-        '/श्री संस्थान' : (context) => ShriSanthan(),
+        '/अभिषेक प्रकरणम्': (context) => AbhishekPrakaranam(),
+        '/अर्चनाप्रकरणम् (नामावलिः)': (context) => ArchanaPrakaranam(),
+        '/मन्त्रपुष्पाञ्जलिप्रकरणम्': (context) => Mantrapushpanjali(),
+        '/सामान्यप्रकरणम्': (context) => samanyaprakaranam(),
+        '/उपनिषद् प्रकरणम्': (context) => UpanishidPrakaranam(),
+        '/उपदेश रत्नमाला': (context) => UpadeshRatnamala(),
+        '/श्रीगुरु संप्रदाय': (context) => ShriGuruSampradaya(),
+        '/आरती': (context) => Arati(),
+        '/सातवारांचे भजन': (context) => SatvaracheBhajan(),
+        '/स्तोत्राणि': (context) => Strotani(),
+        '/वेदांत षट्पदी': (context) => VedantShatpadi(),
+        '/मधुमती श्यामला सप्तपदी': (context) => Madhumatishyanyamala(),
+        '/श्रीप्रभुचरित्र': (context) => SHRIPRABHUCHARITRA(),
+        '/साधना प्रदीप': (context) => SADHANAPRADEEP(),
+        '/श्रीमाणिकनगरक्षेत्र माहात्म्य': (context) => KSHETRAMAHATMYA(),
+        '/उत्सव': (context) => utsav(),
+        '/श्री संस्थान': (context) => ShriSanthan(),
         '/अभिषेक प्रकरणम्': (context) => AbhishekPrakaranam(),
         '/अर्चनाप्रकरणम् (नामावलिः)': (context) => ArchanaPrakaranam(),
         '/मन्त्रपुष्पाञ्जलिप्रकरणम्': (context) => Mantrapushpanjali(),
@@ -315,7 +327,7 @@ class _HomePageState extends State<HomePage> {
   int activeIndex = 0;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   CollectionReference collectionReference =
-  FirebaseFirestore.instance.collection('Social Media');
+      FirebaseFirestore.instance.collection('Social Media');
   late QuerySnapshot result;
   late List<dynamic?> data;
   bool doc = false;
@@ -327,61 +339,43 @@ class _HomePageState extends State<HomePage> {
 
     print("amey init");
 
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      RemoteNotification? notification = message.notification;
-      AndroidNotification? android = message.notification?.android;
-      if (notification != null && android != null) {
-        print("body2 " + message.data['url'].toString());
-        _flutterLocalNotificationsPlugin.show(
-            notification.hashCode,
-            notification.title,
-            notification.body,
-            NotificationDetails(
-              android: AndroidNotificationDetails(
-                channel.id,
-                channel.name,
-                color: Colors.blue,
-                playSound: true,
-                icon: '@mipmap/ic_launcher',
-              ),
-            ));
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => Detail(
-                    url: message.data['url'].toString()
-                )));
-      }
-      else{
-        print("body " + message.data['url'].toString());
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => manikratna()));
+    // if the application has been opened from a terminated state
+    FirebaseMessaging.instance.getInitialMessage().then((message) async {
+      if (message != null) {
+        await onClickNotification(message.data["url"]);
       }
     });
-
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print('A new onMessageOpenedApp event was published!');
-      RemoteNotification? notification = message.notification;
-      AndroidNotification? android = message.notification?.android;
-      if (notification != null && android != null) {
-        print("body " + message.data['url'].toString());
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => Detail(
-                    url: message.data['url'].toString()
-        )));
-      }
-      else{
-        print("body " + message.data['url'].toString());
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => manikratna()));
-      }
-    });
+    // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    //   RemoteNotification? notification = message.notification;
+    //   AndroidNotification? android = message.notification?.android;
+    //   if (notification != null && android != null) {
+    //     print("body2 " + notification.body.toString());
+    //     _flutterLocalNotificationsPlugin.show(
+    //       notification.hashCode,
+    //       notification.title,
+    //       notification.body,
+    //       NotificationDetails(
+    //         android: AndroidNotificationDetails(
+    //           channel.id,
+    //           channel.name,
+    //           color: Colors.blue,
+    //           playSound: true,
+    //           icon: '@mipmap/ic_launcher',
+    //         ),
+    //       ),
+    //       payload: message.data["url"],
+    //     );
+    //   }
+    // });
+    //
+    // FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    //   print('A new onMessageOpenedApp event was published!');
+    //   RemoteNotification? notification = message.notification;
+    //   AndroidNotification? android = message.notification?.android;
+    //   if (notification != null && android != null) {
+    //     print("body " + notification.body.toString());
+    //   }
+    // });
 
     collectionReference.get().then((snapshot) {
       data = snapshot.docs;
@@ -438,7 +432,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor:
-      const Color(0xFF7F1B0E), //or set color with: Color(0xFF0000FF)
+          const Color(0xFF7F1B0E), //or set color with: Color(0xFF0000FF)
     ));
     return Scaffold(
       backgroundColor: Colors.white,
@@ -448,93 +442,93 @@ class _HomePageState extends State<HomePage> {
           PopupMenuButton(
               onSelected: onSelect,
               itemBuilder: (BuildContext context) => [
-                PopupMenuItem(
-                  value: 'डाऊनलोड',
-                  child: ListTile(
-                    leading: ImageIcon(
-                      AssetImage("assets/images/download.png"),
-                      color: const Color(0xFF7F1B0E),
-                    ),
-                    title: Text(
-                      'डाऊनलोड',
-                      style: TextStyle(
+                    PopupMenuItem(
+                      value: 'डाऊनलोड',
+                      child: ListTile(
+                        leading: ImageIcon(
+                          AssetImage("assets/images/download.png"),
                           color: const Color(0xFF7F1B0E),
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Mukta'),
-                    ),
-                  ),
-                ),
-                PopupMenuItem(
-                  value: 'संपर्क',
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.location_pin,
-                      color: const Color(0xFF7F1B0E),
-                    ),
-                    title: Text(
-                      'संपर्क',
-                      style: TextStyle(
-                          color: const Color(0xFF7F1B0E),
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Mukta'),
-                    ),
-                  ),
-                ),
-                PopupMenuItem(
-                  value: 'शेअर',
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.share,
-                      color: const Color(0xFF7F1B0E),
-                    ),
-                    title: Text(
-                      'शेअर',
-                      style: TextStyle(
-                          color: const Color(0xFF7F1B0E),
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Mukta'),
-                    ),
-                  ),
-                ),
-                PopupMenuItem(
-                    value: 'Logout',
-                    child: ListTile(
-                      leading: ImageIcon(
-                        AssetImage("assets/images/logout.png"),
-                        color: const Color(0xFF7F1B0E),
+                        ),
+                        title: Text(
+                          'डाऊनलोड',
+                          style: TextStyle(
+                              color: const Color(0xFF7F1B0E),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Mukta'),
+                        ),
                       ),
-                      title: (firebaseAuth != null)
-                          ? Text(
-                        'Logout',
-                        style: TextStyle(
-                            color: const Color(0xFF7F1B0E),
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Mukta'),
-                      )
-                          : Text(
-                        'Login',
-                        style: TextStyle(
-                            color: const Color(0xFF7F1B0E),
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Mukta'),
+                    ),
+                    PopupMenuItem(
+                      value: 'संपर्क',
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.location_pin,
+                          color: const Color(0xFF7F1B0E),
+                        ),
+                        title: Text(
+                          'संपर्क',
+                          style: TextStyle(
+                              color: const Color(0xFF7F1B0E),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Mukta'),
+                        ),
                       ),
-                    )),
-              ]
-            // {
-            //   return myMenuItems.map((String choice) {
-            //     return PopupMenuItem<String>(
-            //       child:
-            //       Text(choice),
-            //       value: choice,
-            //     );
-            //   }).toList();
-            // }
-          )
+                    ),
+                    PopupMenuItem(
+                      value: 'शेअर',
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.share,
+                          color: const Color(0xFF7F1B0E),
+                        ),
+                        title: Text(
+                          'शेअर',
+                          style: TextStyle(
+                              color: const Color(0xFF7F1B0E),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Mukta'),
+                        ),
+                      ),
+                    ),
+                    PopupMenuItem(
+                        value: 'Logout',
+                        child: ListTile(
+                          leading: ImageIcon(
+                            AssetImage("assets/images/logout.png"),
+                            color: const Color(0xFF7F1B0E),
+                          ),
+                          title: (firebaseAuth != null)
+                              ? Text(
+                                  'Logout',
+                                  style: TextStyle(
+                                      color: const Color(0xFF7F1B0E),
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Mukta'),
+                                )
+                              : Text(
+                                  'Login',
+                                  style: TextStyle(
+                                      color: const Color(0xFF7F1B0E),
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Mukta'),
+                                ),
+                        )),
+                  ]
+              // {
+              //   return myMenuItems.map((String choice) {
+              //     return PopupMenuItem<String>(
+              //       child:
+              //       Text(choice),
+              //       value: choice,
+              //     );
+              //   }).toList();
+              // }
+              )
         ],
         backgroundColor: const Color(0xFF7F1B0E),
         title: Text(
@@ -579,17 +573,16 @@ class _HomePageState extends State<HomePage> {
                   Positioned.fill(
                     child: Align(
                       alignment: Alignment.bottomCenter,
-                      child: Padding(padding: EdgeInsets.all(20),
-                          child:BuildIndicator()),
+                      child: Padding(
+                          padding: EdgeInsets.all(20), child: BuildIndicator()),
                     ),
                   ),
-
                 ],
               ),
             ),
             Container(
                 decoration:
-                BoxDecoration(borderRadius: BorderRadius.circular(18)),
+                    BoxDecoration(borderRadius: BorderRadius.circular(18)),
                 padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
                 child: Column(
                   children: [
@@ -712,68 +705,67 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w800,
                         fontSize: 20,
                         color: const Color(0xFF69160B)))),
-            (doc == true)?
-            ListView.builder(
-                physics: ScrollPhysics(),
-                itemCount: data?.length,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
-                    child: Column(
-                      children: [
-                        Text(
-                          data![index]['Description'],
-                          style: GoogleFonts.inter(textStyle:
-                          TextStyle(
-                              color: const Color(0xFF5E5E5E),
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400)),
-                        ),
-                        SizedBox(height: 5,),
-                        Image.network(data![index]['Image']),
-                        SizedBox(height: 10,),
-                        TextButton(
-                          style: TextButton.styleFrom(
-                              padding: EdgeInsets.only(
-                                  left: 40,
-                                  right: 40,
-                                  top: 5,
-                                  bottom: 5),
-                              primary: Colors.white,
-                              backgroundColor:
-                              const Color(0xFF7F1B0E), // foreground
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(75.0),
-                                  side: BorderSide.none)),
-                          onPressed: () async {
-                            try {
-                              bool launched = await launch(
-                                  data![index]['URL'],
-                                  forceSafariVC: false);
+            (doc == true)
+                ? ListView.builder(
+                    physics: ScrollPhysics(),
+                    itemCount: data?.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
+                        child: Column(
+                          children: [
+                            Text(
+                              data![index]['Description'],
+                              style: GoogleFonts.inter(
+                                  textStyle: TextStyle(
+                                      color: const Color(0xFF5E5E5E),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400)),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Image.network(data![index]['Image']),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                  padding: EdgeInsets.only(
+                                      left: 40, right: 40, top: 5, bottom: 5),
+                                  primary: Colors.white,
+                                  backgroundColor:
+                                      const Color(0xFF7F1B0E), // foreground
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(75.0),
+                                      side: BorderSide.none)),
+                              onPressed: () async {
+                                try {
+                                  bool launched = await launch(
+                                      data![index]['URL'],
+                                      forceSafariVC: false);
 
-                              if (!launched) {
-                                await launch(data![index]['URL'],
-                                    forceSafariVC: false);
-                              }
-                            } catch (e) {
-                              await launch(data![index]['URL'],
-                                  forceSafariVC: false);
-                            }
-                          },
-                          child: Text(
-                            'View',
-                            style: TextStyle(
-                                fontSize: 19,
-                                fontWeight: FontWeight.bold),
-                          ),
+                                  if (!launched) {
+                                    await launch(data![index]['URL'],
+                                        forceSafariVC: false);
+                                  }
+                                } catch (e) {
+                                  await launch(data![index]['URL'],
+                                      forceSafariVC: false);
+                                }
+                              },
+                              child: Text(
+                                'View',
+                                style: TextStyle(
+                                    fontSize: 19, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  );
-                }):Container(),
-
+                      );
+                    })
+                : Container(),
           ],
         ),
       ),
@@ -815,4 +807,3 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 }
-
