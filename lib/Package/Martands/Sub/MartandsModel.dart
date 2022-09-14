@@ -1,5 +1,5 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 
 class MartandsModel extends StatefulWidget {
   final String text;
@@ -14,7 +14,6 @@ class MartandsModel extends StatefulWidget {
 
 class _MartandsModelState extends State<MartandsModel> {
   AudioPlayer audioplayer = AudioPlayer();
-  AudioCache audioCache = AudioCache();
   bool isPlyaing = false;
   Duration duration = Duration.zero;
   Duration position = Duration.zero;
@@ -22,35 +21,31 @@ class _MartandsModelState extends State<MartandsModel> {
   @override
   void initState() {
     super.initState();
+    setAudio();
 
-    audioplayer.onPlayerStateChanged.listen((state) {
+    audioplayer.playerStateStream.listen((state) {
       setState(() {
-        isPlyaing = state == PlayerState.playing;
+        isPlyaing = state == state.playing;
       });
     });
 
-    audioplayer.onDurationChanged.listen((newDuration) {
+    audioplayer.durationStream.listen((newDuration) {
       setState(() {
-      duration = newDuration;
-    });
-    });
-
-    audioplayer.onPositionChanged.listen((newPosition) {
-    setState(() {
-    position = newPosition;
-    });
+        duration = newDuration!;
+      });
     });
 
-    setAudio();
-
+    audioplayer.positionStream.listen((newPosition) {
+      setState(() {
+        position = newPosition;
+      });
+    });
   }
 
   Future setAudio() async {
     //Repeat song when completed
     if (widget.audio != "") {
-      audioplayer.setSource(UrlSource(widget.audio)).then((value) {
-        audioplayer.getDuration().then((value) => print("amey " + value!.inSeconds.toString()));
-      });
+        duration = (await audioplayer.setUrl(widget.audio))!;
     }
   }
 
@@ -108,13 +103,13 @@ class _MartandsModelState extends State<MartandsModel> {
             child: Row(children: <Widget>[
               IconButton(
                 onPressed: () async {
-                  if (isPlyaing) {
-                    await audioplayer.pause();
+                  if (audioplayer.playing) {
+                    audioplayer.pause();
                   } else {
-                    await audioplayer.resume();
+                    audioplayer.play();
                   }
                 },
-                icon: Icon(isPlyaing ? Icons.pause : Icons.play_arrow),
+                icon: Icon(audioplayer.playing ? Icons.pause : Icons.play_arrow),
                 color: Colors.white,
               ),
               Text(formatTime(position), style: TextStyle(color: Colors.white, fontFamily: 'Mukta', fontWeight: FontWeight.w600, fontSize: 18),),
@@ -125,13 +120,13 @@ class _MartandsModelState extends State<MartandsModel> {
                   activeColor: Colors.white,
                   inactiveColor: Colors.white,
                   thumbColor: Colors.white,
-                  max: duration.inSeconds.toDouble()+1.0,
+                  max: duration.inSeconds.toDouble(),
                   value: position.inSeconds.toDouble(),
                   onChanged: (value) async {
                     position = Duration(seconds: value.toInt());
                     await audioplayer.seek(position);
                     //play audio if was stopped
-                    await audioplayer.resume();
+                    await audioplayer.play();
                   })
             ]),
           ):Container()

@@ -1,6 +1,6 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:maanikdarshan/Package/Martands/Sub/MartandsModel.dart';
 
 import '../sample.dart';
@@ -21,7 +21,7 @@ class MantraDocuments extends StatefulWidget {
 class _MantraDocumentsState extends State<MantraDocuments> {
   double value = 18;
 
-  final audioplayer = AudioPlayer();
+  AudioPlayer audioplayer = AudioPlayer();
   bool isPlyaing = false;
   Duration duration = Duration.zero;
   Duration position = Duration.zero;
@@ -29,37 +29,33 @@ class _MantraDocumentsState extends State<MantraDocuments> {
   @override
   void initState() {
     super.initState();
-  }
 
-  @override
-  void dispose() {
-    audioplayer.dispose();
-    super.dispose();
-  }
-
-  Future setAudio(String u) async {
-    //Repeat song when completed
-    audioplayer.setSourceUrl(u);
-
-    audioplayer.onDurationChanged.listen((newDuration) {
-      print("new duration " + newDuration.toString());
+    audioplayer.playerStateStream.listen((state) {
       setState(() {
-        duration = newDuration as Duration;
-      });
-    });
-    audioplayer.onPlayerStateChanged.listen((state) {
-      print("new state " + state.toString());
-      setState(() {
-        isPlyaing = state == PlayerState.playing;
+        isPlyaing = state == state.playing;
       });
     });
 
-    audioplayer.onPositionChanged.listen((newPosition) {
-      print("new position " + newPosition.toString());
+    audioplayer.durationStream.listen((newDuration) {
+      setState(() {
+        duration = newDuration!;
+      });
+    });
+
+    audioplayer.positionStream.listen((newPosition) {
       setState(() {
         position = newPosition;
       });
     });
+  }
+
+  Future setAudio(String u) async {
+    //Repeat song when completed
+    if (u != "") {
+
+      duration = (await audioplayer.setUrl(u))!;
+
+    }
   }
 
   String formatTime(Duration duration) {
@@ -122,7 +118,7 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                       textAlign: TextAlign.center,
                     ));
                   } else if (widget.val[index]['type'] == 'description') {
-                    return (widget.title.contains("आरती") || widget.title.contains("भजन"))?Padding(
+                    return (widget.title.contains("आरती") || widget.title.contains("भजन") || widget.title.contains("चिद्घनैक ज्ञान मंगला") || widget.title.contains("माणिका लोकपालका") || widget.title.contains("सच्चित्सुख तव जय हो") || widget.title.contains("व्यंके तुज मंगल हो") || widget.title.contains("त्रिपुरसुंदरी सुमंगला") || widget.title.contains("प्रार्थना") || widget.title.contains("अष्टक"))?Padding(
                         padding: EdgeInsets.only(top: 10, left:30, right: 30),
                         child: Center(
                           child: Text(
@@ -156,13 +152,13 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                     child: Row(children: <Widget>[
                       IconButton(
                         onPressed: () async {
-                          if (isPlyaing) {
+                          if (audioplayer.playing) {
                             await audioplayer.pause();
                           } else {
-                            await audioplayer.resume();
+                            await audioplayer.play;
                           }
                         },
-                        icon: Icon(isPlyaing ? Icons.pause : Icons.play_arrow),
+                        icon: Icon(audioplayer.playing ? Icons.pause : Icons.play_arrow),
                         color: Colors.white,
                       ),
                       Text(formatTime(position), style: TextStyle(color: Colors.white, fontFamily: 'Mukta', fontWeight: FontWeight.w600, fontSize: 18),),
@@ -179,7 +175,7 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                             position = Duration(seconds: value.toInt());
                             await audioplayer.seek(position);
                             //play audio if was stopped
-                            await audioplayer.resume();
+                            await audioplayer.play;
                           })
                     ]),
                   );

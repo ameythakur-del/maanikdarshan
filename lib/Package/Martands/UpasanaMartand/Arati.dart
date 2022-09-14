@@ -99,6 +99,13 @@ class Arati extends StatelessWidget {
                         Event(images[30], data[30], const Color.fromRGBO(240, 155, 33, 0.3), context),
                         Event(images[31], data[31], const Color.fromRGBO(240, 155, 33, 0.3), context), ]
                       )),
+                      Padding(padding: EdgeInsets.only(top: 20, left: 20, right: 20), child:
+                      Row( children: [
+                        Event(images[32], data[32], const Color.fromRGBO(240, 155, 33, 0.3), context),
+                        Event(images[33], data[33], const Color.fromRGBO(240, 155, 33, 0.3), context),
+                        Event(images[34], data[34], const Color.fromRGBO(240, 155, 33, 0.3), context),
+                        Event(images[35], data[35], const Color.fromRGBO(240, 155, 33, 0.3), context), ]
+                      )),
                     ],
                   ));
           }
@@ -114,7 +121,7 @@ Event(String image, String type, Color color, BuildContext context) {
   return Material(
     child: InkWell(
       onTap: () async {
-        CollectionReference collectionReference = FirebaseFirestore.instance.collection('सातवारांचेभजन');
+        CollectionReference collectionReference = FirebaseFirestore.instance.collection('आरती');
         await collectionReference.doc(type).get().then((value) {
           Map<String, dynamic> dataObj =
           value.data() as Map<String, dynamic>;
