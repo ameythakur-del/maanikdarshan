@@ -2,12 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:maanikdarshan/Package/Martands/Sub/MartandsModel.dart';
+import 'package:maanikdarshan/Package/Widgets/display_songs.dart';
 
 import '../sample.dart';
 
 class MantraDocuments extends StatefulWidget {
   final val;
   final String title;
+
   const MantraDocuments({
     Key? key,
     required this.val,
@@ -36,7 +38,7 @@ class _MantraDocumentsState extends State<MantraDocuments> {
     //Repeat song when completed
     if (u != "") {
       currentUrl = u;
-      duration = (await audioplayer.setUrl(u))!;
+      duration = (await audioplayer.setUrl(currentUrl))!;
     }
   }
 
@@ -52,10 +54,8 @@ class _MantraDocumentsState extends State<MantraDocuments> {
     ].join(':');
   }
 
-
   @override
   Widget build(BuildContext context) {
-
     audioplayer.playerStateStream.listen((state) {
       setState(() {
         isPlyaing = state == state.playing;
@@ -86,105 +86,154 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                 color: Colors.white),
           ),
         ),
-        body: Column(children: [  Slider(
-          value: value,
-          activeColor: const Color(0xFF772200),
-          inactiveColor: const Color(0xFF808080),
-          onChanged: (double s) {
-            setState(() {
-              value = s;
-            });
-          },
-          divisions: 10,
-          min: 15.0,
-          max: 30.0,
-        ),
-          Expanded(
-            child:   SingleChildScrollView(
-          child:
-            ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: widget.val.length,
-                itemBuilder: (context, index) {
-                  if (widget.val[index]['type'] == 'title') {
-                    return Center(
-                        child: Text(
-                      widget.val[index]['text'],
-                      style: TextStyle(
-                          fontSize: 24,
-                          fontFamily: 'Manik',
-                          color: const Color(0xFFA30808),
-                          fontWeight: FontWeight.w800),
-                      textAlign: TextAlign.center,
-                    ));
-                  } else if (widget.val[index]['type'] == 'description') {
-                    return (widget.title.contains("आरती") || widget.title.contains("भजन") || widget.title.contains("चिद्घनैक ज्ञान मंगला") || widget.title.contains("माणिका लोकपालका") || widget.title.contains("सच्चित्सुख तव जय हो") || widget.title.contains("व्यंके तुज मंगल हो") || widget.title.contains("त्रिपुरसुंदरी सुमंगला") || widget.title.contains("प्रार्थना") || widget.title.contains("अष्टक"))?Padding(
-                        padding: EdgeInsets.only(top: 10, left:30, right: 30),
-                        child: Center(
-                          child: Text(
-                            widget.val[index]['text'].replaceAll('\\n', '\n'),
-                            style: TextStyle(
-                                color: const Color(0xFF393939), fontSize: value, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
-                            textAlign: TextAlign.justify,
-                          ),
-                        )):
-                      Padding(
-                        padding: EdgeInsets.only(top: 10, left:30, right: 30),
-                        child: Center(
-                          child: Text(
-                            widget.val[index]['text'].replaceAll('\\n', '\n'),
-                            style: TextStyle(
-                                color: const Color(0xFF393939), fontSize: value, fontFamily: 'Manik', fontWeight: FontWeight.w600),
-                            textAlign: TextAlign.justify,
-                          ),
-                        ));
-                  }
-                  else{
-                    if(currentUrl != widget.val[index]['text']) {
-                      setAudio(widget.val[index]['text']);
-                    }
-
-                  return   Container(
-                    padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                    margin: EdgeInsets.only(left: 20, right: 20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(51),
-                      color: Color(0xFF808080),
-                    ),
-                    child: Row(children: <Widget>[
-                      IconButton(
-                        onPressed: () async {
-                          if (audioplayer.playing) {
-                            print("sad 1");
-                            audioplayer.pause();
+        body: Column(
+          children: [
+            Slider(
+              value: value,
+              activeColor: const Color(0xFF772200),
+              inactiveColor: const Color(0xFF808080),
+              onChanged: (double s) {
+                setState(() {
+                  value = s;
+                });
+              },
+              divisions: 10,
+              min: 15.0,
+              max: 30.0,
+            ),
+            Expanded(
+                child: SingleChildScrollView(
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: widget.val.length,
+                        itemBuilder: (context, index) {
+                          return DisplaySongs(data: widget.val[index], title: widget.title);
+                          if (widget.val[index]['type'] == 'title') {
+                            return Center(
+                                child: Text(
+                              widget.val[index]['text'],
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  fontFamily: 'Manik',
+                                  color: const Color(0xFFA30808),
+                                  fontWeight: FontWeight.w800),
+                              textAlign: TextAlign.center,
+                            ));
+                          } else if (widget.val[index]['type'] ==
+                              'description') {
+                            return (widget.title.contains("आरती") ||
+                                    widget.title.contains("भजन") ||
+                                    widget.title
+                                        .contains("चिद्घनैक ज्ञान मंगला") ||
+                                    widget.title.contains("माणिका लोकपालका") ||
+                                    widget.title
+                                        .contains("सच्चित्सुख तव जय हो") ||
+                                    widget.title
+                                        .contains("व्यंके तुज मंगल हो") ||
+                                    widget.title
+                                        .contains("त्रिपुरसुंदरी सुमंगला") ||
+                                    widget.title.contains("प्रार्थना") ||
+                                    widget.title.contains("अष्टक"))
+                                ? Padding(
+                                    padding: EdgeInsets.only(
+                                        top: 10, left: 30, right: 30),
+                                    child: Center(
+                                      child: Text(
+                                        widget.val[index]['text']
+                                            .replaceAll('\\n', '\n'),
+                                        style: TextStyle(
+                                            color: const Color(0xFF393939),
+                                            fontSize: value,
+                                            fontFamily: 'Mukta',
+                                            fontWeight: FontWeight.w600),
+                                        textAlign: TextAlign.justify,
+                                      ),
+                                    ))
+                                : Padding(
+                                    padding: EdgeInsets.only(
+                                        top: 10, left: 30, right: 30),
+                                    child: Center(
+                                      child: Text(
+                                        widget.val[index]['text']
+                                            .replaceAll('\\n', '\n'),
+                                        style: TextStyle(
+                                            color: const Color(0xFF393939),
+                                            fontSize: value,
+                                            fontFamily: 'Manik',
+                                            fontWeight: FontWeight.w600),
+                                        textAlign: TextAlign.justify,
+                                      ),
+                                    ));
                           } else {
-                            print("sad 2");
-                            audioplayer.play;
+                            if (currentUrl != widget.val[index]['text']) {
+                              print(widget.val[index]['text']);
+                              setAudio(widget.val[index]['text']);
+
+                            }
+
+                            return Container(
+                              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                              margin: EdgeInsets.only(left: 20, right: 20),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(51),
+                                color: Color(0xFF808080),
+                              ),
+                              child: Row(children: <Widget>[
+                                IconButton(
+                                  onPressed: () async {
+                                    if (audioplayer.playing) {
+                                      print("sad 1");
+                                      audioplayer.pause();
+                                    } else {
+                                      print("sad 2");
+                                      audioplayer.play;
+                                    }
+                                  },
+                                  icon: Icon(audioplayer.playing
+                                      ? Icons.pause
+                                      : Icons.play_arrow),
+                                  color: Colors.white,
+                                ),
+                                Text(
+                                  formatTime(position),
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'Mukta',
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18),
+                                ),
+                                Text('/',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'Mukta',
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18)),
+                                Text(formatTime(duration),
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'Mukta',
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18)),
+                                Slider(
+                                    min: 0,
+                                    activeColor: Colors.white,
+                                    inactiveColor: Colors.white,
+                                    thumbColor: Colors.white,
+                                    max: duration.inSeconds.toDouble(),
+                                    value: position.inSeconds.toDouble(),
+                                    onChanged: (value) async {
+                                      position =
+                                          Duration(seconds: value.toInt());
+                                      await audioplayer.seek(position);
+                                      //play audio if was stopped
+                                      await audioplayer.play;
+                                    })
+                              ]),
+                            );
                           }
-                        },
-                        icon: Icon(audioplayer.playing ? Icons.pause : Icons.play_arrow),
-                        color: Colors.white,
-                      ),
-                      Text(formatTime(position), style: TextStyle(color: Colors.white, fontFamily: 'Mukta', fontWeight: FontWeight.w600, fontSize: 18),),
-                      Text('/', style: TextStyle(color: Colors.white, fontFamily: 'Mukta', fontWeight: FontWeight.w600, fontSize: 18)),
-                      Text(formatTime(duration), style: TextStyle(color: Colors.white, fontFamily: 'Mukta', fontWeight: FontWeight.w600, fontSize: 18)),
-                      Slider(
-                          min: 0,
-                          activeColor: Colors.white,
-                          inactiveColor: Colors.white,
-                          thumbColor: Colors.white,
-                          max: duration.inSeconds.toDouble(),
-                          value: position.inSeconds.toDouble(),
-                          onChanged: (value) async {
-                            position = Duration(seconds: value.toInt());
-                            await audioplayer.seek(position);
-                            //play audio if was stopped
-                            await audioplayer.play;
-                          })
-                    ]),
-                  );
-                }})
-        ))],));
+                        })))
+          ],
+        ));
   }
 }

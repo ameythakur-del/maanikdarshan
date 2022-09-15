@@ -94,7 +94,7 @@ flutter:
 
     - family: Manik
       fonts:
-        - asset: assets/fonts/MANIK 708.ttf
+#        - asset: assets/fonts/MANIK 708.ttf
 
   assets:
      - assets/calender.pdf
@@ -184,7 +184,7 @@ flutter:
      - assets/images/aawas/4.png
      - assets/images/aawas/5.png
      - assets/images/aawas/6.png
-     - assets/images/dinCharya.png
+     - assets/images/dincharya.png
      - assets/images/google_logo.png
      - assets/images/Vector.png
      - assets/images/listIcon.png

@@ -70,12 +70,13 @@ class Login extends StatelessWidget {
                                 side: BorderSide.none)),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => OTP(
-                                        name: nameController.text,
-                                        phone: mobileController.text)));
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => OTP(
+                            //             name: nameController.text,
+                            //             phone: mobileController.text)));
                           }
                         },
                         child: Text(

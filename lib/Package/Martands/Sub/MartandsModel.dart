@@ -45,6 +45,10 @@ class _MartandsModelState extends State<MartandsModel> {
   Future setAudio() async {
     //Repeat song when completed
     if (widget.audio != "") {
+      print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+      print(widget.audio);
+      print((widget.audio.runtimeType));
+      print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
         duration = (await audioplayer.setUrl(widget.audio))!;
     }
   }
@@ -126,7 +130,7 @@ class _MartandsModelState extends State<MartandsModel> {
                     position = Duration(seconds: value.toInt());
                     await audioplayer.seek(position);
                     //play audio if was stopped
-                    await audioplayer.play();
+                    // await audioplayer.play();
                   })
             ]),
           ):Container()
