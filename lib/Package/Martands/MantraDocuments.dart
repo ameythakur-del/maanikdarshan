@@ -21,6 +21,7 @@ class MantraDocuments extends StatefulWidget {
 class _MantraDocumentsState extends State<MantraDocuments> {
   double value = 18;
 
+  String currentUrl = "";
   AudioPlayer audioplayer = AudioPlayer();
   bool isPlyaing = false;
   Duration duration = Duration.zero;
@@ -29,32 +30,13 @@ class _MantraDocumentsState extends State<MantraDocuments> {
   @override
   void initState() {
     super.initState();
-
-    audioplayer.playerStateStream.listen((state) {
-      setState(() {
-        isPlyaing = state == state.playing;
-      });
-    });
-
-    audioplayer.durationStream.listen((newDuration) {
-      setState(() {
-        duration = newDuration!;
-      });
-    });
-
-    audioplayer.positionStream.listen((newPosition) {
-      setState(() {
-        position = newPosition;
-      });
-    });
   }
 
   Future setAudio(String u) async {
     //Repeat song when completed
     if (u != "") {
-
+      currentUrl = u;
       duration = (await audioplayer.setUrl(u))!;
-
     }
   }
 
@@ -73,6 +55,25 @@ class _MantraDocumentsState extends State<MantraDocuments> {
 
   @override
   Widget build(BuildContext context) {
+
+    audioplayer.playerStateStream.listen((state) {
+      setState(() {
+        isPlyaing = state == state.playing;
+      });
+    });
+
+    audioplayer.durationStream.listen((newDuration) {
+      setState(() {
+        duration = newDuration!;
+      });
+    });
+
+    audioplayer.positionStream.listen((newPosition) {
+      setState(() {
+        position = newPosition;
+      });
+    });
+
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -140,7 +141,9 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                         ));
                   }
                   else{
-                    setAudio(widget.val[index]['text']);
+                    if(currentUrl != widget.val[index]['text']) {
+                      setAudio(widget.val[index]['text']);
+                    }
 
                   return   Container(
                     padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
@@ -153,9 +156,11 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                       IconButton(
                         onPressed: () async {
                           if (audioplayer.playing) {
-                            await audioplayer.pause();
+                            print("sad 1");
+                            audioplayer.pause();
                           } else {
-                            await audioplayer.play;
+                            print("sad 2");
+                            audioplayer.play;
                           }
                         },
                         icon: Icon(audioplayer.playing ? Icons.pause : Icons.play_arrow),
