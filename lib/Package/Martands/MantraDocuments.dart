@@ -145,7 +145,7 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                       setAudio(widget.val[index]['text']);
                     }
 
-                  return   Container(
+                  return Container(
                     padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                     margin: EdgeInsets.only(left: 20, right: 20),
                     decoration: BoxDecoration(
@@ -156,10 +156,8 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                       IconButton(
                         onPressed: () async {
                           if (audioplayer.playing) {
-                            print("sad 1");
                             audioplayer.pause();
                           } else {
-                            print("sad 2");
                             audioplayer.play;
                           }
                         },
