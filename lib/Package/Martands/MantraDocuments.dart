@@ -108,7 +108,7 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                         physics: NeverScrollableScrollPhysics(),
                         itemCount: widget.val.length,
                         itemBuilder: (context, index) {
-                          return DisplaySongs(data: widget.val[index], title: widget.title);
+                          // return DisplaySongs(data: widget.val[index], title: widget.title);
                           if (widget.val[index]['type'] == 'title') {
                             return Center(
                                 child: Text(
@@ -187,7 +187,7 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                                       audioplayer.pause();
                                     } else {
                                       print("sad 2");
-                                      audioplayer.play;
+                                      audioplayer.play();
                                     }
                                   },
                                   icon: Icon(audioplayer.playing
@@ -235,5 +235,10 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                         })))
           ],
         ));
+  }
+  @override
+  void dispose() {
+    audioplayer.dispose();
+    super.dispose();
   }
 }

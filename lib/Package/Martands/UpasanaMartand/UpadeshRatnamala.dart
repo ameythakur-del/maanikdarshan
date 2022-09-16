@@ -59,9 +59,6 @@ class _UpadeshRatnamalaState extends State<UpadeshRatnamala> {
                       String audio = "";
                       if(data[index]['audio'] != null){
                         audio = data[index]['audio'];
-                        print("*************************************** first");
-                        print(audio);
-                        print("*************************************** second");
                       }
                       return MartandsModel(
                         title: data[index]["title"].replaceAll("\\n", "\n"),

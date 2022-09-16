@@ -24,11 +24,16 @@ class _DisplaySongsState extends State<DisplaySongs> {
     return Container(child: getBuildWidget(widget.data),);
   }
 
+
+  @override
+  void dispose() {
+    audioplayer.dispose();
+    super.dispose();
+  }
+
   void initState() {
     super.initState();
-    if(widget.data['type']=='audio'){
-      setAudio(widget.data['text']);
-    }
+
 
 
     audioplayer.playerStateStream.listen((state) {
@@ -69,16 +74,11 @@ class _DisplaySongsState extends State<DisplaySongs> {
     //Repeat song when completed
 
     if (u != "") {
-      print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-      print(u);
-      print((u.runtimeType));
-      print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
       currentUrl = u;
-      duration = (await audioplayer.setUrl("https://sahitya.manikprabhu.org/upasana/audio_upasana/asti_bhati_priya.mp3"))!;
+      duration = (await audioplayer.setUrl(u))!;
     }
   }
   Widget getBuildWidget(dynamic data){
-    // return Text("vivek");
     if (data['type'] == 'title') {
 
       return Center(
@@ -137,10 +137,10 @@ class _DisplaySongsState extends State<DisplaySongs> {
             ),
           ));
     } else {
-      // if (currentUrl != data['text']) {
-      //   setAudio(data['text']);
-      //
-      // }
+      if (currentUrl != data['text']) {
+        setAudio(data['text']);
+
+      }
 
       return Container(
         padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
@@ -157,7 +157,7 @@ class _DisplaySongsState extends State<DisplaySongs> {
                 audioplayer.pause();
               } else {
                 print("sad 2");
-                audioplayer.play;
+                audioplayer.play();
               }
             },
             icon: Icon(audioplayer.playing

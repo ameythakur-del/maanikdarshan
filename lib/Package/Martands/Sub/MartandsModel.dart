@@ -45,10 +45,6 @@ class _MartandsModelState extends State<MartandsModel> {
   Future setAudio() async {
     //Repeat song when completed
     if (widget.audio != "") {
-      print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-      print(widget.audio);
-      print((widget.audio.runtimeType));
-      print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
         duration = (await audioplayer.setUrl(widget.audio))!;
     }
   }

@@ -204,9 +204,6 @@ Event(String image, String type, Color color, BuildContext context) {
         await collectionReference.doc(type).get().then((value) {
           Map<String, dynamic> dataObj = value.data() as Map<String, dynamic>;
           var data = dataObj["data"];
-          print("***************** vivek");
-          print(data);
-          print("***************** vivek");
 
           Navigator.push(
               context,
