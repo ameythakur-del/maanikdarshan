@@ -126,7 +126,7 @@ class _MartandsModelState extends State<MartandsModel> {
                     position = Duration(seconds: value.toInt());
                     await audioplayer.seek(position);
                     //play audio if was stopped
-                    await audioplayer.play();
+                    // await audioplayer.play();
                   })
             ]),
           ):Container()
