@@ -65,7 +65,7 @@ class _MalhariMahatmyaState extends State<MalhariMahatmya> {
                         title: data[index]["title"].replaceAll("\\n", "\n"),
                         text: data[index]['text'].replaceAll("\\n", "\n"),
                         size: value,
-                        audio: audio,
+                        audio: audio, center: false,
                       );
                     })])))],));
   }

@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 import 'package:maanikdarshan/Package/ManikDarshan/Detail.dart';
 import 'package:maanikdarshan/Package/ManikDarshan/data_manikratna.dart';
 import 'package:flutter_share/flutter_share.dart';
-import 'package:intl/intl.dart';
 
 class manikratna extends StatefulWidget {
   const manikratna({Key? key}) : super(key: key);

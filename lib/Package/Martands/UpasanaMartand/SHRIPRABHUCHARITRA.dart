@@ -64,7 +64,7 @@ class _SHRIPRABHUCHARITRAState extends State<SHRIPRABHUCHARITRA> {
                         title: data[index]["title"].replaceAll("\\n", "\n"),
                         text: data[index]['text'].replaceAll("\\n", "\n"),
                         size: value,
-                        audio: audio,
+                        audio: audio, center: false,
                       );
                     })])))],));
   }

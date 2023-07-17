@@ -63,7 +63,7 @@ class _ManikyaWaniState extends State<ManikyaWani> {
                         title: data[index]["title"].replaceAll("\\n", "\n"),
                         text: data[index]['text'].replaceAll("\\n", "\n"),
                         size: value,
-                        audio: audio,
+                        audio: audio, center: true,
                       );
                     })])))],));
                 }

@@ -65,7 +65,8 @@ class _MahamaunshatakState extends State<Mahamaunshatak> {
                         title: data[index]["title"].replaceAll("\\n", "\n"),
                         text: data[index]['text'].replaceAll("\\n", "\n"),
                         size: value,
-                        audio: audio,
+                        audio: audio, center: false,
+
                       );
                     })])))],));
   }

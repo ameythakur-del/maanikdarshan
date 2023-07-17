@@ -110,7 +110,7 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                   if (widget.val[index]['type'] == 'title') {
                     return Center(
                         child: Text(
-                      widget.val[index]['text'],
+                      widget.val[index]['text'].replaceAll('\\n', '\n'),
                       style: TextStyle(
                           fontSize: 24,
                           fontFamily: 'Manik',
@@ -120,24 +120,21 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                     ));
                   } else if (widget.val[index]['type'] == 'description') {
                     return (widget.title.contains("आरती") || widget.title.contains("भजन") || widget.title.contains("चिद्घनैक ज्ञान मंगला") || widget.title.contains("माणिका लोकपालका") || widget.title.contains("सच्चित्सुख तव जय हो") || widget.title.contains("व्यंके तुज मंगल हो") || widget.title.contains("त्रिपुरसुंदरी सुमंगला") || widget.title.contains("प्रार्थना") || widget.title.contains("अष्टक"))?Padding(
-                        padding: EdgeInsets.only(top: 10, left:30, right: 30),
-                        child: Center(
-                          child: Text(
+                        padding: EdgeInsets.only(top: 10, left:10, right: 10),
+                        child: Text(
                             widget.val[index]['text'].replaceAll('\\n', '\n'),
+
                             style: TextStyle(
                                 color: const Color(0xFF393939), fontSize: value, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
-                            textAlign: TextAlign.justify,
-                          ),
+
                         )):
                       Padding(
-                        padding: EdgeInsets.only(top: 10, left:30, right: 30),
-                        child: Center(
-                          child: Text(
+                        padding: EdgeInsets.only(top: 10, left:10, right: 10),
+                        child:Text(
                             widget.val[index]['text'].replaceAll('\\n', '\n'),
                             style: TextStyle(
                                 color: const Color(0xFF393939), fontSize: value, fontFamily: 'Manik', fontWeight: FontWeight.w600),
-                            textAlign: TextAlign.justify,
-                          ),
+
                         ));
                   }
                   else{
@@ -158,7 +155,7 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                           if (audioplayer.playing) {
                             audioplayer.pause();
                           } else {
-                            audioplayer.play;
+                            audioplayer.play();
                           }
                         },
                         icon: Icon(audioplayer.playing ? Icons.pause : Icons.play_arrow),
@@ -177,12 +174,15 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                           onChanged: (value) async {
                             position = Duration(seconds: value.toInt());
                             await audioplayer.seek(position);
-                            //play audio if was stopped
-                            await audioplayer.play;
                           })
                     ]),
                   );
                 }})
         ))],));
+  }
+  @override
+  void dispose() {
+    audioplayer.dispose();
+    super.dispose();
   }
 }

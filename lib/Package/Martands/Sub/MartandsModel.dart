@@ -5,7 +5,8 @@ class MartandsModel extends StatefulWidget {
   final String text;
   final String title, audio;
   final double size;
-  const MartandsModel({Key? key, required this.text, required this.title, required this.size, required this.audio})
+  final bool center;
+  const MartandsModel({Key? key, required this.text, required this.title, required this.size, required this.audio, required this.center})
       : super(key: key);
 
   @override
@@ -81,6 +82,7 @@ class _MartandsModelState extends State<MartandsModel> {
                     fontWeight: FontWeight.w800),
                 textAlign: TextAlign.center,
               )),
+          (widget.center)?
           Padding(
               padding: EdgeInsets.only(top: 10, left:30, right: 30),
               child: Center(
@@ -88,9 +90,16 @@ class _MartandsModelState extends State<MartandsModel> {
                   widget.text,
                   style: TextStyle(
                       color: const Color(0xFF393939), fontSize: widget.size, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
-                  textAlign: TextAlign.justify,
+                  textAlign: TextAlign.center,
                 ),
-              )),
+              )):Align(alignment: Alignment.centerLeft,child:
+          Padding(
+              padding: EdgeInsets.only(top: 10, left:10, right: 10),
+              child: Text(
+                  widget.text,
+                  style: TextStyle(
+                      color: const Color(0xFF393939), fontSize: widget.size, fontFamily: 'Mukta', fontWeight: FontWeight.w600),
+              ))),
           (widget.audio != "")?
           Container(
             padding: EdgeInsets.only(left: 10, top: 10, bottom: 10),
@@ -126,7 +135,7 @@ class _MartandsModelState extends State<MartandsModel> {
                     position = Duration(seconds: value.toInt());
                     await audioplayer.seek(position);
                     //play audio if was stopped
-                    await audioplayer.play();
+                    // await audioplayer.play();
                   })
             ]),
           ):Container()

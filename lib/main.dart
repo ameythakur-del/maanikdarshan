@@ -76,6 +76,7 @@ final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title
+    "This channel is used for important notifications",
     importance: Importance.high,
     playSound: true);
 
@@ -158,7 +159,7 @@ Future<void> main() async {
           android: AndroidNotificationDetails(
             channel.id,
             channel.name,
-            channelDescription: channel.description,
+            channel.description,
             playSound: true,
             icon: "@mipmap/ic_launcher",
             largeIcon: const DrawableResourceAndroidBitmap("ic_launcher"),
@@ -237,7 +238,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'माणिकदर्शन',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -291,7 +292,7 @@ class MyApp extends StatelessWidget {
         '/मधुमती श्यामला सप्तपदी': (context) => Madhumatishyanyamala(),
         '/श्रीप्रभुचरित्र': (context) => SHRIPRABHUCHARITRA(),
         '/साधना प्रदीप': (context) => SADHANAPRADEEP(),
-        '/श्रीमाणिकनगरक्षेत्र माहात्म्य': (context) => KSHETRAMAHATMYA(),
+        '/श्रीमाणिकनगर क्षेत्र माहात्म्य': (context) => KSHETRAMAHATMYA(),
         '/उत्सव': (context) => utsav(),
         '/श्री संस्थान': (context) => ShriSanthan(),
         '/अभिषेक प्रकरणम्': (context) => AbhishekPrakaranam(),
@@ -393,6 +394,14 @@ class _HomePageState extends State<HomePage> {
         ),
         Image.asset(
           "assets/images/home_heading_2.png",
+          width: double.infinity,
+        ),
+        Image.asset(
+          "assets/images/home_heading_3.png",
+          width: double.infinity,
+        ),
+        Image.asset(
+          "assets/images/home_heading_4.png",
           width: double.infinity,
         ),
       ];

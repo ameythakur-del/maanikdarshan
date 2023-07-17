@@ -65,7 +65,7 @@ class _SangmeshMahatmyaState extends State<SangmeshMahatmya> {
                         title: data[index]["title"].replaceAll("\\n", "\n"),
                         text: data[index]['text'].replaceAll("\\n", "\n"),
                         size: value,
-                        audio: audio,
+                        audio: audio, center: false,
                       );
                     })])))],));
   }

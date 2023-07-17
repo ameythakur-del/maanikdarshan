@@ -54,7 +54,9 @@ class SatvaracheBhajan extends StatelessWidget {
                     children: [
                       Event(images[4], data[4], const Color.fromRGBO(240, 155, 33, 0.3), context),
                       Event(images[5], data[5], const Color.fromRGBO(240, 155, 33, 0.3), context),
-                     ],
+                      Event(images[6], data[6], const Color.fromRGBO(240, 155, 33, 0.3), context),
+
+                    ],
                   )),
                 ],
               );

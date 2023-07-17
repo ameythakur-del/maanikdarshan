@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:maanikdarshan/components/customAppBar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+
 class Detail extends StatefulWidget {
   final String url;
   const Detail({Key? key, required this.url}) : super(key: key);
