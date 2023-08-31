@@ -17,7 +17,7 @@ class ListCard extends StatelessWidget {
           value.data() as Map<String, dynamic>;
           var data = dataObj["data"];
           Navigator.push(context, MaterialPageRoute(
-              builder: (context) => MantraDocuments(val: data, title: text,)));
+              builder: (context) => MantraDocuments(val: data, title: text, i: 1,)));
         });
       },
       child:

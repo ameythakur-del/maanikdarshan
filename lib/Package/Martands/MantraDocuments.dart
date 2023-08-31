@@ -8,10 +8,12 @@ import '../sample.dart';
 class MantraDocuments extends StatefulWidget {
   final val;
   final String title;
+  final int i;
   const MantraDocuments({
     Key? key,
     required this.val,
     required this.title,
+    required this.i,
   }) : super(key: key);
 
   @override
@@ -36,7 +38,28 @@ class _MantraDocumentsState extends State<MantraDocuments> {
     //Repeat song when completed
     if (u != "") {
       currentUrl = u;
-      duration = (await audioplayer.setUrl(u))!;
+      // duration = (await audioplayer.setUrl(u))!;
+
+      try {
+        duration = (await audioplayer.setUrl(u))!;
+      } on PlayerException catch (e) {
+        // iOS/macOS: maps to NSError.code
+        // Android: maps to ExoPlayerException.type
+        // Web: maps to MediaError.code
+        print("Error code: ${e.code}");
+        // iOS/macOS: maps to NSError.localizedDescription
+        // Android: maps to ExoPlaybackException.getMessage()
+        // Web: a generic message
+        print("Error message: ${e.message}");
+      } on PlayerInterruptedException catch (e) {
+        // This call was interrupted since another audio source was loaded or the
+        // player was stopped or disposed before this audio source could complete
+        // loading.
+        print("Connection aborted: ${e.message}");
+      } catch (e) {
+        // Fallback for all errors
+        print(e);
+      }
     }
   }
 
@@ -98,7 +121,8 @@ class _MantraDocumentsState extends State<MantraDocuments> {
           divisions: 10,
           min: 15.0,
           max: 30.0,
-        ),
+        ),(widget.i == 1)
+          ?
           Expanded(
             child:   SingleChildScrollView(
           child:
@@ -178,7 +202,27 @@ class _MantraDocumentsState extends State<MantraDocuments> {
                     ]),
                   );
                 }})
-        ))],));
+        )):
+        Expanded(child:
+        SingleChildScrollView(
+            child: Column(children: [
+              ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: widget.val.length,
+                  itemBuilder: (context, index) {
+                    String audio = "";
+                    if(widget.val[index]['audio'] != null){
+                      audio = widget.val[index]['audio'];
+                    }
+                    return MartandsModel(
+                      title: widget.val[index]["title"].replaceAll("\\n", "\n"),
+                      text: widget.val[index]['text'].replaceAll("\\n", "\n"),
+                      size: value,
+                      audio: audio, center: true,
+                    );
+                  })])))
+        ],));
   }
   @override
   void dispose() {

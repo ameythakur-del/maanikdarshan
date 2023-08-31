@@ -209,7 +209,7 @@ Event(String image, String type, Color color, BuildContext context) {
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      MantraDocuments(val: data, title: type)));
+                      MantraDocuments(val: data, title: type, i: 1, )));
         });
       },
       child: Container(

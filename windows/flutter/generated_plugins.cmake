@@ -5,7 +5,7 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   audioplayers_windows
   firebase_core
-  native_pdf_renderer
+  pdfx
   url_launcher_windows
 )
 

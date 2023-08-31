@@ -79,7 +79,7 @@ Event(String image, String type, Color color, BuildContext context) {
           value.data() as Map<String, dynamic>;
           var data = dataObj["data"];
           Navigator.push(context, MaterialPageRoute(
-              builder: (context) => MantraDocuments(val: data, title: type)));
+              builder: (context) => MantraDocuments(val: data, title: type, i: 2,)));
         });
         },
       child: Container(margin: EdgeInsets.all(5), child:
